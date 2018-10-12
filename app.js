@@ -8,7 +8,7 @@ App({
     wx.setStorageSync('logs', logs)
 
     // 登录
-      
+      //大苏打
     // 获取用户信息
     wx.getSetting({
       success: res => {
