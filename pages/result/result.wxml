@@ -1,0 +1,57 @@
+ <view class='image'><image src="{{image}}" mode="widthFix"  style="width:99%; height: 150px;border: 2px rgb(14, 193, 248) dashed;"/> </view>
+ 
+<view class='sign'><text class='tishi' >图片看不清可点击放大哦 \n 点击左边圆圈可选中题目添加试题蓝</text>  </view>
+<view class='container'>
+  <view class='section section-good'>
+    <checkbox-group bindchange="checkboxChange" value='result.unique' >
+  
+      <view class='good' wx:for='{{result}}' wx:for-item="result" wx:key="{{result.unique}}">
+     
+        <label class="checkbox">
+          <checkbox value="{{result.unique}}" checked="{{result.checked}}" hidden='hidden' />
+          <icon type="circle" size="26"  wx:if="{{!result.checked}}"></icon>
+          <icon type="success" size="26" wx:if="{{result.checked}}"></icon>
+          
+        </label>
+      
+        
+<view class='content'>
+
+<view  class='same' >相似题目：</view>
+
+<view class='que1'><image bindtap='imgbig'class='que' data-list='{{result.queUrl}}' data-src='{{result.queUrl}}' mode="widthFix"  src='{{result.queUrl}}' ></image></view>
+
+
+
+<view class='jx'>解析如下：</view>
+<view><image bindtap='imgbig2'class='que' data-list='{{result.jxUrl}}' data-src='{{result.jxUrl}}' mode="widthFix"  src='{{result.jxUrl}}'  ></image> </view>
+
+
+
+<view class='jd' >解答如下：</view>
+<view > <image bindtap='imgbig1'class='que' data-list='{{result.answerUrl}}' data-src='{{result.answerUrl}}' mode="widthFix"  src='{{result.answerUrl}}' ></image> </view>
+   
+
+</view>
+     
+      
+      </view>
+    </checkbox-group>  
+  </view>
+  <view class='section-bottom'>
+    <checkbox-group bindchange="selectalltap">
+      <label class='checkbox-allcheck'>
+        <checkbox value="{{!checkAll}}" checked="{{checkAll}}" hidden='hidden' />
+        
+   
+        
+      </label>
+    </checkbox-group>
+
+  <view> <image class='fanhui' bindtap='goindex' mode='widthFix'   src='../image/fanhui.png' ></image></view>
+     <view>  <image  mode='widthFix' bindtap='goshitilan'  class='shitilan' src='../image/lanzi.png'></image></view>
+    <view  > <image class='tianjia'  src='../image/jiahao.png'bindtap='upload'mode='widthFix' ></image>  </view>
+    
+   
+  </view>
+</view>

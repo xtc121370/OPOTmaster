@@ -1,0 +1,34 @@
+/* pages/zhuce/zhuce.wxss */
+page{  
+  background-color: #d3f1ef;
+  width:100%;  
+  height:100%;  
+  overflow: hidden; 
+} 
+.zhuti{
+font-family: 微软雅黑;
+font-size: 45px;
+font-weight: 700;  
+margin-top: 50px;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+color: black;
+}
+.whole{
+  background-color: #d3f1ef;
+}
+.zhuce{
+  width: 70%;
+  margin-top:8%;
+}
+.loginBox{
+  margin-top: 15%;
+}
+.input{
+   
+}
+.tubiao2{
+
+}

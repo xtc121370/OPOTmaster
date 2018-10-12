@@ -1,0 +1,13 @@
+
+<view><text>我的试题篮：</text><text class='xiala'>（若无显示下拉刷新）</text></view>
+
+
+  <view class='image' wx:for="{{shitilan}}" wx:for-index="index" wx:for-item='shitilan'>  
+             <image style='width:370px;'  bindtap='imgbig' src="{{shitilan}}" class="slide-image" data-list='{{shitilan}}' data-src='{{shitilan}}' mode="widthFix"/>  
+     
+   </view>  
+ <view><text class='tishi'>在此处输入试卷夹名称可将当前页题目生成试卷</text></view>
+<view class='title' ><input type='text'  placeholder='请输入试卷夹名称' bindinput='titleinput'></input></view>
+
+<view class='upload' ><button bindtap='upload'>生成试卷</button></view>
+<view><text class='a' >提示：</text><text class='b'>生成好的试卷请前往网页修改与打印哦</text></view>

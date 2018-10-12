@@ -1,0 +1,18 @@
+<view class='whole'>
+
+<view style='' class="logo">
+<text class='zhuti'>OPOT</text> 
+</view> 
+
+<view class='inputView' >
+<input class='input' type='number' placeholder-class='stylePl' placeholder='请输入账号或用户名' placeholder-style='color:black' bindinput='PhoneInput'  name='phone'></input>
+</view>
+
+<view class='inputView'>
+<input class='input' password='true' placeholder-class='stylePl' placeholder='请输入密码' placeholder-style='color:black' bindinput='PasswordInput' name='password'> </input>
+</view>
+
+<button type='primary' class='denglu'  bindtap='login'>登录</button>
+<button type='default' class='zhuce'   bindtap='gozhuce' >我要注册</button>
+
+</view> 

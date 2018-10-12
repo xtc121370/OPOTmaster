@@ -1,0 +1,33 @@
+{
+    "window": {
+      "navigationBarBackgroundColor": "#ffffff",
+      "navigationBarTextStyle": "black",
+      "navigationBarTitleText": "搜索结果",
+      "backgroundColor": "#eeeeee",
+      "backgroundTextStyle": "light",
+      "enablePullDownRefresh": false
+    },
+    "tabBar": {
+      "selectedColor": "#1296db",
+      "list": [
+        {
+          "pagePath": "pages/shitilan/shitilan",
+          "text": "试题篮",
+          "iconPath": "pages/image/find.png",
+          "selectedIconPath": "pages/image/find1.png"
+        },
+        {
+          "pagePath": "pages/index/index",
+          "text": "搜索",
+          "iconPath": "pages/image/sousuo.png",
+          "selectedIconPath": "pages/image/sousuo1.png"
+        },
+        {
+          "pagePath": "pages/mine/mine",
+          "text": "我",
+          "iconPath": "pages/image/mine.png",
+          "selectedIconPath": "pages/image/mine1.png"
+        }
+      ]
+    }
+  }

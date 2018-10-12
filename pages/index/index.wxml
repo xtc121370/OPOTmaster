@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<import src="/welCropper/welCropper.wxml" />
+
+ <template is="welCropper" data="{{cropperData:cropperData, cropperMovableItems:cropperMovableItems, cropperChangableData:cropperChangableData}}"></template> 
+<view class='sign'> <text> OPOT</text></view>
+<view  style='width:100%;height:100%;text-align:center;'><image src='../image/index.png' class='image2'  bindtap='selectTap' data-mode='rectangle' mode='aspectFit' ></image></view>
+
+<view class='lishi'><text style='font-family:华文琥珀;font-size:22px;'>搜索历史 \n <text style='font-family:幼圆;font-size:15px;'> (正在开发中)</text> </text></view>
+<view class='about'><text  style='font-family:华文琥珀;font-size:22px;text-decoration:underline;' >关于我们</text></view>
+<view class="container" >
+  <view class="userinfo">
+
+
+ <image  class='tem' src="{{tempFilePaths }}" mode="widthFix" style="width:700rpx; height: 450rpx;"/> 
+  
+
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+ 
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>

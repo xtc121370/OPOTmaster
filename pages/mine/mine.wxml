@@ -1,0 +1,3 @@
+<view class='username'><text>用户名:{{username}}</text></view>
+<view></view>
+<view class='phone'><text>手机号：{{phone}}</text></view>
