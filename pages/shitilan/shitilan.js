@@ -44,7 +44,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: 'http://47.94.215.104:8080/OPOT1/servlet/wGetBasketServlet',
+      url: app.globalData.Url +'wGetBasketServlet',
       data: {
 
         sessionId: that.data.sessionId
@@ -103,7 +103,7 @@ console.log('试卷夹名称'+this.data.title)
       wx.hideLoading()
     }, 7000)
    wx.request({
-     url: 'http://47.94.215.104:8080/OPOT1/servlet/wAddPaperServlet',//生产试卷夹接口
+     url: app.globalData.Url +'wAddPaperServlet',//生产试卷夹接口
      data: {
        title: that.data.title
 
@@ -127,7 +127,7 @@ console.log('服务器返回'+res.data)
 
 
    wx.request({
-     url: 'http://47.94.215.104:8080/OPOT1/servlet/wGetPaperServlet',//试卷夹接口
+     url: app.globalData.Url +'wGetPaperServlet',//试卷夹接口
 
   method: 'POST',
    header: {
@@ -179,7 +179,7 @@ console.log('服务器返回'+res.data)
   
     var that=this;
     wx.request({
-      url: 'http://47.94.215.104:8080/OPOT1/servlet/wGetBasketServlet',
+      url: app.globalData.Url +'wGetBasketServlet',
       data: {
 
         sessionId: that.data.sessionId

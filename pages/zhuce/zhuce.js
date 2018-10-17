@@ -1,4 +1,5 @@
 // pages/zhuce/zhuce.js
+var app=getApp();
 Page({
 
   /**
@@ -46,7 +47,7 @@ Page({
     console.log('密码：' + this.data.password)
 
     wx.request({
-      url: 'http://47.94.215.104:8080/OPOT1/servlet/wRegisterServlet',//注册接口
+      url: app.globalData.Url +'wRegisterServlet',//注册接口
       data: {
         username: that.data.username,
      

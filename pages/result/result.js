@@ -106,7 +106,7 @@ wx.switchTab({
     }, 7000)
     console.log('dayin:'+that.data.sessionId)
 wx.request({
-      url: 'http://47.94.215.104:8080/OPOT1/servlet/wAddQueServlet',//服务器
+  url: app.globalData.Url +'wAddQueServlet',//服务器
        
        data: {
         md5: that.data.values,
@@ -129,7 +129,7 @@ wx.request({
 
      })
     wx.request({
-      url: 'http://47.94.215.104:8080/OPOT1/servlet/wGetBasketServlet',
+      url: app.globalData.Url +'wGetBasketServlet',
       data: {
 
         sessionId: that.data.sessionId

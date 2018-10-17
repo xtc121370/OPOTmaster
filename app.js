@@ -33,6 +33,8 @@ App({
 
  
   globalData: {
+    Url:'https://www.opot.net.cn/OPOT1/servlet/',
+    ceshiUrl:'',
     tempFilePaths:null,
     userInfo: null,
     result:null,
@@ -40,15 +42,7 @@ App({
     queUrl:null,
     sessionId:null,
     header:null,
-    shitilan: [
-      {
-        'url': 'http://r.photo.store.qq.com/psb?/V12EzWWJ3J1Roh/oBi1EAzSswJfQB7bc*Ldog*ykjFC4VW9n0yQLmPUBa8!/r/dDUBAAAAAAAA',
-        'id': 0
-      }
-
-
-
-    ],
+    shitilan:null,
     shijuanjia:null,
     name:'未找到，请下拉刷新重试',
     username: '未找到，请下拉刷新重试',

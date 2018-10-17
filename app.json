@@ -1,9 +1,18 @@
 {
   "pages": [
-    "pages/shitilan/shitilan",
-        "pages/index/index",
-    
     "pages/denglu/denglu",
+    
+    "pages/index/index",
+
+  
+
+
+
+
+    "pages/shitilan/shitilan",
+ 
+    
+
     
 
    

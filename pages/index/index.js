@@ -69,7 +69,7 @@ Page({
             },5000)
           
           wx.uploadFile({
-            url: 'http://39.105.56.207:8080/OPOT1/servlet/wPictureServlet',
+            url: app.globalData.Url +'wPictureServlet',
               filePath: that.data.tempFilePaths,
               name: 'image',
               header: {
@@ -97,6 +97,7 @@ Page({
                 console.log('问题URL'+app.globalData.queUrl)
               },
               fail:function(res){
+                console.log(res)
                 wx.showLoading({
                   title: '推荐失败，请重新上传',
                 })
