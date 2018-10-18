@@ -17,6 +17,8 @@ Page({
     sessionId:null,
     result: null ,
     selectedFlag: [false, false, false, false],
+    
+
 
    index:[0,1,2,3,4,5]
            

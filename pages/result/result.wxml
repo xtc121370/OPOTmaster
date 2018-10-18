@@ -20,11 +20,7 @@
 <view  class='same' >相似题目：</view>
 
 <view class='que1'><image bindtap='imgbig'class='que' data-list='{{result.queUrl}}' data-src='{{result.queUrl}}' mode="widthFix"  src='{{result.queUrl}}' ></image></view>
-
-
-
-<view class='jx'>解析如下：</view>
-<view><image bindtap='imgbig2'class='que' data-list='{{result.jxUrl}}' data-src='{{result.jxUrl}}' mode="widthFix"  src='{{result.jxUrl}}'  ></image> </view>
+  
 
 
 
