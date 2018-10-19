@@ -5,13 +5,12 @@
 
 page {
   height: 100%;
-  background:white;
+  background:  whitesmoke;
   font-family: -apple-system-font, Arial, Helvetica, sans-serif;
   color: #333;
   font-size: 32rpx;
   line-height: 1.42857;
 }
-
 /**index.wxss**/
 
 
@@ -57,24 +56,22 @@ width:328px;
 .fanhui{
 position: absolute;
 left: 0%;
-top: -25%;
-width: 35%;
-height: 43px;
-
+top: 0%;
+width: 280rpx;
+height: 130rpx;
 }
 .shitilan{
-height: 10%;
-  width: 25%;
+width: 280rpx;
+height: 90rpx;
   position: absolute;
 bottom: 1px;
-right: 37%;
+right: 30%;
   border: none;
 
 }
 .tianjia{
-
-  height: 13px;
-  width: 35%;
+width: 280rpx;
+height: 90rpx;
   position: absolute;
   right: 0%;
   bottom: 6%;

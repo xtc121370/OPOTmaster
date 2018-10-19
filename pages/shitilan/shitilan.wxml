@@ -1,5 +1,5 @@
 
-<view><text>我的试题篮：</text><text class='xiala'>（若无显示下拉刷新）</text></view>
+<view><text>我的试题篮：</text><text class='xiala'>（页面正在调试中！！请期待）</text></view>
 
 
   <view class='image' wx:for="{{shitilan}}" wx:for-index="index" wx:for-item='shitilan'>  

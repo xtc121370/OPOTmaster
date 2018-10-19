@@ -1,0 +1,39 @@
+/* pages/guanyu/guanyu.wxss */
+
+page {
+  height: 100%;
+  background:  whitesmoke;
+  font-family: -apple-system-font, Arial, Helvetica, sans-serif;
+  color: #333;
+  font-size: 32rpx;
+  line-height: 1.42857;
+}
+
+.flex{
+
+
+
+}
+.text{
+width:740rpx;
+position: absolute;
+
+left: 2%;
+}
+.team{
+  width:740rpx;
+position: absolute;
+top: 38%;
+}
+.team1{
+   width:740rpx;
+position: absolute;
+top: 45%;
+}
+.web{
+
+  width:740rpx;
+position: absolute;
+top: 65%;
+}
+

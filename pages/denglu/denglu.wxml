@@ -1,6 +1,7 @@
 <view class='whole'>
 
 <view style='' class="logo">
+
 <text class='zhuti'>OPOT</text> 
 </view> 
 
@@ -13,6 +14,6 @@
 </view>
 
 <button type='primary' class='denglu'  bindtap='login'>登录</button>
-<button type='default' class='zhuce'   bindtap='gozhuce' >我要注册</button>
+<button type='default' class='zhuce' hover-class='none'  bindtap='gozhuce' >我要注册</button>
 
 </view> 

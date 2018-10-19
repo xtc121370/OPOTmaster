@@ -44,9 +44,9 @@
       </label>
     </checkbox-group>
 
-  <view> <image class='fanhui' bindtap='goindex' mode='widthFix'   src='../image/fanhui.png' ></image></view>
-     <view>  <image  mode='widthFix' bindtap='goshitilan'  class='shitilan' src='../image/lanzi.png'></image></view>
-    <view  > <image class='tianjia'  src='../image/jiahao.png'bindtap='upload'mode='widthFix' ></image>  </view>
+  <view> <image class='fanhui' bindtap='goindex' mode='aspectFit'   src='../image/fanhui.png' ></image></view>
+     <view>  <image  mode='aspectFit' bindtap='goshitilan'  class='shitilan' src='../image/lanzi.png'></image></view>
+    <view  > <image class='tianjia'  src='../image/jiahao.png'bindtap='upload'mode='aspectFit' ></image>  </view>
     
    
   </view>

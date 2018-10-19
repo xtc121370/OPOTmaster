@@ -23,6 +23,13 @@ Page({
     })
     // console.log(usertype)  
   },
+  goguanyu:function(){
+
+
+    wx.navigateTo({
+      url: '../guanyu/guanyu',
+    })
+  },
   selectTap(e) {
     let that = this
     let mode = e.currentTarget.dataset.mode
