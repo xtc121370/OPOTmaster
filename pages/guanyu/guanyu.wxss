@@ -8,12 +8,6 @@ page {
   font-size: 32rpx;
   line-height: 1.42857;
 }
-
-.flex{
-
-
-
-}
 .text{
 width:740rpx;
 position: absolute;

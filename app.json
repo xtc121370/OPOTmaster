@@ -1,11 +1,20 @@
 {
   "pages": [
     "pages/denglu/denglu",
+    "pages/result/result",
+    "pages/index/index",
+    
+
+  
+ 
+ 
+
+ 
     "pages/guanyu/guanyu",
   
-    "pages/result/result",
+   
     "pages/shitilan/shitilan",
-    "pages/index/index",
+
    
 
   
@@ -19,33 +28,11 @@
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#77E4FF",
     "navigationBarTitleText": "OPOT",
     "navigationBarTextStyle": "black"
   },
-  "tabBar": {
-    "selectedColor": "#1296db",
-    "list": [
-      {
-        "pagePath": "pages/shitilan/shitilan",
-        "text": "试题篮",
-        "iconPath": "pages/image/find.png",
-        "selectedIconPath": "pages/image/find1.png"
-      },
-      {
-        "pagePath": "pages/index/index",
-        "text": "搜索",
-        "iconPath": "pages/image/sousuo.png",
-        "selectedIconPath": "pages/image/sousuo1.png"
-      },
-      {
-        "pagePath": "pages/mine/mine",
-        "text": "我",
-        "iconPath": "pages/image/mine.png",
-        "selectedIconPath": "pages/image/mine1.png"
-      }
-    ]
-  },
+ 
   "networkTimeout": {
     "request": 10000,
     "downloadFile": 10000

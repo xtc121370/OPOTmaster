@@ -1,26 +1,37 @@
 <!--index.wxml-->
+
+<view class="ripple" style="{{rippleStyle}}"></view>
+<view class="container" bindtouchstart="containerTap"></view>
+  <view>
+
+    <image bindtap='gomine'   src="/pages/image/mine.png" class="img-style" animation="{{animCollect}}" ></image>
+
+    <image bindtap='goindex' src="/pages/image/sousuo.png" class="img-style" animation="{{animTranspond}}" ></image>
+
+    <image bindtap='goshitilan'  src="/pages/image/shitilan.png" class="img-style" animation="{{animInput}}" ></image>
+
+    <image   src="/pages/image/plus.png" class="img-plus-style" animation="{{animPlus}}" bindtap="plus"></image>
+
+  </view>
+
+
 <import src="/welCropper/welCropper.wxml" />
-
- <template is="welCropper" data="{{cropperData:cropperData, cropperMovableItems:cropperMovableItems, cropperChangableData:cropperChangableData}}"></template> 
-<view class='sign'> <text> OPOT</text></view>
-<view class='image2' style='text-align:center;'><image src='../image/index.png'   bindtap='selectTap' data-mode='rectangle' mode='aspectFit' ></image></view>
-
-<view class='lishi'><text style='font-family:华文琥珀;font-size:22px;'>搜索历史 \n <text style='font-family:幼圆;font-size:15px;'> (正在开发中)</text> </text></view>
-<view class='about'><text bindtap='goguanyu'  style='font-family:华文琥珀;font-size:22px;text-decoration:underline;' >关于我们</text></view>
-<view class="container" >
+<template is="welCropper" data="{{cropperData:cropperData, cropperMovableItems:cropperMovableItems, cropperChangableData:cropperChangableData}}"></template>
+<view class='sign'>
+  <text>OPOT</text></view>
+<view class='image2' style='text-align:center;'>
+  <image src='../image/index.png' bindtap='selectTap' data-mode='rectangle' mode='aspectFit'></image>
+</view>
+<view class='lishi'>
+  <text style='font-family:华文琥珀;font-size:22px;'>搜索历史 \n
+    <text style='font-family:幼圆;font-size:15px;'>(正在开发中)</text></text>
+</view>
+<view class='about'>
+  <text bindtap='goguanyu' style='font-family:华文琥珀;font-size:22px;text-decoration:underline;'>关于我们</text></view>
+<view class="container">
   <view class="userinfo">
-<view class='a1'><text style='font-size:13px;'>冀ICP备18020905号 ©opot.net.cn版权所有</text></view>
-
-  
-
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
+    <view class='a1'>
+      <text style='font-size:13px;'>冀ICP备18020905号 ©opot.net.cn版权所有</text></view>
  
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+</view>
 </view>
