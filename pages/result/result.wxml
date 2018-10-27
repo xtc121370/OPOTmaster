@@ -1,4 +1,6 @@
 
+
+
 <view class="ripple" style="{{rippleStyle}}"></view>
 <view class="container" bindtouchstart="containerTap"></view>
   <view>
@@ -16,7 +18,7 @@
 
  <view class='image'><image src="{{image}}" mode="widthFix"  style="width:99%; height: 150px;border: 2px rgb(14, 193, 248) dashed;"/> </view>
  
-<view class='sign'><text class='tishi' >图片看不清可点击放大哦 \n 点击左边圆圈可选中题目添加试题蓝</text>  </view>
+<view class='sign'><text class='tishi' >图片看不清可点击放大哦 \n 点击右下角+号可选择添加试题篮功能</text>  </view>
 <view class='container'>
   <view class='section section-good'>
     <checkbox-group bindchange="checkboxChange" value='result.unique' >
@@ -50,7 +52,7 @@
       </view>
     </checkbox-group>  
   </view>
-  <view class='section-bottom'>
+
     <checkbox-group bindchange="selectalltap">
       <label class='checkbox-allcheck'>
         <checkbox value="{{!checkAll}}" checked="{{checkAll}}" hidden='hidden' />
@@ -60,7 +62,7 @@
       </label>
     </checkbox-group>
 
- <view ><button bindtap='upload' class='tianjia' type='primary'>添加试题篮</button> </view>
+ <view ><button animation="{{animtianjia}}" bindtap='upload' class="tianjia" type='primary'>添加试题篮</button> </view>
    
-  </view>
+
 </view>

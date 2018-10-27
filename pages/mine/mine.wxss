@@ -1,18 +1,32 @@
 /* pages/mine/mine.wxss */
 page{  
-  background-color:  whitesmoke;
+  background-color: white;
   width:100%;  
   height:100%;  
   overflow: hidden; 
 } 
 .username{
- width: 350px;
+ width: 500rpx;
 border: 4px rgb(14, 193, 248) dashed;
+top: 700rpx;
+font-size: 16px;
+position: absolute;
+left: 120rpx;
 }
 .phone{
+font-size: 16px;
 
   position: absolute;
-  width: 350px;
-top: 50px;
+  width:500rpx;
+top: 900rpx;
+left: 120rpx;
   border: 4px rgb(14, 193, 248) dashed;
+}
+.tipe{
+
+position: absolute;
+top: 1100rpx;
+left: 130rpx;
+
+
 }

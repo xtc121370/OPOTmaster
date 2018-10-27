@@ -1,27 +1,26 @@
 {
   "pages": [
-    "pages/denglu/denglu",
-    "pages/result/result",
+  "pages/denglu/denglu",
+      "pages/mine/mine",
     "pages/index/index",
+
+  
+ 
+  
+
+    
+    "pages/shitilan/shitilan",
+    
     
 
-  
- 
- 
 
- 
+    "pages/result/result",
     "pages/guanyu/guanyu",
-  
-   
-    "pages/shitilan/shitilan",
 
-   
-
-  
     "pages/zhuce/zhuce",
 
  
-    "pages/mine/mine",
+    
 
     "pages/shitijia/shitijia",
     "pages/logs/logs"

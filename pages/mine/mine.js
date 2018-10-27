@@ -1,5 +1,7 @@
 // pages/mine/mine.js
 var app=getApp();
+
+
 Page({
 
   /**
@@ -17,6 +19,7 @@ Page({
    */
   onLoad: function (options) {
   var that=this;
+    this.app = getApp()
 that.setData({
 
 
@@ -41,14 +44,24 @@ console.log(that.data.phone)
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.app.slideupshow(this, 'slide_up1', -200, 1)
+
+    setTimeout(function () {
+      this.app.slideupshow(this, 'slide_up2', -200, 1)
+    }.bind(this), 200);
   },
+
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+    //你可以看到，动画参数的200,0与渐入时的-200,1刚好是相反的，其实也就做到了页面还原的作用，使页面重新打开时重新展示动画
+    this.app.slideupshow(this, 'slide_up1', 200, 0)
+    //延时展现容器2，做到瀑布流的效果，见上面预览图
+    setTimeout(function () {
+      this.app.slideupshow(this, 'slide_up2', 200, 0)
+    }.bind(this), 200);
   },
 
   /**

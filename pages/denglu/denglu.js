@@ -45,7 +45,7 @@ Page({
       })
     }
     wx.request({
-      url:'https://www.opot.net.cn/OPOT1/servlet/wLoginServlet', //服务器接口地址
+      url:'http://39.105.56.207/OPOT1/servlet/wLoginServlet', //服务器接口地址
       data: {
         LoginInfo: that.data.phone,
         password: that.data.password,
@@ -89,9 +89,9 @@ Page({
             icon: 'success',
             duration: 2000000,
             success: function () {
-              wx.switchTab({
-                url: '../index/index',
-              })
+             wx.navigateTo({
+               url: '../index/index',
+             })
             }
           })
         }

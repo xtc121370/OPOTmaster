@@ -47,7 +47,7 @@ Page({
     console.log('密码：' + this.data.password)
 
     wx.request({
-      url: app.globalData.Url +'wRegisterServlet',//注册接口
+      url:'http://39.105.56.207/OPOT1/servlet/wRegisterServlet',//注册接口
       data: {
         username: that.data.username,
      

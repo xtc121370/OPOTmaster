@@ -7,10 +7,50 @@ page {
   font-size: 32rpx;
   line-height: 1.42857;
 }
-.image{
-border-bottom: 6px  #C6E2FF solid;
+.box{
+z-index: 99;
 
 }
+.image{
+border-bottom: 6px  #C6E2FF solid;
+ z-index: 99;
+
+}
+.img-plus-style {
+
+  height: 100rpx;
+
+  width: 100rpx;
+
+ position: fixed; 
+top: 10rpx;
+
+  right: 10rpx;
+
+  z-index: 100;
+
+}
+
+ 
+
+.img-style {
+
+   height: 100rpx;
+
+  width: 100rpx;
+
+ position: fixed; 
+top: 10rpx;
+
+  right: 10rpx;
+
+
+ z-index: 100;
+  opacity: 0;
+
+}
+
+
 .whole{
 
 width: 100%;
@@ -19,22 +59,61 @@ top: 8%;
 
 }
 .xiala{
-
-
   color: red;
   font-size: 15px;
 }
 .tishi{
-
   font-family: 幼圆;
   font-size: 15px;
+position: absolute;
+left: 190rpx;
+
 }
 .a{
-
 color: red;
 font-size: 16px;
+ position: fixed; 
+  bottom: 250rpx;
+     width: 100%;
+      z-index: 100;
+}
+.upload{
+
+   position: fixed; 
+   width:300rpx;
+right:160rpx;
+bottom: 20rpx;
+}
+.hid{
+  background-color: rgb(216, 230, 245);
+border:4px  rgb(135, 184, 236) solid;
+position: fixed; 
+top: 200rpx;
+left: 50rpx;
+width: 650rpx;
+height: 400rpx;
+ z-index: 100;
+  opacity: 0;
+  border-radius: 10%;
+
 }
 .b{
 
   font-size: 16px;
+   position: fixed; 
+  bottom: 250rpx;
+     width: 100%;
+     left: 100rpx;
+      z-index: 99;
+}
+.title{
+
+
+  
+border: 2px solid black;
+   position: fixed; 
+  bottom: 150rpx;
+     width: 450rpx;
+     left:105rpx;
+      z-index: 100;
 }

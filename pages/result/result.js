@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isPopping: false,//是否已经弹出
+    isPopping: true,//是否已经弹出
 
     animPlus: {},//旋转动画
 
@@ -15,6 +15,7 @@ Page({
     animTranspond: {},//item位移,透明度
 
     animInput: {},//item位移,透明度
+    animtianjia: {},
     loadingHidden: true,
     'checkAll': false,
     'totalCount': 0,
@@ -119,6 +120,13 @@ Page({
       timingFunction: 'ease-out'
 
     })
+    var animationtianjia = wx.createAnimation({
+
+      duration: 800,
+
+      timingFunction: 'ease-out'
+
+    })
 
     animationPlus.rotateZ(540).step();
 
@@ -127,6 +135,7 @@ Page({
     animationTranspond.translate(0, -100).rotateZ(180).opacity(1).step();
 
     animationInput.translate(0, -150).rotateZ(180).opacity(1).step();
+    animationtianjia.translate(-110, 45).rotateZ(360).opacity(1).step();
 
     this.setData({
 
@@ -137,6 +146,7 @@ Page({
       animTranspond: animationTranspond.export(),
 
       animInput: animationInput.export(),
+       animtianjia: animationtianjia.export(),
 
     })
 
@@ -179,7 +189,13 @@ Page({
       timingFunction: 'ease-out'
 
     })
+    var animationtianjia = wx.createAnimation({
 
+      duration: 500,
+
+      timingFunction: 'ease-out'
+
+    })
     animationPlus.rotateZ(0).step();
 
     animationcollect.translate(0, 0).rotateZ(0).opacity(0).step();
@@ -187,7 +203,7 @@ Page({
     animationTranspond.translate(0, 0).rotateZ(0).opacity(0).step();
 
     animationInput.translate(0, 0).rotateZ(0).opacity(0).step();
-
+    animationtianjia.translate(0, 0).rotateZ(0).opacity(0).step();
     this.setData({
 
       animPlus: animationPlus.export(),
@@ -197,6 +213,7 @@ Page({
       animTranspond: animationTranspond.export(),
 
       animInput: animationInput.export(),
+      animtianjia: animationtianjia.export(),
 
     })
 
@@ -308,7 +325,7 @@ Page({
     }, 7000)
     console.log('dayin:'+that.data.sessionId)
 wx.request({
-  url: app.globalData.Url +'wAddQueServlet',//服务器
+  url: 'http://39.105.56.207/OPOT1/servlet/wAddQueServlet',//服务器
        
        data: {
         md5: that.data.values,
@@ -331,7 +348,7 @@ wx.request({
 
      })
     wx.request({
-      url: app.globalData.Url +'wGetBasketServlet',
+      url: 'http://39.105.56.207/OPOT1/servlet/wGetBasketServlet',
       data: {
 
         sessionId: that.data.sessionId
@@ -452,24 +469,7 @@ console.log('que'+that.data.que)
 
   /**
    * 计算商品总数
-   */
-  calculateTotal: function () {
-    var goodList = this.data.goodList;
-    var totalCount = 0;
-    var totalPrice = 0;
-    for (var i = 0; i < goodList.length; i++) {
-      var good = goodList[i];
-      if (good.checked) {
-        totalCount += good.count;
-        totalPrice += good.count * good.price;
-      }
-    }
-    totalPrice = totalPrice.toFixed(2);
-    this.setData({
-      'totalCount': totalCount,
-      'totalPrice': totalPrice
-    })
-  },
+
   onShareAppMessage: function () {
 
     // 用户点击右上角分享
@@ -526,7 +526,7 @@ console.log('que'+that.data.que)
       'result': checkboxItems,
       'checkAll': checkAll
     });
-    this.calculateTotal();
+ 
   },
 
   /**

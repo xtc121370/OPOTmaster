@@ -9,7 +9,7 @@ console.log(device)
 
 Page({
   data: {
-    isPopping: false,//是否已经弹出
+    isPopping: true,//是否已经弹出
 
     animPlus: {},//旋转动画
 
@@ -228,7 +228,7 @@ Page({
 
     wx.chooseImage({
       count: 1,
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sizeType: ['original',], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success(res) {
         const tempFilePath = res.tempFilePaths[0]
@@ -266,7 +266,7 @@ Page({
             }, 5000)
 
             wx.uploadFile({
-              url: app.globalData.Url + 'wPictureServlet',
+              url: 'http://39.105.56.207/OPOT1/servlet/wPictureServlet',
               filePath: that.data.tempFilePaths,
               name: 'image',
               header: {

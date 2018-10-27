@@ -1,3 +1,11 @@
+
+<view class="init" animation="{{slide_up1}}">
+
 <view class='username'><text>用户名:{{username}}</text></view>
 <view></view>
 <view class='phone'><text>手机号：{{phone}}</text></view>
+<text class='tipe'>其他信息敬请期待正在开发中</text>
+
+
+
+</view>
