@@ -1,4 +1,14 @@
+ <view>
 
+    <image bindtap='gomine'   src="/pages/image/mine.png" class="img-style" animation="{{animCollect}}" ></image>
+
+    <image bindtap='goindex' src="/pages/image/sousuo.png" class="img-style" animation="{{animTranspond}}" ></image>
+
+    <image bindtap='goshitilan'  src="/pages/image/shitilan.png" class="img-style" animation="{{animInput}}" ></image>
+
+    <image   src="/pages/image/plus.png" class="img-plus-style" animation="{{animPlus}}" bindtap="plus"></image>
+
+  </view>
 <view class="init" animation="{{slide_up1}}">
 
 <view class='username'><text>用户名:{{username}}</text></view>

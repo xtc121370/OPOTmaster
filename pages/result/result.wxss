@@ -89,7 +89,7 @@ bottom: 100rpx;
 
   font-family: 幼圆;
   font-size: 13px;
-}
+  color: red;}
 .sign{
 text-align: center;
 border-bottom: 6px #C6E2FF dotted;

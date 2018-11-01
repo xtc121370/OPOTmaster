@@ -325,7 +325,7 @@ Page({
     }, 7000)
     console.log('dayin:'+that.data.sessionId)
 wx.request({
-  url: 'http://39.105.56.207/OPOT1/servlet/wAddQueServlet',//服务器
+  url: 'http://39.105.56.207:8080/OPOT1/servlet/wAddQueServlet',//服务器
        
        data: {
         md5: that.data.values,
@@ -348,7 +348,7 @@ wx.request({
 
      })
     wx.request({
-      url: 'http://39.105.56.207/OPOT1/servlet/wGetBasketServlet',
+      url: 'http://39.105.56.207:8080/OPOT1/servlet/wGetBasketServlet',
       data: {
 
         sessionId: that.data.sessionId

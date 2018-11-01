@@ -11,7 +11,7 @@
     <image   src="/pages/image/plus.png" class="img-plus-style" animation="{{animPlus}}" bindtap="plus"></image>
 
   </view>
-<view><text>我的试题篮：</text><text class='xiala'>（页面正在调试中！！请期待）</text></view>
+<view><text>我的试题篮：</text><text class='xiala'>（页面正在调试中！！请期待,如无最新试题请下拉刷新）</text></view>
  <view><text class='tishi'>点击右侧＋号可生成试卷哦</text></view>
 
 

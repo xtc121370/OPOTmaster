@@ -259,47 +259,23 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.request({
-      url: 'http://39.105.56.207/OPOT1/servlet/wGetBasketServlet',
-      data: {
 
-        sessionId: that.data.sessionId
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;', 'Cookie': 'JSESSIONID=' + that.data.sessionId,
-      },
-      success: function (res) {
+  that.setData({
+
+
+    sessionId: app.globalData.sessionId,
+
+    shitilan: app.globalData.shitilan,
 
 
 
-        console.log('试题蓝返回题目:' + res.data)
-        app.globalData.shitilan = res.data;
-        console.log('全局变量' + app.globalData.shitilan)
-
-
-
-      },
-      fail: function (res) {
-
-
-        console.log('服务器请求失败')
-      }
-    })
-    that.setData({
-
-
-      sessionId: app.globalData.sessionId,
-
-    shitilan:app.globalData.shitilan,
-
-    })
+  })
     
+
+    console.log('全局试题篮图片'+that.data.shitilan)
  
   
-   console.log('试题篮内容'+that.data.shitilan)
-
-    console.log('sessionId:' + that.data.sessionId)
+ 
 
   },
 titleinput:function(e){
@@ -319,7 +295,7 @@ console.log('试卷夹名称'+this.data.title)
       wx.hideLoading()
     }, 7000)
    wx.request({
-     url: app.globalData.Url +'wAddPaperServlet',//生产试卷夹接口
+     url: 'http://39.105.56.207:8080/OPOT1/servlet/wAddPaperServlet',//生产试卷夹接口
      data: {
        title: that.data.title
 
@@ -343,7 +319,7 @@ console.log('服务器返回'+res.data)
 
 
    wx.request({
-     url: app.globalData.Url +'wGetPaperServlet',//试卷夹接口
+     url:'http://39.105.56.207:8080/OPOT1/servlet/wGetPaperServlet',//试卷夹接口
 
   method: 'POST',
    header: {
@@ -395,7 +371,7 @@ console.log('服务器返回'+res.data)
   
     var that=this;
     wx.request({
-      url: app.globalData.Url +'wGetBasketServlet',
+      url:'http://39.105.56.207:8080/OPOT1/servlet/wGetBasketServlet',
       data: {
 
         sessionId: that.data.sessionId
@@ -405,6 +381,10 @@ console.log('服务器返回'+res.data)
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8;', 'Cookie': 'JSESSIONID=' + that.data.sessionId,
       },
       success: function (res) {
+
+        console.log('试题蓝返回题目:' + res.data)
+        app.globalData.shitilan = res.data;
+        console.log('全局变量' + app.globalData.shitilan)
         wx.stopPullDownRefresh();
         that.setData({
 

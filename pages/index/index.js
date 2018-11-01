@@ -263,10 +263,10 @@ Page({
 
             setTimeout(function () {
               wx.hideLoading()
-            }, 5000)
+            }, 10000)
 
             wx.uploadFile({
-              url: 'http://39.105.56.207/OPOT1/servlet/wPictureServlet',
+              url: 'http://39.105.56.207:8080/OPOT1/servlet/wPictureServlet',
               filePath: that.data.tempFilePaths,
               name: 'image',
               header: {

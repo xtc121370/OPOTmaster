@@ -45,7 +45,7 @@ Page({
       })
     }
     wx.request({
-      url:'http://39.105.56.207/OPOT1/servlet/wLoginServlet', //服务器接口地址
+      url:'http://39.105.56.207:8080/OPOT1/servlet/wLoginServlet', //服务器接口地址
       data: {
         LoginInfo: that.data.phone,
         password: that.data.password,

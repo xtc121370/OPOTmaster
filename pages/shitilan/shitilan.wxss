@@ -23,7 +23,7 @@ border-bottom: 6px  #C6E2FF solid;
   width: 100rpx;
 
  position: fixed; 
-top: 10rpx;
+top: 30rpx;
 
   right: 10rpx;
 
@@ -40,7 +40,8 @@ top: 10rpx;
   width: 100rpx;
 
  position: fixed; 
-top: 10rpx;
+
+top: 30rpx;
 
   right: 10rpx;
 

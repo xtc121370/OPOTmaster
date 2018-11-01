@@ -1,27 +1,12 @@
 {
   "pages": [
-  "pages/denglu/denglu",
-      "pages/mine/mine",
-    "pages/index/index",
-
-  
- 
-  
-
-    
+    "pages/denglu/denglu",
     "pages/shitilan/shitilan",
-    
-    
-
-
     "pages/result/result",
+    "pages/index/index",
+   "pages/mine/mine",
     "pages/guanyu/guanyu",
-
     "pages/zhuce/zhuce",
-
- 
-    
-
     "pages/shitijia/shitijia",
     "pages/logs/logs"
   ],
@@ -31,6 +16,7 @@
     "navigationBarTitleText": "OPOT",
     "navigationBarTextStyle": "black"
   },
+
  
   "networkTimeout": {
     "request": 10000,
