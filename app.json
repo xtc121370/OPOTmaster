@@ -1,22 +1,53 @@
 {
   "pages": [
+    "pages/mine/mine",
+    
     "pages/denglu/denglu",
+
+ 
+    "pages/index/index",
+    "pages/guanyu/guanyu",
+  
+  
     "pages/shitilan/shitilan",
     "pages/result/result",
-    "pages/index/index",
-   "pages/mine/mine",
-    "pages/guanyu/guanyu",
+ 
+  
+
     "pages/zhuce/zhuce",
     "pages/shitijia/shitijia",
     "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#77E4FF",
+    "navigationBarBackgroundColor": "white",
     "navigationBarTitleText": "OPOT",
     "navigationBarTextStyle": "black"
   },
-
+"tabBar": {
+  "color": "black",
+      "borderStyle": "white",
+  "list": [
+  {
+    "pagePath": "pages/shitilan/shitilan",
+    "text": "试题篮",
+    "iconPath": "pages/image/4.png",
+    "selectedIconPath": "pages/image/3.png"
+  },
+  {
+    "pagePath": "pages/index/index",
+    "text": "搜索",
+    "iconPath": "pages/image/2.png",
+    "selectedIconPath": "pages/image/1.png"
+  },
+  {
+    "pagePath": "pages/mine/mine",
+    "text": "我的",
+    "iconPath": "pages/image/6.png",
+    "selectedIconPath": "pages/image/5.png"
+  }]
+  
+},
  
   "networkTimeout": {
     "request": 10000,

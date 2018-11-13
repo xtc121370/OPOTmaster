@@ -1,32 +1,38 @@
 
 
 <view class='flex'>
+<image class='background'  src='../image/aboutbg.png'></image>
 
 <view class='arm'>
-
-<text  style='font-family:黑体;font-size:25px;font-weight: 700; '>
+<text  class='head1'>
 我们的目标
 </text>
 </view>
+
+
 <view class='text' >
-<text decode="{{true}}" space="{{true}}" style='font-family:宋体;font-size:15px; '>\n &nbsp;&nbsp;我们致力于用技术手段提升教学效果，我们提供免费的找题工具，我们希望广大师生能够快速方便地找到所需要的题目。各位老师、家长、同学在使用过程中有任何建议，欢迎在意见反馈中留言，让我们一起配合，打造一款方便高效的找题利器。</text>
+<text decode="{{true}}" space="{{true}}" style='font-family:微软雅黑;font-size:12px;color:white;font-weight:500; '>\n &nbsp;&nbsp;我们致力于用技术手段提升教学效果，我们提供免费的找题工具，我们希望广大师生能够快速方便地找到所需题目。各位老师、家长、同学在使用过程中有任何建议，欢迎在意见反馈中留言，让我们一起配合，打造一款方便高效的找题利器。</text>
 </view>
+
 <view class='team'>
-<text  style='font-family:黑体;font-size:25px;font-weight: 700; '>
+<text class='head2' >
 我们的团队
 </text>
 </view>
-<view class='team1'>
 
-<text decode="{{true}}" space="{{true}}" style='font-family:宋体;font-size:15px; '>\n &nbsp;&nbsp;
-陈帅康、曹应平、黄承宏、黄佳新、扈亚恂、蓝贵才、林锴、梁颖琦、王莎莎、王怡、王育志、王政、\n 谢添成、许迅、尹孟然、尧甜、郑传哲 
+<view class='team1'>
+<text decode="{{true}}" space="{{true}}" style='font-family:微软雅黑;font-size:12px;color:white;font-weight:500; '>\n &nbsp;&nbsp;
+陈帅康、曹应平、黄承宏、黄佳新、扈亚恂、蓝贵才、林锴、梁颖琦、王莎莎、王怡、王育志、王政、 谢添成、许迅、\n尹孟然、尧甜、郑传哲 
 </text>
 </view>
-<view  class='web'>
-<text  bindtap='goweb' style='font-family:黑体;font-size:25px;font-weight: 700; '>
+
+<view class='web'>
+<text class='head3' >
 我们的网站
 </text>
-<text style='font-family:黑体;font-size:25px;font-weight:500; '>www.opot.net.cn</text>
-<text style='font-family:宋体;font-size:15px; '>\n (更多功能请使用电脑复制链接到浏览器使用哦)</text>
+</view>
+<view  class='web1'>
+<text style='font-family:微软雅黑;font-size:20px;font-weight:500;color:white; '>www.opot.net.cn</text>
+<text  style='font-family:微软雅黑;font-size:12px;color:white;font-weight:500; '>\n (更多功能请使用电脑复制链接到浏览器使用哦)</text>
 </view>
 </view>

@@ -92,8 +92,8 @@ App({
     shitilan:null,
     shijuanjia:null,
     name:'未找到，请下拉刷新重试',
-    username: '未找到，请下拉刷新重试',
-    phone: '未找到，请下拉刷新重试'
+    username: 'OPOT',
+    phone: '88888888888'
 
 
   

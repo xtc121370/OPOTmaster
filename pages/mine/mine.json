@@ -1,9 +1,4 @@
-{
 
-    "window": {
-      "backgroundTextStyle": "dark",
-      "navigationBarBackgroundColor": "black",
-      "navigationBarTitleText": "OPOT",
-      "navigationBarTextStyle": "black"
-    }
+{
+  "navigationBarTextStyle": "black"
 }

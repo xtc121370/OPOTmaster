@@ -3,52 +3,118 @@
 
 
 page{  
-  background-image: url('http://r.photo.store.qq.com/psb?/V12EzWWJ3J1Roh/ArV7hKbwaiqEFAmip.0RyVTqMGkmpdf8d4cuXibP.Z0!/r/dDQBAAAAAAAA');
 
-  width:100%;  
-  height:100%;  
+
+    height : 100%;
   overflow: hidden; 
 } 
+.background{
+
+display:block;
+width: 100%;
+   height : 100%;
+z-index: -1;
+
+}
 .whole{ 
+
+    width : 100%;
+   height : 100%;
+    box-sizing: border-box;
+}
+
+.dlbutton image{
+
 position: absolute;
-background-size: cover;
-top: 8%;
-width: 100%;
+top: 850rpx;
+left: 70rpx;
+width:280rpx;
+height: 100rpx;
+
 }
-.zhuti{
+  .zcbutton image{
+
+    position: absolute;
+top: 850rpx;
+right: 70rpx;
+width:280rpx;
+height: 100rpx;
+  }
+  .more:nth-child(1){
+position: absolute;
+left: 78rpx;
+top: 1050rpx;
 font-family: 微软雅黑;
-font-size: 70px;
-font-weight: 700;  
+font-size: 15px;
+color: white;   
+  }
+.more:nth-child(2){
+position: absolute;
+left: 107rpx;
+top: 1050rpx;
+font-family: 微软雅黑;
+font-size: 15px;
+color: white;   
+  }
+.text1{
+
+position: absolute;
+top: 600rpx;
+left: 100rpx;
+font-family: 华文雅黑;
+font-size: 40rpx;
+color: white;
+font-weight: 600;
+
+
 }
-.logo{
-margin-top: 50px;
-width: 100%;
-height: 100%;
-display: flex;
-justify-content: center;
-color: black;
+.text2{
+
+position: absolute;
+top: 700rpx;
+left: 100rpx;
+font-family: 华文雅黑;
+font-size: 40rpx;
+color: white;
+font-weight: 600;
+
+
+
 }
+
 .input{
     padding-left: 10px;
-    height: 88rpx;
+    height: 60rpx;
+    width: 350rpx;
+    background-color: white;
+    border-radius: 30rpx;
 
 }
-.stylePl{
-  font-size: 16px;
-  color: rgb(235, 184, 108);
-  float: left;
-  left: 20px;
-}
 
-.inputView{
-    border:  1px solid;
-      border-radius: 20rpx;
+.inputView1{
+  position: absolute;
+top: 537rpx;
+left: 160rpx;
+
+      border-radius: 30rpx;
     margin-left: 14.5%;
     margin-right: 14.5%;
     margin-top: 8%;
-    
+      
+}
+.inputView{
+  position: absolute;
+top: 637rpx;
+left: 160rpx;
+      border-radius: 30rpx;
+    margin-left: 14.5%;
+    margin-right: 14.5%;
+    margin-top: 8%;
+      
 }
 .denglu{
+   position: absolute;
+   top: 800rpx;
   margin-left: 14.5%;
    margin-right: 14.5%;
     margin-top: 8%;
@@ -56,7 +122,8 @@ color: black;
 
 }
 .zhuce{
-
+ position: absolute;
+ top: 1000rpx;
  width: 540rpx;
     text-align: center;
     padding: 0;

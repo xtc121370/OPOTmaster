@@ -1,77 +1,71 @@
 /**index.wxss**/
 @import "/welCropper/welCropper.wxss";
 page{  
-background-image: url('http://r.photo.store.qq.com/psb?/V12EzWWJ3J1Roh/AwXrhzxSGc4CqFv3AeVEjZqk55sMcDxkv4jWVz1ua3w!/r/dDYBAAAAAAAA');
-  width:100%;  
-  height:100%;  
+
+
+    height : 100%;
   overflow: hidden; 
-  position: fixed;
 } 
+.background{
 
-.img-plus-style {
+display:block;
+width: 100%;
+   height : 100%;
+z-index: -1;
 
-  height: 100rpx;
+}
+.whole{ 
 
-  width: 100rpx;
-
-  position: absolute;
-
-top: 30rpx;
-
-  right: 30rpx;
-
-  z-index: 100;
-
+    width : 100%;
+   height : 100%;
+    box-sizing: border-box;
 }
 
  
 
-.img-style {
 
-   height: 100rpx;
+.about image{
 
-  width: 100rpx;
-
-  position: absolute;
-top: 30rpx;
-
-  right: 30rpx;
-
- z-index: 100;
-  opacity: 0;
-
-}
-
-.about{
-
+ display:flex; 
+ justify-content:center; 
+ align-items:center;
 position: absolute;
-  top:840rpx;
-  left:480rpx;
+left: 270rpx;
+top: 760rpx;
+width: 200rpx;
+height: 100rpx;
 
-} 
-.lishi{
-
-
-  position: absolute;
-  top:840rpx;
-  left: 100rpx;
 }
+
+
+
 .image2{
 position: absolute;
 width:100%;
 
-top: 25%;
-
-
-
-
+top: 170rpx;
 
 }
 .a1{
-
-
   position: absolute;
-  top:1250rpx;
+  top:950rpx;
+  left: 260rpx;
+  color: white;
+  font-family: 微软雅黑;
+  font-size: 12px;
+  font-weight: 600px;
+
+}
+.a2 text{
+
+ position: absolute;
+  top:1000rpx;
+  left: 210rpx;
+  color: white;
+  font-family: 微软雅黑;
+  font-size: 15px;
+  font-weight: 900px;
+
 
 }
 .tem{
@@ -85,15 +79,7 @@ top: 25%;
 background-size: cover;
 
 }
-.sign{
-position: absolute;
- font-family: 微软雅黑;
- top: 10%;
- width: 100%;
-font-size: 65px;
-font-weight: 700;
-text-align: center;
-}
+
 .userinfo {
   display: flex;
   flex-direction: column;

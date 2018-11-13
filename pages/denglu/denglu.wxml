@@ -1,19 +1,30 @@
 <view class='whole'>
-
-<view style='' class="logo">
-
-<text class='zhuti'>OPOT</text> 
+<image mode='aspectFill' src='/pages/image/denglu.png' class='background'></image>
 </view> 
 
-<view class='inputView' >
-<input class='input' type='number' placeholder-class='stylePl' placeholder='请输入账号或用户名' placeholder-style='color:black' bindinput='PhoneInput'  name='phone'></input>
+<view >
+<text decode="{{true}}" class='text1'> 账 &nbsp;   户</text>
+<view class='inputView1' >
+<input class='input' type='number' placeholder-style='white' bindinput='PhoneInput'  name='phone'></input>
 </view>
 
+</view>
+<view>
+<text decode="{{true}}" class='text2'>密 &nbsp;   码</text>
 <view class='inputView'>
-<input class='input' password='true' placeholder-class='stylePl' placeholder='请输入密码' placeholder-style='color:black' bindinput='PasswordInput' name='password'> </input>
+<input class='input' password='true' placeholder-class='stylePl' placeholder='  ' placeholder-style='color:black' bindinput='PasswordInput' name='password'> </input>
+</view>
+</view>
+<view class='dlbutton'>
+<image  mode='widthFix' src='/pages/image/dl.png'  bindtap='login'></image>
 </view>
 
-<button type='primary' class='denglu'  bindtap='login'>登录</button>
-<button type='default' class='zhuce' hover-class='none'  bindtap='gozhuce' >我要注册</button>
+<view class='zcbutton'>
+<image  mode='widthFix' src='/pages/image/zc.png'  bindtap='gozhuce'></image>
+</view>
+<view class='more'>
+<text decode="{{true}}"class='more' style='left:250rpx;'> www.opot.net.cn </text>
+<text class='more'decode="{{true}}"> \n (更多功能请复制链接到电脑浏览器使用）</text>
+</view>
 
-</view> 
+

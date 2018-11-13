@@ -89,9 +89,9 @@ Page({
             icon: 'success',
             duration: 2000000,
             success: function () {
-             wx.navigateTo({
-               url: '../index/index',
-             })
+           wx.switchTab({
+             url: '../index/index',
+           })
             }
           })
         }

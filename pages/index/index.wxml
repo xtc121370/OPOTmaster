@@ -1,37 +1,37 @@
 <!--index.wxml-->
 
+<view class='whole' animation="{{slide_up1}}" >
+<image mode='aspectFill' src='/pages/image/indexbg.png' class='background'></image>
+
+
 <view class="ripple" style="{{rippleStyle}}"></view>
 <view class="container" bindtouchstart="containerTap"></view>
-  <view>
-
-    <image bindtap='gomine'   src="/pages/image/mine.png" class="img-style" animation="{{animCollect}}" ></image>
-
-    <image bindtap='goindex' src="/pages/image/sousuo.png" class="img-style" animation="{{animTranspond}}" ></image>
-
-    <image bindtap='goshitilan'  src="/pages/image/shitilan.png" class="img-style" animation="{{animInput}}" ></image>
-
-    <image   src="/pages/image/plus.png" class="img-plus-style" animation="{{animPlus}}" bindtap="plus"></image>
-
-  </view>
+ 
 
 
 <import src="/welCropper/welCropper.wxml" />
 <template is="welCropper" data="{{cropperData:cropperData, cropperMovableItems:cropperMovableItems, cropperChangableData:cropperChangableData}}"></template>
-<view class='sign'>
-  <text>OPOT</text></view>
+
 <view class='image2' style='text-align:center;'>
   <image src='../image/index.png' bindtap='selectTap' data-mode='rectangle' mode='aspectFit'></image>
 </view>
-<view class='lishi'>
-  <text style='font-family:华文琥珀;font-size:22px;'>搜索历史 \n
-    <text style='font-family:幼圆;font-size:15px;'>(正在开发中)</text></text>
-</view>
 <view class='about'>
-  <text bindtap='goguanyu' style='font-family:华文琥珀;font-size:22px;text-decoration:underline;'>关于我们</text></view>
+
+<image  mode='widthFix' src='../image/about.png' bindtap='goguanyu'></image>
+
+</view>
+
+
+
 <view class="container">
   <view class="userinfo">
     <view class='a1'>
-      <text style='font-size:13px;'>冀ICP备18020905号 ©opot.net.cn版权所有</text></view>
- 
+      <text >冀ICP备18020905号 </text>
+      </view>
+      <view class='a2'>
+       <text > ©opot.net.cn版权所有     </text>   
+      </view>
+
 </view>
 </view>
+</view> 
