@@ -1,25 +1,33 @@
-<view  class='whole'>
-<text class='zhuti'>OPOT</text> 
+<view class='whole'>
+<image mode='aspectFill' src='/pages/image/zhucebg.png' class='background'></image>
+</view> 
 <view class="loginBox">
   <view style='width:70%;margin-left:15%;'>
-   <view style='border-top-left-radius:15px;border-top-right-radius:15px;width:100%;height:60px;display:inline-block;background:#fff;'>
-    <view style='width:20%;display:inline-block;height:60%;'>
-    <image src='../image/usr.png' style='display:inline;' mode="aspectFit" class='tubiao1'></image>
-    </view>
-    <input style='width:80%;display:inline-block;height:100%;' placeholder-style='font-size:18px;'type='text' placeholder='请输入用户名'bindinput='usernameinput'></input>
-   </view>
-   <view style='width:100%;height:60px;display:inline-block;background:#fff;margin-top:-5px;border-top:1px solid #f8f8f8;'>
-    <view style='width:20%;display:inline-block;height:60%;'><image src='../image/phone.png' style='display:inline' mode="aspectFit" ></image></view>
-    <input style='width:80%;display:inline-block;height:100%;' placeholder-style='font-size:18px;' type='text'  placeholder='请输入手机号' bindinput='phoneinput'></input>  
-    
-   </view>
-   
-    <view style='width:100%;height:60px;display:inline-block;background:#fff;margin-top:-5px;border-top:1px solid #f8f8f8;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'>
-    <view style='width:20%;display:inline-block;height:60%;'><image src='../image/pass.png' style='display:inline' mode="aspectFit" class='tubiao2'></image></view>
-    <input style='border-bottom-left-radius:15px;border-bottom-right-radius:15px;width:80%;display:inline-block;height:100%;' placeholder-style='font-size:18px;' type='text' password='true'  placeholder='请输入密码' bindinput='passwordinput'></input>  
-    
-   </view>
+
+
+ <text class='usrt'>用户名</text>
+ <view  class='usr'>
+
+ <input style='width:80%;display:inline-block;height:100%;' placeholder-style='font-size:15px;'type='text' placeholder='请输入用户名'bindinput='usernameinput'></input>
+ </view>
+<text class='phonet'>手机号</text>
+<view class='phone'>
+<input style='width:80%;display:inline-block;height:100%;' placeholder-style='font-size:15px;' type='text'  placeholder='请输入手机号' bindinput='phoneinput'></input>  
+</view>
+<text decode="{{true}}"class='passwordt'>密 &nbsp;码</text>
+<view  class='password'>
+<input style='border-bottom-left-radius:15px;border-bottom-right-radius:15px;width:80%;display:inline-block;height:100%;' placeholder-style='font-size:15px;' type='text' password='true'  placeholder='请输入密码' bindinput='passwordinput'></input>  
+</view>  
+
   </view> 
 </view>
-<view><button type='primary' class='zhuce' bindtap='upload'>注册</button></view>
-</view>
+<view class='zhuce'> <image src='../image/int.png' mode='widthFix' bindtap='upload'>  </image></view>
+<view  class='quxiao'>  <image src='../image/quxiao.png' mode='widthFix' bindtap='quxiao'></image> </view>
+    <view class='a1'>
+      <text >冀ICP备18020905号 </text>
+      </view>
+      <view class='a2'>
+       <text > ©opot.net.cn版权所有     </text>   
+      </view>
+
+

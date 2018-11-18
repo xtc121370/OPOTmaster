@@ -33,6 +33,14 @@ Page({
 
 
   },
+  quxiao:function(){
+
+wx.navigateTo({
+  url: '../denglu/denglu',
+})
+
+
+  },
   passwordinput: function (e) {
 
     this.data.password = e.detail.value;
@@ -47,7 +55,7 @@ Page({
     console.log('密码：' + this.data.password)
 
     wx.request({
-      url:'http://39.105.56.207/OPOT1/servlet/wRegisterServlet',//注册接口
+      url:'http://39.105.56.207:8080/OPOT1/servlet/wRegisterServlet',//注册接口
       data: {
         username: that.data.username,
      

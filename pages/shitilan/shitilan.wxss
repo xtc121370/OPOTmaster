@@ -1,19 +1,45 @@
 /* pages/shitilan/shitilan.wxss */
-page {
-  height: 100%;
-  background:  whitesmoke;
-  font-family: -apple-system-font, Arial, Helvetica, sans-serif;
-  color: #333;
-  font-size: 32rpx;
-  line-height: 1.42857;
+
+page{  
+
+    height : 100%;
+  
+} 
+.background{
+position: absolute;
+left: 250rpx;
+width: 250rpx;
+   height : 100px;
+z-index: -1;
+
 }
+
+.span{
+
+
+ position: fixed;
+ top: 100rpx;
+ width: 100rpx;
+ height: 100rpx;
+ border: 1px solid red;
+ 
+}
+.whole{ 
+
+    width : 100%;
+height : 100px; 
+}
+
+ 
 .box{
 z-index: 99;
 
 }
 .image{
-border-bottom: 6px  #C6E2FF solid;
- z-index: 99;
+
+  top: 500rpx;
+border: 2px solid black;
+z-index: 1;
 
 }
 .img-plus-style {
@@ -52,32 +78,10 @@ top: 30rpx;
 }
 
 
-.whole{
 
-width: 100%;
-position: absolute;
-top: 8%;
 
-}
-.xiala{
-  color: red;
-  font-size: 15px;
-}
-.tishi{
-  font-family: 幼圆;
-  font-size: 15px;
-position: absolute;
-left: 190rpx;
 
-}
-.a{
-color: red;
-font-size: 16px;
- position: fixed; 
-  bottom: 250rpx;
-     width: 100%;
-      z-index: 100;
-}
+
 .upload{
 
    position: fixed; 

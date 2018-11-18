@@ -89,7 +89,7 @@ App({
     queUrl:null,
     sessionId:null,
     header:null,
-    shitilan:null,
+    shitilan: ['http://img.zcool.cn/community/01ff535a4e3254a80121974135f06d.jpg@1280w_1l_2o_100sh.jpg','http://pic28.photophoto.cn/20130818/0020033143720852_b.jpg'],
     shijuanjia:null,
     name:'未找到，请下拉刷新重试',
     username: 'OPOT',
