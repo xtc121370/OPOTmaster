@@ -89,7 +89,7 @@ Page({
             }, 10000)
 
             wx.uploadFile({
-              url: 'http://39.105.56.207:8080/OPOT1/servlet/wPictureServlet',
+              url: app.globalData.Url+'wPictureServlet',
               filePath: that.data.tempFilePaths,
               name: 'image',
               header: {

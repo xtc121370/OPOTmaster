@@ -5,7 +5,7 @@
 
 page {
   height: 100%;
-  background:  whitesmoke;
+  background:  white;
   font-family: -apple-system-font, Arial, Helvetica, sans-serif;
   color: #333;
   font-size: 32rpx;
@@ -92,7 +92,7 @@ bottom: 100rpx;
   color: red;}
 .sign{
 text-align: center;
-border-bottom: 6px #C6E2FF dotted;
+border-bottom: 6px rgb(140, 144, 148) solid;
 border-radius: 30%;
 }
 .que1{
@@ -102,8 +102,7 @@ border-radius: 30%;
 
 }
 .zhuangshi{
-
-  border-bottom: 6px #C6E2FF dotted;
+border-bottom: 6px rgb(140, 144, 148) solid;
 border-radius: 30%;
 }
 .jd{

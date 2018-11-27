@@ -88,7 +88,7 @@ font-family: 微软雅黑;
 
 position: absolute;
 left: 90rpx;
-top: 1050rpx;
+top: 950rpx;
 font-family: 微软雅黑;
 font-size: 15px;
 color: white;   
@@ -97,7 +97,7 @@ color: white;
   .more text{
 position: absolute;
 left: 78rpx;
-top: 1050rpx;
+top: 950rpx;
 font-family: 微软雅黑;
 font-size: 15px;
 color: white;   

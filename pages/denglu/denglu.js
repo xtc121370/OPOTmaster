@@ -5,10 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    code:null,
     phone: '',
     password: '',
     userInfo: '',
     status: '',
+    openid:null,
   },
   gozhuce: function (options) {
     wx.navigateTo({
@@ -20,7 +22,11 @@ Page({
    */
   onLoad: function (options) {
 
-    var that = this
+    var that = this;
+   that.data.openid=app.globalData.openid,
+   console.log('openid:'+that.data.openid)
+   
+    
   },
   PhoneInput: function (e) {
     this.data.phone = e.detail.value;
@@ -44,11 +50,14 @@ Page({
         duration: 2000
       })
     }
+   
     wx.request({
-      url:'http://39.105.56.207:8080/OPOT1/servlet/wLoginServlet', //服务器接口地址
+      url: app.globalData.Url+'wBindingServlet', //服务器接口地址
       data: {
-        LoginInfo: that.data.phone,
-        password: that.data.password,
+        
+         phone:that.data.phone,
+         password:that.data.password,
+         openid:that.data.openid,
 
       },
       method: 'POST',
@@ -57,18 +66,9 @@ Page({
 
       },
       success: function (res) {
+        console.log('后台返回' + res.data);
         console.log('错误message' + res.data.message);
         console.log('错误状态' + res.data.status);
-        that.data.status = res.data.status;
-        if (that.data.status == 0) {
-          wx.showToast({
-            title: '手机号密码错误',
-            icon: 'none',
-            duration: 2000
-          })
-        };
-
-        console.log('后台返回' + res.data);
         console.log('sessionId:' + res.data.sessionId);
         console.log('status:' + res.data.msg.status);
         console.log('rightmessage:' + res.data.msg.message);
@@ -82,8 +82,29 @@ Page({
         app.globalData.username = res.data.u.username;
         app.globalData.phone = +res.data.u.phone;
         console.log('全局变量sessionId:' + app.globalData.sessionId)
-        if (res.data.msg.status == 1) {
+        if (res.data.status == 2) {
+          wx.showToast({
+            title: '手机号密码错误',
+            icon: 'none',
+            duration: 2000
+          })
+        }
 
+        
+      else if(res.data.status == 0){
+           
+          wx.showToast({
+            title: '用户不存在，请注册',
+            icon: 'none',
+            duration: 2000000,
+            success: function () {
+              wx.navigateTo({
+                url: '../zhuce/zhuce',
+              })
+            }
+          })
+        }
+        else {
           wx.showToast({
             title: '登录成功',
             icon: 'success',
@@ -91,13 +112,12 @@ Page({
             success: function () {
            wx.switchTab({
              url: '../index/index',
+             
            })
+              
             }
           })
         }
-
-
-
 
       },
       fail: function () {
@@ -110,6 +130,7 @@ Page({
           duration: 2000
         })
       },
+      
 
 
     })
@@ -125,7 +146,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**

@@ -80,11 +80,11 @@ App({
 
  
   globalData: {
-    Url:'https://www.opot.net.cn/OPOT1/servlet/',
+    Url:'http://192.168.155.1:8088/OPOT1/servlet/',
     ceshiUrl:'',
     tempFilePaths:null,
     userInfo: null,
-    result:null,
+    result: ['http://img.zcool.cn/community/01ff535a4e3254a80121974135f06d.jpg@1280w_1l_2o_100sh.jpg', 'http://pic28.photophoto.cn/20130818/0020033143720852_b.jpg'],
     answerUrl:null,
     queUrl:null,
     sessionId:null,
@@ -93,8 +93,11 @@ App({
     shijuanjia:null,
     name:'未找到，请下拉刷新重试',
     username: 'OPOT',
-    phone: '88888888888'
-
+    phone: '88888888888',
+    APPID:'wx950aeac16a5192d6',
+    avatarUrl:null,
+    nickName:null,
+openid:null,
 
   
   }

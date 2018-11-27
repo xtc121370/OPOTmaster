@@ -1,0 +1,49 @@
+/* pages/wx/wx.wxss */
+page{  
+
+    height : 100%;
+  overflow: hidden; 
+} 
+.logo image{
+
+position: absolute;
+top: 350rpx;
+left: 280rpx;
+width: 200rpx;
+height: 230rpx;
+
+}
+
+.background{
+
+display:block;
+width: 100%;
+   height : 100%;
+z-index: -1;
+
+}
+.whole{ 
+
+    width : 100%;
+   height : 100%;
+    box-sizing: border-box;
+}
+.in image{
+
+position: absolute;
+top: 650rpx;
+width: 250rpx;
+left: 260rpx;
+
+}
+.tip text{
+
+position: absolute;
+left: 250rpx;
+top: 850rpx;
+font-family: 微软雅黑;
+font-size: 17px;
+font-weight: 900;
+color: white;
+
+}

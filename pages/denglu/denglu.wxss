@@ -43,7 +43,7 @@ height: 100rpx;
   .more:nth-child(1){
 position: absolute;
 left: 78rpx;
-top: 1050rpx;
+top: 1100rpx;
 font-family: 微软雅黑;
 font-size: 15px;
 color: white;   
@@ -51,7 +51,7 @@ color: white;
 .more:nth-child(2){
 position: absolute;
 left: 107rpx;
-top: 1050rpx;
+top: 1100rpx;
 font-family: 微软雅黑;
 font-size: 15px;
 color: white;   
@@ -65,6 +65,19 @@ font-family: 华文雅黑;
 font-size: 40rpx;
 color: white;
 font-weight: 600;
+
+
+}
+.bd text{
+
+
+position: absolute;
+top: 1000rpx;
+left: 150rpx;
+font-family: 华文雅黑;
+font-size: 35rpx;
+color:wheat;
+font-weight: 800;
 
 
 }

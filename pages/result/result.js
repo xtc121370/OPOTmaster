@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    code:'123',
     isPopping: true,//是否已经弹出
 
     animPlus: {},//旋转动画
@@ -325,7 +326,7 @@ Page({
     }, 7000)
     console.log('dayin:'+that.data.sessionId)
 wx.request({
-  url: 'http://39.105.56.207:8080/OPOT1/servlet/wAddQueServlet',//服务器
+  url: app.globalData.Url+'wAddQueServlet',//服务器
        
        data: {
         md5: that.data.values,
@@ -348,7 +349,7 @@ wx.request({
 
      })
     wx.request({
-      url: 'http://39.105.56.207:8080/OPOT1/servlet/wGetBasketServlet',
+      url: app.globalData.Url+'wGetBasketServlet',
       data: {
 
         sessionId: that.data.sessionId

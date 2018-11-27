@@ -16,7 +16,7 @@
   </view>
 
 
- <view class='image'><image src="{{image}}" mode="widthFix"  style="width:99%; height: 150px;border: 2px rgb(14, 193, 248) dashed;"/> </view>
+ <view class='image'><image src="{{image}}" mode="widthFix"  style="width:99%; height: 150px;border: 6px rgb(140, 144, 148) solid;"/> </view>
  
 <view class='sign'><text class='tishi' >图片看不清可点击放大哦 \n 点击右下角+号可选择添加试题篮功能</text>  </view>
 <view class='container'>

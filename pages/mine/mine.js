@@ -10,7 +10,9 @@ Page({
   data: {
   phone:null,
   name:null,
-  username:null,
+    username: null, 
+    avatarUrl: null,
+    nickName: null,
 
   },
  
@@ -35,15 +37,19 @@ wx.navigateTo({
    */
   onLoad: function (options) {
   var that=this;
+
     this.app = getApp()
 that.setData({
 
-
+  avatarUrl: app.globalData.avatarUrl,
+  nickName: app.globalData.nickName,
   phone:app.globalData.phone,
   name:app.globalData.name,
   username:app.globalData.username
 
 })
+console.log(that.data.avatarUrl)
+console.log(that.data.nickName)
 console.log(that.data.phone)
     console.log(that.data.name)
     console.log(that.data.username)

@@ -4,16 +4,16 @@
 
  <view class='tx'>
 
-<image mode='widthFix' src='../image/yuan.png'></image>
+<image mode='widthFix' src='{{avatarUrl}}'></image>
 </view>
 
 
 <view class='usr'> 
-<text >用户名:</text>
+<text >微信名:</text>
 </view>
 
 
-<view class='username'><text>{{username}}</text></view>
+<view class='username'><text>{{nickName}}</text></view>
 <view></view>
 <view class='phone'><text>手机号:</text><text>{{phone}}</text></view>
 

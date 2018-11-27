@@ -1,0 +1,14 @@
+<view class='whole'>
+<image mode='aspectFill' src='/pages/image/wx.png' class='background'></image>
+</view> 
+<view class='logo'>
+
+<image  mode='widthFix' src='/pages/image/wxss.png'></image>
+</view>
+<view class='in'>
+<image  bindtap='shouquan' mode='widthFix' src='/pages/image/in.png'></image>
+
+</view>
+<view class='tip'>
+<text>点击进入授权登陆</text>
+</view>
