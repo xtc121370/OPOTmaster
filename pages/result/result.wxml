@@ -3,66 +3,42 @@
 
 <view class="ripple" style="{{rippleStyle}}"></view>
 <view class="container" bindtouchstart="containerTap"></view>
-  <view>
-
-    <image bindtap='gomine'   src="/pages/image/mine.png" class="img-style" animation="{{animCollect}}" ></image>
-
-    <image bindtap='goindex' src="/pages/image/sousuo.png" class="img-style" animation="{{animTranspond}}" ></image>
-
-    <image bindtap='goshitilan'  src="/pages/image/shitilan.png" class="img-style" animation="{{animInput}}" ></image>
-
-    <image   src="/pages/image/plus.png" class="img-plus-style" animation="{{animPlus}}" bindtap="plus"></image>
-
-  </view>
 
 
- <view class='image'><image src="{{image}}" mode="widthFix"  style="width:99%; height: 150px;border: 6px rgb(140, 144, 148) solid;"/> </view>
+
+ <view class='image'><image src="{{image}}" mode="widthFix"  style="width:92%;height:130px;border: 6px rgb(140, 144, 148) solid;"/> </view>
  
-<view class='sign'><text class='tishi' >图片看不清可点击放大哦 \n 点击右下角+号可选择添加试题篮功能</text>  </view>
+<view class='sign'><image mode='widthFix' src='../image/tip.png'></image></view>
+<view class='tj'> <image mode='widthFix' src='../image/tuijian.png'></image></view>
 <view class='container'>
   <view class='section section-good'>
     <checkbox-group bindchange="checkboxChange" value='result.unique' >
   
       <view class='good' wx:for='{{result}}' wx:for-item="result" wx:key="{{result.unique}}">
      
-        <label class="checkbox">
-          <checkbox value="{{result.unique}}" checked="{{result.checked}}" hidden='hidden' />
-          <icon type="circle" size="26"  wx:if="{{!result.checked}}"></icon>
-          <icon type="success" size="26" wx:if="{{result.checked}}"></icon>
-          
-        </label>
-      
-        
-<view class='content'>
-
-<view  class='same' >相似题目：</view>
-
-<view class='que1'><image bindtap='imgbig'class='que' data-list='{{result.queUrl}}' data-src='{{result.queUrl}}' mode="widthFix"  src='{{result.queUrl}}' ></image></view>
-  
-
-
-
-<view class='jd' >解答如下：</view>
-<view > <image bindtap='imgbig1'class='que' data-list='{{result.answerUrl}}' data-src='{{result.answerUrl}}' mode="widthFix"  src='{{result.answerUrl}}' ></image> </view>
    
-
-</view>
+<view class='content'>
+<view  class='same' >相似题目：</view>
+<view class='que1'><image class='que' mode="widthFix"  src='{{result.queUrl}}' ></image></view>
+     <label class="checkbox">
      
-      
+          <checkbox value="{{result.unique}}" checked="{{result.checked}}" hidden='hidden' />
+        <view >
+
+<image class='li' wx:if="{{!result.checked}}" mode='widthFix' src='../image/chakan.png'></image>
+  </view>
+          <view class='jx'wx:if="{{result.checked}}">
+          <text>解答如下：</text>
+          <image  mode='widthFix'   src='{{result.answerUrl}}'></image>
+          </view>
+        </label>
+
+  <view bindtap='upload' data-lockerid="{{result.unique}}" class='tjst'>
+  <image mode='widthFix' src='../image/tjst.png'></image>
+  </view>
+</view>
+        
       </view>
     </checkbox-group>  
   </view>
-
-    <checkbox-group bindchange="selectalltap">
-      <label class='checkbox-allcheck'>
-        <checkbox value="{{!checkAll}}" checked="{{checkAll}}" hidden='hidden' />
-        
-   
-        
-      </label>
-    </checkbox-group>
-
- <view ><button animation="{{animtianjia}}" bindtap='upload' class="tianjia" type='primary'>添加试题篮</button> </view>
-   
-
 </view>

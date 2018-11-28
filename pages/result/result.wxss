@@ -74,7 +74,6 @@ bottom: 0rpx;
 .tianjia{
 width: 280rpx;
 height: 90rpx;
-
 border: none;
  right: 20rpx;
 position: fixed;
@@ -84,22 +83,62 @@ bottom: 100rpx;
   opacity: 0;
 
 }
+.tj image{
 
-.tishi{
+position: relative;
+width: 230rpx;
+left: 256rpx;
 
-  font-family: 幼圆;
-  font-size: 13px;
-  color: red;}
-.sign{
-text-align: center;
-border-bottom: 6px rgb(140, 144, 148) solid;
-border-radius: 30%;
+
 }
-.que1{
 
+.sign image{
+position: relative;
+width: 550rpx;
+left: 102rpx;
 
+}
+.tjst image{
 
+  position: relative;
+  width: 180rpx;
+  left: 270rpx;
+  top: 0rpx;
+  z-index: 1;
+}
+.jx text{
+  position: relative;
+  top: 10rpx;
+font-family: 微软雅黑;
+font-size: 15px;
+font-weight: 900;
+color: #7595e7;
+}
+.jx image{
 
+  position: relative;
+  width:688rpx;
+  height: 100%;
+  left: 7rpx;
+ top: 10rpx;
+ border-radius: 3%;
+
+z-index: 1;
+}
+.li{
+
+position: relative;
+width: 180rpx;
+left: 480rpx;
+top: 60rpx;
+z-index: 1;
+
+}
+
+.image{
+
+  position: relative;
+  left: 21rpx;
 }
 .zhuangshi{
 border-bottom: 6px rgb(140, 144, 148) solid;
@@ -109,19 +148,24 @@ border-radius: 30%;
 font-size: 15px;
   
 }
-.jx{
-font-size: 15px;
-}
+
 .same{
-font-family: 黑体;
+  position: relative;
+  top: 10rpx;
+  left: 10rpx;
+font-family: 微软雅黑;
 font-size: 20px;
 font-weight: bold;
-
+z-index: 1;
 
 }
 .que{
-height: 150px;  
-width:328px;
+  position: relative;
+  width:688rpx;
+  height: 100%;
+  left: 7rpx;
+ top: 20rpx;
+ border-radius: 3%;
 }
 .fanhui{
 position: absolute;
@@ -165,13 +209,16 @@ right: 30%;
 }
 
 .good {
-  display: flex;
+    display: flex;
+  justify-content: space-between;
+background-color: #dcdcdc;
   flex-direction: row;
   align-items: center;
   position: relative;
- 
   width: 700rpx;
-  border-bottom: 4px solid rgb(87, 192, 241);
+  height: 100%;
+  z-index: 1;
+  border: 4px solid white ;
 }
 
 .good:last-child {
@@ -180,8 +227,8 @@ right: 30%;
 
 
 .checkbox {
-  width: 48rpx;
-  height: 48rpx;
+  width: 100%;
+  height: 100%;
 }
 
 .cover {
@@ -231,11 +278,6 @@ right: 30%;
   margin-top: 10rpx;
 }
 
-.content .price {
-  font-size: 36rpx;
-  color: #e4452a;
-  margin-top: 10rpx;
-}
 
 .good .stepper {
   display: flex;
@@ -293,10 +335,6 @@ right: 30%;
 
 }
 
-.section-bottom .btn-default {
-
-  
-}
 
 .section-bottom .btn-primary {
  
@@ -338,13 +376,3 @@ right: 30%;
   vertical-align: middle;
 }
 
-.total .totalCount text {
-  color: #e4452a;
-  vertical-align: middle;
-}
-
-.total .totalPrice text {
-  color: #e4452a;
-  font-size: 36rpx;
-  vertical-align: middle;
-}

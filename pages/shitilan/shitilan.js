@@ -28,9 +28,6 @@ Page({
   title:null,
     shitilan:null,
 
-
-
-
   },
   plus: function () {
 
@@ -115,8 +112,6 @@ Page({
   },
 
 
-
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -152,9 +147,8 @@ Page({
   
     var that=this;
     wx.request({
-      url:'http://39.105.56.207:8080/OPOT1/servlet/wGetBasketServlet',
+      url: app.globalData.Url +'wGetBasketServlet',
       data: {
-
         sessionId: that.data.sessionId
       },
       method: 'POST',
@@ -168,7 +162,6 @@ Page({
         console.log('全局变量' + app.globalData.shitilan)
         wx.stopPullDownRefresh();
         that.setData({
-
 
           sessionId: app.globalData.sessionId,
 

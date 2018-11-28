@@ -6,17 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    code:'123',
-    isPopping: true,//是否已经弹出
 
-    animPlus: {},//旋转动画
-
-    animCollect: {},//item位移,透明度
-
-    animTranspond: {},//item位移,透明度
-
-    animInput: {},//item位移,透明度
-    animtianjia: {},
+    md5:null,
     loadingHidden: true,
     'checkAll': false,
     'totalCount': 0,
@@ -27,198 +18,13 @@ Page({
     values:null,
     sessionId:null,
     result: null ,
-    selectedFlag: [false, false, false, false],
-    
-
-
+    selectedFlag: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
    index:[0,1,2,3,4,5]
            
   },
-  plus: function () {
 
-    if (this.data.isPopping) {
+ 
 
-      //缩回动画
-
-      this.popp();
-
-      this.setData({
-
-        isPopping: false
-
-      })
-
-    } else if (!this.data.isPopping) {
-
-      //弹出动画
-
-      this.takeback();
-
-      this.setData({
-
-        isPopping: true
-
-      })
-
-    }
-
-  },
-
-  input: function () {
-
-    console.log("input")
-
-  },
-
-  transpond: function () {
-
-    console.log("transpond")
-
-  },
-
-  collect: function () {
-
-    console.log("collect")
-
-  },
-
-
-
-  //弹出动画
-
-  popp: function () {
-
-    //plus顺时针旋转
-
-    var animationPlus = wx.createAnimation({
-
-      duration: 500,
-
-      timingFunction: 'ease-out'
-
-    })
-
-    var animationcollect = wx.createAnimation({
-
-      duration: 200,
-
-      timingFunction: 'ease-out'
-
-    })
-
-    var animationTranspond = wx.createAnimation({
-
-      duration: 500,
-
-      timingFunction: 'ease-out'
-
-    })
-
-    var animationInput = wx.createAnimation({
-
-      duration: 800,
-
-      timingFunction: 'ease-out'
-
-    })
-    var animationtianjia = wx.createAnimation({
-
-      duration: 800,
-
-      timingFunction: 'ease-out'
-
-    })
-
-    animationPlus.rotateZ(540).step();
-
-    animationcollect.translate(0, -50).rotateZ(180).opacity(1).step();
-
-    animationTranspond.translate(0, -100).rotateZ(180).opacity(1).step();
-
-    animationInput.translate(0, -150).rotateZ(180).opacity(1).step();
-    animationtianjia.translate(-110, 45).rotateZ(360).opacity(1).step();
-
-    this.setData({
-
-      animPlus: animationPlus.export(),
-
-      animCollect: animationcollect.export(),
-
-      animTranspond: animationTranspond.export(),
-
-      animInput: animationInput.export(),
-       animtianjia: animationtianjia.export(),
-
-    })
-
-  },
-
-  //收回动画
-
-  takeback: function () {
-
-    //plus逆时针旋转
-
-    var animationPlus = wx.createAnimation({
-
-      duration: 500,
-
-      timingFunction: 'ease-out'
-
-    })
-
-    var animationcollect = wx.createAnimation({
-
-      duration: 250,
-
-      timingFunction: 'ease-out'
-
-    })
-
-    var animationTranspond = wx.createAnimation({
-
-      duration: 500,
-
-      timingFunction: 'ease-out'
-
-    })
-
-    var animationInput = wx.createAnimation({
-
-      duration: 500,
-
-      timingFunction: 'ease-out'
-
-    })
-    var animationtianjia = wx.createAnimation({
-
-      duration: 500,
-
-      timingFunction: 'ease-out'
-
-    })
-    animationPlus.rotateZ(0).step();
-
-    animationcollect.translate(0, 0).rotateZ(0).opacity(0).step();
-
-    animationTranspond.translate(0, 0).rotateZ(0).opacity(0).step();
-
-    animationInput.translate(0, 0).rotateZ(0).opacity(0).step();
-    animationtianjia.translate(0, 0).rotateZ(0).opacity(0).step();
-    this.setData({
-
-      animPlus: animationPlus.export(),
-
-      animCollect: animationcollect.export(),
-
-      animTranspond: animationTranspond.export(),
-
-      animInput: animationInput.export(),
-      animtianjia: animationtianjia.export(),
-
-    })
-
-  },
 
   containerTap: function (res) {
     console.log(res.touches[0]);
@@ -252,51 +58,7 @@ Page({
 
 
  
-  imgbig:function(event){
-
-
-    var src = event.currentTarget.dataset.src;//获取data-src
-    var imgList = [event.currentTarget.dataset.list]
-    
-    //获取data-list
-    console.log()
-    console.log(src )
-    console.log(imgList)
-    wx.previewImage({
-      current: src, // 当前显示图片的http链接
-      urls: imgList // 需要预览的图片http链接列表
-    })
-  }, 
-  imgbig1:function(event){
-
-    var src = event.currentTarget.dataset.src;//获取data-src
-    var imgList1 = [event.currentTarget.dataset.list]
-
-    //获取data-list
-    console.log()
-    console.log(src)
-    console.log(imgList1)
-    wx.previewImage({
-      current: src, // 当前显示图片的http链接
-      urls: imgList1 // 需要预览的图片http链接列表
-    })
-
-  },
-  imgbig2:function(event){
-
-
-    var src = event.currentTarget.dataset.src;//获取data-src
-    var imgList2 = [event.currentTarget.dataset.list]
-
-    //获取data-list
-    console.log()
-    console.log(src)
-    console.log(imgList2)
-    wx.previewImage({
-      current: src, // 当前显示图片的http链接
-      urls: imgList2 // 需要预览的图片http链接列表
-    })
-  },
+ 
   changeToggle: function (e) {
     var index = e.currentTarget.dataset.index;
     if (this.data.selectedFlag[index]) {
@@ -313,10 +75,12 @@ Page({
 
  
  
-  upload: function (options) {
+  upload: function (e) {
     var that = this;
-    
 
+    that.data.md5 = e.currentTarget.dataset.lockerid;
+
+    console.log('md5=' + that.data.md5)
     wx.showLoading({
       title: '添加中,请稍等',
     })
@@ -324,12 +88,12 @@ Page({
     setTimeout(function () {
       wx.hideLoading()
     }, 7000)
-    console.log('dayin:'+that.data.sessionId)
+    console.log('sessionId:'+that.data.sessionId)
 wx.request({
   url: app.globalData.Url+'wAddQueServlet',//服务器
        
        data: {
-        md5: that.data.values,
+        md5: that.data.md5,
           sessionId:that.data.sessionId,
        },
      method: 'POST',
@@ -375,8 +139,6 @@ wx.request({
 
       },
       fail:function(res){
-
-
         console.log('服务器请求失败')
       }
     })
@@ -495,19 +257,18 @@ console.log('que'+that.data.que)
    * 用户点击商品加1
    */
  
-  /**
-   * 用户选择购物车商品
-   */
+  
+  value:function(e){
+
+  },
   checkboxChange: function (e) {
     var that = this;
-    console.log('用户选中题目ID：' + e.detail.value);
     var checkboxItems = this.data.result;
     var values = e.detail.value;
     that.setData({
 
       values: e.detail.value,
     })
-    console.log('ID值' + that.data.values)
     for (var i = 0; i < checkboxItems.length; ++i) {
       checkboxItems[i].checked = false;
       for (var j = 0; j < values.length; ++j) {
@@ -522,37 +283,16 @@ console.log('que'+that.data.que)
     if (checkboxItems.length == values.length) {
       checkAll = true;
     }
-
     this.setData({
       'result': checkboxItems,
       'checkAll': checkAll
     });
  
   },
-
   /**
    * 用户点击全选
    */
-  selectalltap: function (e) {
-    console.log('用户点击全选，携带value值为：', e.detail.value);
-    var value = e.detail.value;
-    var checkAll = false;
-    if (value && value[0]) {
-      checkAll = true;
-    }
-
-    var goodList = this.data.goodList;
-    for (var i = 0; i < result.length; i++) {
-      var good = result[i];
-      good['checked'] = checkAll;
-    }
-
-    this.setData({
-      'checkAll': checkAll,
-      'result': result
-    });
-    this.calculateTotal();
-  }
+ 
 
 
 })

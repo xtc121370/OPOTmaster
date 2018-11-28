@@ -1,16 +1,18 @@
 {
   "pages": [
+    "pages/wx/wx",
+    "pages/result/result",
+
     "pages/index/index",
-        "pages/wx/wx",
     "pages/mine/mine",
    
     "pages/denglu/denglu",
-    "pages/result/result",
+
     "pages/shitilan/shitilan",
     "pages/zhuce/zhuce",
 
     "pages/guanyu/guanyu",
-    "pages/shitijia/shitijia",
+
     "pages/logs/logs"
   ],
   "window": {

@@ -1,2 +1,0 @@
-<view >this is 试题夹</view>
-<view  wx:for='{{shijuanjia}}' wx:key='{{shijuanjia.id}}'wx:for-item="shijuanjia" >{{shijuanjia.title}}{{shijuanjia.time}}</view>
