@@ -6,7 +6,7 @@
 
 
 
- <view class='image'><image src="{{image}}" mode="widthFix"  style="width:92%;height:130px;border: 6px rgb(140, 144, 148) solid;"/> </view>
+ <view class='image'><image src="{{image}}" mode="widthFix"  style="width:93%;height:130px;border: 3px  #dcdcdc solid;"/> </view>
  
 <view class='sign'><image mode='widthFix' src='../image/tip.png'></image></view>
 <view class='tj'> <image mode='widthFix' src='../image/tuijian.png'></image></view>

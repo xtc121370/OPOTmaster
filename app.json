@@ -1,14 +1,12 @@
 {
   "pages": [
-    "pages/wx/wx",
+    "pages/shitilan/shitilan",
     "pages/result/result",
-
+    "pages/wx/wx",
     "pages/index/index",
     "pages/mine/mine",
-   
     "pages/denglu/denglu",
 
-    "pages/shitilan/shitilan",
     "pages/zhuce/zhuce",
 
     "pages/guanyu/guanyu",

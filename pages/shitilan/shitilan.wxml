@@ -1,17 +1,11 @@
 <view class='whole' animation="{{slide_up1}}" >
-<image mode='widthFix' src='/pages/image/sign.png' class='background'></image>
+<view  class='sign'><image  mode='widthFix' src='/pages/image/sign.png' class='background'></image></view>
 
 
-<view class='span'></view>
-  <view class='image' wx:for="{{ shitilan}}" wx:for-index="index" wx:for-item='shitilan'>  
-             <image class='box' style='width:370px;'  bindtap='imgbig' src="{{shitilan}}" class="slide-image" data-list='{{shitilan}}' data-src='{{shitilan}}' mode="widthFix"/>  
+
+  <view class='image' wx:for="{{shitilan}}" wx:for-index="index" wx:for-item='shitilan'>  
+  <image  class='box' mode='widthFix'  src="{{shitilan}}"></image>
 
    </view>  
-
-
-
-
-
-
 
 </view>

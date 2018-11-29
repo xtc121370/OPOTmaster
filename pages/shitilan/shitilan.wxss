@@ -5,120 +5,31 @@ page{
     height : 100%;
   
 } 
-.background{
-position: absolute;
-left: 250rpx;
+.sign image{
+
+
+position: relative;
 width: 250rpx;
-   height : 100px;
-z-index: -1;
-
-}
-
-.span{
-
-
- position: fixed;
- top: 100rpx;
- width: 100rpx;
- height: 100rpx;
- border: 1px solid red;
- 
+left: 247rpx;
+top: 30rpx;
 }
 .whole{ 
-
     width : 100%;
 height : 100px; 
 }
 
- 
-.box{
-z-index: 99;
+ .image image{
+   position: relative;
+   left: 6rpx;
+   width:98%;
 
-}
+   border-radius: 3%;
+ }
 .image{
-
-  top: 500rpx;
-border: 2px solid black;
-z-index: 1;
-
-}
-.img-plus-style {
-
-  height: 100rpx;
-
-  width: 100rpx;
-
- position: fixed; 
-top: 30rpx;
-
-  right: 10rpx;
-
-  z-index: 100;
-
-}
-
- 
-
-.img-style {
-
-   height: 100rpx;
-
-  width: 100rpx;
-
- position: fixed; 
-
-top: 30rpx;
-
-  right: 10rpx;
-
-
- z-index: 100;
-  opacity: 0;
-
-}
-
-
-
-
-
-
-.upload{
-
-   position: fixed; 
-   width:300rpx;
-right:160rpx;
-bottom: 20rpx;
-}
-.hid{
-  background-color: rgb(216, 230, 245);
-border:4px  rgb(135, 184, 236) solid;
-position: fixed; 
-top: 200rpx;
-left: 50rpx;
-width: 650rpx;
-height: 400rpx;
- z-index: 100;
-  opacity: 0;
-  border-radius: 10%;
-
-}
-.b{
-
-  font-size: 16px;
-   position: fixed; 
-  bottom: 250rpx;
-     width: 100%;
-     left: 100rpx;
-      z-index: 99;
-}
-.title{
-
-
-  
-border: 2px solid black;
-   position: fixed; 
-  bottom: 150rpx;
-     width: 450rpx;
-     left:105rpx;
-      z-index: 100;
+position: relative;
+  top: 30rpx;
+  width: 96%;
+  left: 10rpx;
+  background-color:  #dcdcdc;
+border: 5px solid white;
 }
