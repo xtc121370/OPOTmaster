@@ -22,7 +22,7 @@ Page({
    index:[0,1,2,3,4,5]
            
   },
-
+//页面数据；
  
 
 
@@ -37,27 +37,8 @@ Page({
       rippleStyle: 'top:' + y + 'px;left:' + x + 'px;-webkit-animation: ripple 0.4s linear;animation:ripple 0.4s linear;'
     });
   },
-  goindex: function () {
-
-    wx.navigateTo({
-      url: '../index/index',
-    })
-  },
-  goshitilan: function () {
-
-    wx.navigateTo({
-      url: '../shitilan/shitilan',
-    })
-  },
-  gomine: function () {
-
-    wx.navigateTo({
-      url: '../mine/mine',
-    })
-  },
-
-
- 
+  //x,y轴截图数据
+  
  
   changeToggle: function (e) {
     var index = e.currentTarget.dataset.index;
@@ -71,15 +52,13 @@ Page({
       selectedFlag: this.data.selectedFlag
     })
   },
-
+//选中隐藏数据
 
  
- 
+ //上传图片
   upload: function (e) {
     var that = this;
-
     that.data.md5 = e.currentTarget.dataset.lockerid;
-
     console.log('md5=' + that.data.md5)
     wx.showLoading({
       title: '添加中,请稍等',
@@ -147,7 +126,13 @@ wx.request({
   /**
    * 生命周期函数--监听页面加载
    */
+index:function(){
 
+  wx.switchTab({
+    url: '../index/index',
+  })
+},
+//点击图片跳转返回拍照页面
   onLoad: function (options) {
     var that = this;
   
@@ -185,7 +170,7 @@ console.log('que'+that.data.que)
      
       sessionId: app.globalData.sessionId,
 
-    })
+    })//页面数据初始化
   },
 
   /**
@@ -253,10 +238,6 @@ console.log('que'+that.data.que)
    */
   
 
-  /**
-   * 用户点击商品加1
-   */
- 
   
   value:function(e){
 
@@ -289,6 +270,8 @@ console.log('que'+that.data.que)
     });
  
   },
+
+  //查看解析隐藏
   /**
    * 用户点击全选
    */

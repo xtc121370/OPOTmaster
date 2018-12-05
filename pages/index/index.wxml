@@ -27,10 +27,10 @@
   <view class="userinfo">
     <view class='a1'>
       <text >冀ICP备18020905号 </text>
-      </view>
-      <view class='a2'>
-       <text > ©opot.net.cn版权所有     </text>   
-      </view>
+       </view>
+       <view class='a2'>
+        <text > ©opot.net.cn版权所有     </text>   
+       </view>
 
 </view>
 </view>

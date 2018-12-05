@@ -55,17 +55,16 @@ wx.navigateTo({
     console.log('密码：' + this.data.password)
 
     wx.request({
-      url:'http://39.105.56.207:8080/OPOT1/servlet/wRegisterServlet',//注册接口
+      url: app.globalData.Url +'wRegisterServlet',//注册接口
       data: {
         username: that.data.username,
-     
         phone:that.data.phone,
         password:that.data.password
 
       },
       method: 'POST',
       header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;', 'Cookie': 'JSESSIONID=' + that.data.sessionId,
+      'content-type': 'application/x-www-form-urlencoded;charset=utf-8;', 'Cookie': 'JSESSIONID=' + that.data.sessionId,
       },
       success: function (res) {
 

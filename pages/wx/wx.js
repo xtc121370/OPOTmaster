@@ -10,20 +10,24 @@ Page({
 
   },
 shouquan:function(){
-  var that=this;
-  wx.getUserInfo({
-    success: function (res) {
-      
-      app.globalData.avatarUrl=res.userInfo.avatarUrl,
-      app.globalData.nickName=res.userInfo.nickName,
-      console.log('头像url:' + app.globalData.avatarUrl)
-      console.log('昵称：' + app.globalData.nickName)
-    },
-    fail: function () {
-      console.log("启用app.getUserInfo函数，失败！");
-    },
+var that=this;
+    wx.getUserInfo({
+      success: function (res) {
+        app.globalData.avatarUrl = res.userInfo.avatarUrl,
+          app.globalData.nickName = res.userInfo.nickName,
+          console.log('头像url:' + app.globalData.avatarUrl)
+        console.log('昵称：' + app.globalData.nickName)
+      },
 
-  });
+      fail: function () {
+        console.log("启用app.getUserInfo函数，失败！");
+      },
+
+    });
+
+
+  
+
   wx.showLoading({
     title: '授权中,请稍等',
   })
@@ -69,12 +73,9 @@ shouquan:function(){
         console.log('错误状态' + res.data.status);
         console.log('sessionId:' + res.data.sessionId);
         console.log('status:' + res.data.msg.status);
-        console.log('rightmessage:' + res.data.msg.message);
         console.log('uid:' + res.data.u.id);
         console.log('phone:' + res.data.u.phone);
-        console.log('password:' + res.data.u.password);
         console.log('username:' + res.data.u.username);
-        console.log('name' + res.data.u.name);
         app.globalData.sessionId = res.data.sessionId;
         app.globalData.name = +res.data.u.name;
         app.globalData.username = res.data.u.username;
@@ -106,12 +107,25 @@ shouquan:function(){
     }
   })
 
+
 },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
+    wx.getSetting({
+            success: function (res) {
+                if (res.authSetting['scope.userInfo']) {
+                    wx.getUserInfo({
+                        success: function (res) {
+                            console.log(res.userInfo)
+                            //用户已经授权过
+                        }
+                    })
+                }
+            }
+        })
     wx.login({
       success: function (res) {
       

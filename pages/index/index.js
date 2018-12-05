@@ -11,7 +11,8 @@ Page({
   data: {
    
     tempFilePaths: '',
-    sessionId: null
+    sessionId: null,
+    mode:null,
   }, 
  
   containerTap: function (res) {
@@ -44,15 +45,17 @@ Page({
       url: '../guanyu/guanyu',
     })
   },
-  selectTap(e) {
-    let that = this
-    let mode = e.currentTarget.dataset.mode
-    console.log(e)
+  chooseimage: function () {
+    var that = this;
 
+
+  },
+  chooseWxImage: function (type) {
+    var that = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original',], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      sourceType: [type],// 可以指定来源是相册还是相机，默认二者都有
       success(res) {
         const tempFilePath = res.tempFilePaths[0]
         console.log(tempFilePath)
@@ -64,10 +67,10 @@ Page({
         // let mode = modes[1]   //rectangle, quadrangle
         that.showCropper({
           src: tempFilePath,
-          mode: mode,
+          mode: that.data.mode,
           sizeType: ['original', 'compressed'], //'original'(default) | 'compressed'
           callback: (res) => {
-            if (mode == 'rectangle') {
+            if (that.data.mode == 'rectangle') {
               console.log("crop callback:" + res)
               app.globalData.tempFilePaths = res;
               that.setData({
@@ -82,60 +85,85 @@ Page({
             }
             wx.showLoading({
               title: '加载中,请稍等',
+              success:function(){
+                wx.uploadFile({
+                  url: app.globalData.Url + 'wPictureServlet',
+                  filePath: that.data.tempFilePaths,
+                  name: 'image',
+                  header: {
+                    'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+                    'Cookie': 'JSESSIONID=' + that.data.sessionId,
+                  },
+
+                  success: function (res) {
+                    setTimeout(function () {
+                      wx.hideLoading()
+                    }, 0)
+
+                    console.log('服务器返回' + res.data);
+                    var jsonStr = res.data;
+                    jsonStr = jsonStr.replace(" ", "");
+                    if (typeof jsonStr != 'object') {
+                      jsonStr = jsonStr.replace(/\ufeff/g, ""); //重点
+                      var jj = JSON.parse(jsonStr);
+                      res.data = jj;
+                      //app.globalData.result = res.data; //测试先注释掉
+                      //app.globalData.queUrl = res.data.queUrl//测试先注释掉
+                    }
+
+                    wx.navigateTo({
+                      url: '../result/result',
+                    })
+                    console.log('返回搜索结果' + res.data)
+                    console.log('全局搜索结果' + app.globalData.result)
+                    console.log('问题URL' + app.globalData.queUrl)
+                  },
+                  fail: function (res) {
+                    console.log(res)
+                    wx.showLoading({
+                      title: '推荐失败，请联系管理员',
+                    })
+
+                    setTimeout(function () {
+                      wx.hideLoading()
+                    }, 3000)
+
+
+
+                  },
+                })
+                that.hideCropper()
+                
+              }
             })
 
-            setTimeout(function () {
-              wx.hideLoading()
-            }, 10000)
+           
 
-            wx.uploadFile({
-              url: app.globalData.Url+'wPictureServlet',
-              filePath: that.data.tempFilePaths,
-              name: 'image',
-              header: {
-                'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
-                'Cookie': 'JSESSIONID=' + that.data.sessionId,
-              },
-
-              success: function (res) {
-
-                console.log('服务器返回' + res.data);
-                var jsonStr = res.data;
-                jsonStr = jsonStr.replace(" ", "");
-                if (typeof jsonStr != 'object') {
-                  jsonStr = jsonStr.replace(/\ufeff/g, ""); //重点
-                  var jj = JSON.parse(jsonStr);
-                  res.data = jj;
-                  app.globalData.result = res.data;
-                  app.globalData.queUrl = res.data.queUrl
-                }
-
-                wx.navigateTo({
-                  url: '../result/result',
-                })
-                console.log('返回搜索结果' + res.data)
-                console.log('全局搜索结果' + app.globalData.result)
-                console.log('问题URL' + app.globalData.queUrl)
-              },
-              fail: function (res) {
-                console.log(res)
-                wx.showLoading({
-                  title: '推荐失败，请重新上传',
-                })
-
-                setTimeout(function () {
-                  wx.hideLoading()
-                }, 3000)
-
-
-
-              },
-            })
-            that.hideCropper() //隐藏，我在项目里是点击完成就上传，所以如果回调是上传，那么隐藏掉就行了，不用previewImage
+            //隐藏，我在项目里是点击完成就上传，所以如果回调是上传，那么隐藏掉就行了，不用previewImage
           }
         })
       }
     })
+  },
+
+  selectTap:function(e) {
+    let that = this
+   that.data.mode = e.currentTarget.dataset.mode
+    console.log('打印测试'+that.data.mode)
+    wx.showActionSheet({
+      itemList: ['拍照', '从相册选择'],
+      itemColor: " black",
+      success: function (res) {
+        if (!res.cancel) {
+          if (res.tapIndex == 1) {
+            that.chooseWxImage('album')
+          } else if (res.tapIndex == 0) {
+            that.chooseWxImage('camera')
+          }
+        }
+      }
+    })
+ 
   },
 
 

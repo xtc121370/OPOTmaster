@@ -82,7 +82,7 @@ Page({
         app.globalData.username = res.data.u.username;
         app.globalData.phone = +res.data.u.phone;
         console.log('全局变量sessionId:' + app.globalData.sessionId)
-        if (res.data.status == 2) {
+        if (res.data.status==2) {
           wx.showToast({
             title: '手机号密码错误',
             icon: 'none',
@@ -91,7 +91,7 @@ Page({
         }
 
         
-      else if(res.data.status == 0){
+      else if(res.data.status==0){
            
           wx.showToast({
             title: '用户不存在，请注册',

@@ -13,59 +13,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isPopping: true,//是否已经弹出
-
-    animPlus: {},//旋转动画
-    animshengcheng: {},//旋转动画
-    animCollect: {},//item位移,透明度
-
-    animTranspond: {},//item位移,透明度
-
-    animInput: {},//item位移,透明度
- 
   sessionId:null,
- 
   title:null,
-    shitilan:null,
-
-  },
-  plus: function () {
-
-    if (this.data.isPopping) {
-
-      //缩回动画
-
-      this.popp();
-
-      this.setData({
-
-        isPopping: false
-
-      })
-
-    } else if (!this.data.isPopping) {
-
-      //弹出动画
-
-      this.takeback();
-
-      this.setData({
-
-        isPopping: true
-
-      })
-
-    }
+  shitilan:null,
 
   },
  
-
-
-
-
-
-  //弹出动画
-
  
 
 
@@ -153,8 +106,7 @@ Page({
       },
       method: 'POST',
       header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;', 'Cookie': 'JSESSIONID=' + that.data.sessionId,
-      },
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;', 'Cookie': 'JSESSIONID=' + that.data.sessionId, },
       success: function (res) {
 
         console.log('试题蓝返回题目:' + res.data)

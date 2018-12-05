@@ -3,7 +3,6 @@ var app=getApp();
 
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -37,7 +36,6 @@ wx.navigateTo({
    */
   onLoad: function (options) {
   var that=this;
-
     this.app = getApp()
 that.setData({
 
@@ -51,8 +49,8 @@ that.setData({
 console.log(that.data.avatarUrl)
 console.log(that.data.nickName)
 console.log(that.data.phone)
-    console.log(that.data.name)
-    console.log(that.data.username)
+console.log(that.data.name)
+console.log(that.data.username)
   },
 
   /**
@@ -66,11 +64,13 @@ console.log(that.data.phone)
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.app.slideupshow(this, 'slide_up1', -0, 1)
-
+  this.app.slideupshow(this, 'slide_up1', -0, 1)
     setTimeout(function () {
+
       this.app.slideupshow(this, 'slide_up2', -0, 1)
-    }.bind(this), 200);
+
+    
+      }.bind(this), 200);
   },
 
 

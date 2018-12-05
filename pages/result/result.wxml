@@ -6,7 +6,7 @@
 
 
 
- <view class='image'><image src="{{image}}" mode="widthFix"  style="width:93%;height:130px;border: 3px  #dcdcdc solid;"/> </view>
+ <view class='image'><image bindtap='index' src="{{image}}" mode="widthFix"  style="width:93%;height:130px;border: 3px  #dcdcdc solid;"/> </view>
  
 <view class='sign'><image mode='widthFix' src='../image/tip.png'></image></view>
 <view class='tj'> <image mode='widthFix' src='../image/tuijian.png'></image></view>
@@ -33,8 +33,8 @@
           </view>
         </label>
 
-  <view bindtap='upload' data-lockerid="{{result.unique}}" class='tjst'>
-  <image mode='widthFix' src='../image/tjst.png'></image>
+  <view   class='tjst'>
+  <image data-lockerid="{{result.unique}}" bindtap='upload' mode='widthFix' src='../image/tjst.png'></image>
   </view>
 </view>
         

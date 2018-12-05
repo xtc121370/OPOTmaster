@@ -26,13 +26,12 @@ z-index: -1;
 .text{
 width:650rpx;
 position: absolute;
-top: 100rpx;
+top: 5%;
 left:50rpx;
 }
 .arm{
-
   position: absolute;
-  top: 40rpx;
+  top: 1%;
   left: 60rpx;
 }
 .head1{
@@ -64,20 +63,20 @@ font-weight: 700;
 .team{
   width:740rpx;
 position: absolute;
-top: 405rpx;
+top: 27%;
 left: 60rpx;
 }
 .team1{
    width:650rpx;
 position: absolute;
-top: 440rpx;
+top:29%;
 left: 50rpx;
 }
 .web{
 
   width:740rpx;
 position: absolute;
-top: 765rpx;
+top:52%;
 left: 60rpx;
 }
 
@@ -85,7 +84,7 @@ left: 60rpx;
 
   width:740rpx;
 position: absolute;
-top: 910rpx;
+top:60%;
 left: 60rpx;
 }
 

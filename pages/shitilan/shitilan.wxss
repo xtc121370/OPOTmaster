@@ -6,8 +6,6 @@ page{
   
 } 
 .sign image{
-
-
 position: relative;
 width: 250rpx;
 left: 247rpx;

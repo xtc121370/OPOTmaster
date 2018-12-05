@@ -1,22 +1,21 @@
 {
   "pages": [
+    "pages/denglu/denglu",
+    "pages/wx/wx",
+    "pages/guanyu/guanyu",
+    "pages/index/index",
+
+   
     "pages/shitilan/shitilan",
     "pages/result/result",
-    "pages/wx/wx",
-    "pages/index/index",
     "pages/mine/mine",
-    "pages/denglu/denglu",
-
     "pages/zhuce/zhuce",
-
-    "pages/guanyu/guanyu",
-
+   
     "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "white",
- 
     "navigationBarTextStyle": "black"
   },
 "tabBar": {
