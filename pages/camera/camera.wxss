@@ -1,0 +1,55 @@
+/* pages/camera/camera.wxss */
+page{  
+
+
+    height : 100%;
+  overflow: hidden; 
+} 
+.you{
+  position: relative;
+  top: -100%;
+  width: 66%;
+  height:100%;
+  border-right: 5px #7595e7 solid;
+}
+.zuo{
+  position: relative;
+  width: 32%;
+  height: 100%;
+  border-right: 5px #7595e7 solid;
+}
+.btn text{
+
+font-size: 50rpx;
+font-family: 华文雅黑;
+font-weight: 550;
+}
+.btn{
+position: relative;
+top: 83%;
+
+  width: 150rpx;
+  height: 150rpx;
+border-radius: 75rpx;
+ background-color: #7595e7;
+ color: white;
+}
+.whole{ 
+
+    width : 100%;
+   height : 100%;
+    box-sizing: border-box;
+}
+.camera{
+
+width: 100%;
+  height:100%;
+}
+.hide{
+
+
+  border: 1px red solid;
+  width: 100%;
+  height: 100%;
+
+}

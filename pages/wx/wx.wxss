@@ -4,6 +4,17 @@ page{
 height : 100%;
 overflow: hidden; 
 } 
+.bt{
+
+  position: relative;
+  width: 250rpx;
+  top: -600rpx;
+ background-color: #7595e7;
+ color: white;
+ border: 2px white solid;
+ border-radius: 8%;
+
+}
 .logo image{
 
 position: absolute;
@@ -45,9 +56,9 @@ width: 250rpx;
 left: 260rpx;
 
 }
-.tip text{
+.tip text{  
 position: absolute;
-left: 250rpx;
+left: 225rpx;
 top: 850rpx;
 font-family: 微软雅黑;
 font-size: 17px;

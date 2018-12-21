@@ -1,16 +1,14 @@
 {
   "pages": [
-    "pages/denglu/denglu",
+      "pages/camera/camera",
     "pages/wx/wx",
-    "pages/guanyu/guanyu",
     "pages/index/index",
-
-   
+    "pages/denglu/denglu",
+    "pages/guanyu/guanyu",
     "pages/shitilan/shitilan",
     "pages/result/result",
     "pages/mine/mine",
     "pages/zhuce/zhuce",
-   
     "pages/logs/logs"
   ],
   "window": {

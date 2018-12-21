@@ -9,6 +9,98 @@ Page({
     openid:null,
 
   },
+  onGotUserInfo: function (e) {
+    var that = this;
+    console.log(e.detail.errMsg)
+    console.log(e.detail.userInfo)
+    console.log(e.detail.rawData)
+    app.globalData.avatarUrl = e.detail.userInfo.avatarUrl,
+      app.globalData.nickName = e.detail.userInfo.nickName,
+      console.log('头像url:' + app.globalData.avatarUrl)
+    console.log('昵称：' + app.globalData.nickName)
+    wx.showLoading({
+      title: '授权中,请稍等',
+    })
+
+    //服务器好后把跳转删掉
+    wx.switchTab({
+      url: '../index/index',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 10000)
+    /*wx.request({
+      url: app.globalData.Url + 'wLoginServlet', //服务器接口地址
+      data: {
+
+        openid: that.data.openid,
+
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+
+      },
+      success: function (res) {
+        console.log(res.data)
+        console.log(res.data.status)
+        if (res.data.status == 0) {
+          wx.showToast({
+            title: '请绑定账号',
+            icon: 'none',
+            duration: 2000,
+            success: function () {
+
+              wx.navigateTo({
+                url: '../denglu/denglu',
+              })
+            },
+          })
+
+
+        }
+        else (res.data.status == 1)
+        {
+          console.log('后台返回' + res.data);
+          console.log('错误message' + res.data.message);
+          console.log('错误状态' + res.data.status);
+          console.log('sessionId:' + res.data.sessionId);
+          console.log('status:' + res.data.msg.status);
+          console.log('uid:' + res.data.u.id);
+          console.log('phone:' + res.data.u.phone);
+          console.log('username:' + res.data.u.username);
+          app.globalData.sessionId = res.data.sessionId;
+          app.globalData.name = +res.data.u.name;
+          app.globalData.username = res.data.u.username;
+          app.globalData.phone = +res.data.u.phone;
+          console.log('全局变量sessionId:' + app.globalData.sessionId)
+          wx.showToast({
+            title: '授权成功',
+            icon: 'success',
+            duration: 2000,
+            success: function () {
+              wx.switchTab({
+                url: '../index/index',
+              })
+            }
+          })
+
+        }
+      },
+
+      fail: function () {
+        console.log('上传用户信息失败')
+        wx.showToast({
+          title: '服务器请求失败',
+          icon: 'none',
+          duration: 2000,
+
+        })
+
+      }
+    })*/
+  },
+
 shouquan:function(){
 var that=this;
     wx.getUserInfo({
@@ -28,84 +120,7 @@ var that=this;
 
   
 
-  wx.showLoading({
-    title: '授权中,请稍等',
-  })
-
-  setTimeout(function () {
-    wx.hideLoading()
-  }, 10000)
-  wx.request({
-    url: app.globalData.Url+'wLoginServlet', //服务器接口地址
-    data: {
-
-      openid: that.data.openid,
-
-    },
-    method: 'POST',
-    header: {
-      'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
-
-    },
-    success:function(res){
-      console.log(res.data)
-      console.log(res.data.status)
-      if(res.data.status==0)
-      {
-        wx.showToast({
-          title: '请绑定账号',
-          icon: 'none',
-          duration: 2000,
-          success:function(){
-
-            wx.navigateTo({
-              url: '../denglu/denglu',
-            })
-          },
-        })
-        
-     
-      }
-      else(res.data.status==1)
-      {
-        console.log('后台返回' + res.data);
-        console.log('错误message' + res.data.message);
-        console.log('错误状态' + res.data.status);
-        console.log('sessionId:' + res.data.sessionId);
-        console.log('status:' + res.data.msg.status);
-        console.log('uid:' + res.data.u.id);
-        console.log('phone:' + res.data.u.phone);
-        console.log('username:' + res.data.u.username);
-        app.globalData.sessionId = res.data.sessionId;
-        app.globalData.name = +res.data.u.name;
-        app.globalData.username = res.data.u.username;
-        app.globalData.phone = +res.data.u.phone;
-        console.log('全局变量sessionId:' + app.globalData.sessionId)
-        wx.showToast({
-          title: '授权成功',
-          icon: 'success',
-          duration: 2000,
-          success: function () {
-            wx.switchTab({
-              url: '../index/index',
-            })
-          }
-        })
-
-      }
-    },
-
-    fail:function(){
-      console.log('上传用户信息失败')
-      wx.showToast({
-        title: '服务器请求失败',
-        icon: 'none',
-        duration: 2000,
-     
-      })
-
-    }
-  })
+ 
 
 
 },
@@ -114,18 +129,49 @@ var that=this;
    */
   onLoad: function (options) {
     var that = this;
-    wx.getSetting({
+   wx.getSetting({
+     withCredentials: true,
             success: function (res) {
                 if (res.authSetting['scope.userInfo']) {
                     wx.getUserInfo({
                         success: function (res) {
-                            console.log(res.userInfo)
+                          app.globalData.avatarUrl = res.userInfo.avatarUrl,
+                            app.globalData.nickName = res.userInfo.nickName,
+                            console.log('头像url:' + app.globalData.avatarUrl)
+                          console.log('昵称：' + app.globalData.nickName)
+                          wx.showLoading({
+                            title: '跳转中,请稍等',
+                          })
+
+                          //服务器好后把跳转删掉
+                          wx.switchTab({
+                            url: '../index/index',
+                          })
+                          setTimeout(function () {
+                            wx.hideLoading()
+                          }, 10000)
+                         
                             //用户已经授权过
-                        }
+                        },
+            fail:function(res){//用户未授权跳转
+              wx.showModal({
+                title: '警告', 
+                content: '尚未进行授权，请点击确定跳转到授权页面进行授权。',
+                 success: function (res) {
+                  if (res.confirm) {
+                    console.log('用户点击确定')          
+                      wx.navigateTo({ url: '../wx/wx', })
+                  }
+                 }
+                 })
+              
+
+
+            },
                     })
                 }
             }
-        })
+        }) 
     wx.login({
       success: function (res) {
       

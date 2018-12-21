@@ -6,10 +6,10 @@
 <image  mode='widthFix' src='/pages/image/wxss.png'></image>
 </view>
 <view class='in'>
-<image  bindtap='shouquan' mode='widthFix' src='/pages/image/in.png'></image>
+<button class='bt' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">点击授权</button>>
 
 </view>
 <view class='tip'>
-<text>点击进入授权登陆</text>
+<text>请点击进入授权登陆</text>
 </view>
 
