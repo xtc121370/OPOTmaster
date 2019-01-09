@@ -126,11 +126,11 @@ wx.request({
   /**
    * 生命周期函数--监听页面加载
    */
-index:function(){
+camera:function(){
 
-  wx.switchTab({
-    url: '../index/index',
-  })
+ wx.navigateTo({
+   url: '../camera/camera',
+ })
 },
 //点击图片跳转返回拍照页面
   onLoad: function (options) {
@@ -177,13 +177,42 @@ console.log('que'+that.data.que)
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    this.app = getApp()
+    this.app.slideupshow(this, 'slide_up1', -0, 1)
 
+    setTimeout(function () {
+      this.app.slideupshow(this, 'slide_up2', -0, 1)
+    }.bind(this), 80);
+
+    that.setData({
+
+
+      image: app.globalData.tempFilePaths,
+
+      result: app.globalData.result,
+      sessionId: app.globalData.sessionId,
+
+    })
+    console.log('图片路径：' + that.data.image)
+    console.log('试题内容' + that.data.result)
+    console.log('sessionId:' + that.data.sessionId)
+    console.log('测试' + that.data.answerUrl)
+    console.log('que' + that.data.que)
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+   
+    this.app = getApp()
+    //你可以看到，动画参数的200,0与渐入时的-200,1刚好是相反的，其实也就做到了页面还原的作用，使页面重新打开时重新展示动画
+    this.app.slideupshow(this, 'slide_up1', 80, 0)
+    //延时展现容器2，做到瀑布流的效果，见上面预览图
+    setTimeout(function () {
+      this.app.slideupshow(this, 'slide_up2', 80, 0)
+    }.bind(this), 80);
 
   },
 

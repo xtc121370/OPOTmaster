@@ -15,11 +15,7 @@
 <view class='image2' style='text-align:center;'>
   <image src='../image/index.png' bindtap='selectTap' data-mode='rectangle' mode='aspectFit'></image>
 </view>
-<view class='about'>
 
-<image  mode='widthFix' src='../image/about.png' bindtap='goguanyu'></image>
-
-</view>
 
 
 

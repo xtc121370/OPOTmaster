@@ -1,15 +1,22 @@
 <view class='whole'>
-<image mode='aspectFill' src='/pages/image/wx.png' class='background'></image>
+
 </view> 
+<view class='logoimg'>
+<image mode='widthFix' src='../image/logo.png' ></image>
+
+</view>
+
 <view class='logo'>
 
-<image  mode='widthFix' src='/pages/image/wxss.png'></image>
+<image  mode='widthFix' src='http://r.photo.store.qq.com/psb?/V12EzWWJ3J1Roh/btKqft7N.0iwybJUJOG4latXr4WDcQsq*U9uXWAVosg!/r/dLwAAAAAAAAA'></image>
 </view>
 <view class='in'>
+<image src='../image/wxdl.png' mode='widthFix'></image>
 <button class='bt' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">点击授权</button>>
 
 </view>
-<view class='tip'>
-<text>请点击进入授权登陆</text>
+<view class='tip'>  
+<text>请授权登陆后使用</text>
 </view>
+
 

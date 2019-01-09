@@ -1,10 +1,12 @@
 {
   "pages": [
-      "pages/camera/camera",
+
     "pages/wx/wx",
-    "pages/index/index",
+    "pages/camera/camera",
     "pages/denglu/denglu",
-    "pages/guanyu/guanyu",
+    "pages/cropper/cropper",
+    "pages/index/index",
+
     "pages/shitilan/shitilan",
     "pages/result/result",
     "pages/mine/mine",
@@ -32,6 +34,12 @@
     "iconPath": "pages/image/2.png",
     "selectedIconPath": "pages/image/1.png"
   },
+    {
+      "pagePath": "pages/result/result",
+      "text": "解析",
+      "iconPath": "pages/image/answer2.png",
+      "selectedIconPath": "pages/image/answer1.png"
+    },
   {
     "pagePath": "pages/mine/mine",
     "text": "我的",

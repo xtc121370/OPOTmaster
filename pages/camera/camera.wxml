@@ -1,12 +1,11 @@
 <!-- camera.wxml -->
-<view class='whole'>
-<camera class='camera' device-position="back" flash="auto" binderror="error" >
-<cover-view  class='hide'>
-<cover-view class='zuo'></cover-view>
-<cover-view class='you'></cover-view>
-<button class='btn'  bindtap="takePhoto"><text>拍照</text> </button>
-</cover-view>
+
+
+<camera class='camera'  device-position="back" flash="auto" binderror="error" >
+
+<cover-image class='hide' mode='widthFix' src='../image/nine.png'></cover-image>
+<cover-image class='btn'data-mode='rectangle'   bindtap="takePhoto" src='../image/camera.png' ></cover-image>
+<cover-image bindtap='photo'data-mode='rectangle'  class='photo' src='../image/photo.png'></cover-image>
+<cover-image class='close' bindtap='close' src='../image/close.png'></cover-image>
+
 </camera>
-
-
-</view>

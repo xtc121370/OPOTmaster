@@ -11,94 +11,145 @@ Page({
   },
   onGotUserInfo: function (e) {
     var that = this;
-    console.log(e.detail.errMsg)
-    console.log(e.detail.userInfo)
-    console.log(e.detail.rawData)
-    app.globalData.avatarUrl = e.detail.userInfo.avatarUrl,
-      app.globalData.nickName = e.detail.userInfo.nickName,
-      console.log('头像url:' + app.globalData.avatarUrl)
-    console.log('昵称：' + app.globalData.nickName)
-    wx.showLoading({
-      title: '授权中,请稍等',
-    })
-
-    //服务器好后把跳转删掉
-    wx.switchTab({
-      url: '../index/index',
-    })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 10000)
-    /*wx.request({
-      url: app.globalData.Url + 'wLoginServlet', //服务器接口地址
-      data: {
-
-        openid: that.data.openid,
-
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
-
-      },
+    wx.getUserInfo({
       success: function (res) {
-        console.log(res.data)
-        console.log(res.data.status)
-        if (res.data.status == 0) {
-          wx.showToast({
-            title: '请绑定账号',
-            icon: 'none',
-            duration: 2000,
-            success: function () {
+        console.log(e.detail.errMsg)
+        console.log(e.detail.userInfo)
+        console.log(e.detail.rawData)
+        app.globalData.avatarUrl = e.detail.userInfo.avatarUrl,
+          app.globalData.nickName = e.detail.userInfo.nickName,
+          console.log('头像url:' + app.globalData.avatarUrl)
+        console.log('昵称：' + app.globalData.nickName)
 
-              wx.navigateTo({
-                url: '../denglu/denglu',
+        wx.login({
+          success: function (res) {
+
+            console.log(res);
+            if (res.code) {
+              wx.request({
+                url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx950aeac16a5192d6&secret=1e1e2fb3b4b19325f9f7179a57322d92&js_code=' + res.code + '&grant_type=authorization_code',
+                data: {
+                  code: res.code
+                },
+                method: 'POST',
+                header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8;', },
+                success: function (res) {
+                  that.data.openid = res.data.openid,
+                    app.globalData.openid = res.data.openid,
+                    console.log('服务器返回key:' + res.data.session_key)
+                  console.log('openid' + app.globalData.openid)
+
+                  wx.showLoading({
+                    title: '授权中,请稍等',
+                  })
+
+                  //服务器好后把跳转删掉
+                  wx.switchTab({
+                    url: '../index/index',
+                  })
+                  setTimeout(function () {
+                    wx.hideLoading()
+                  }, 10000)
+
+                  /*
+                  wx.request({
+                    url: app.globalData.Url + 'wLoginServlet', //服务器接口地址
+                    data: {
+
+                      openid: that.data.openid,
+
+                    },
+                    method: 'POST',
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+
+                    },
+                    success: function (res) {
+                      console.log(res.data)
+                      console.log(res.data.status)
+                      if (res.data.status == 0) {
+                        wx.showToast({
+                          title: '请绑定账号',
+                          icon: 'none',
+                          duration: 2000,
+                          success: function () {
+
+                            wx.navigateTo({
+                              url: '../denglu/denglu',
+                            })
+                          },
+                        })
+
+
+                      }
+                      else (res.data.status == 1)
+                      {
+                        console.log('后台返回' + res.data);
+                        console.log('错误message' + res.data.message);
+                        console.log('错误状态' + res.data.status);
+                        console.log('sessionId:' + res.data.sessionId);
+                        console.log('status:' + res.data.msg.status);
+                        console.log('uid:' + res.data.u.id);
+                        console.log('phone:' + res.data.u.phone);
+                        console.log('username:' + res.data.u.username);
+                        app.globalData.sessionId = res.data.sessionId;
+                        app.globalData.name = +res.data.u.name;
+                        app.globalData.username = res.data.u.username;
+                        app.globalData.phone = +res.data.u.phone;
+                        console.log('全局变量sessionId:' + app.globalData.sessionId)
+                        wx.showToast({
+                          title: '授权成功',
+                          icon: 'success',
+                          duration: 2000,
+                          success: function () {
+                            wx.switchTab({
+                              url: '../index/index',
+                            })
+                          }
+                        })
+
+                      }
+                    },
+
+                    fail: function () {
+                      console.log('上传用户信息失败')
+                      wx.showToast({
+                        title: '服务器请求失败',
+                        icon: 'none',
+                        duration: 2000,
+
+                      })
+
+                    }
+                  })
+*/
+                }
               })
-            },
-          })
+              // 使用wx.getUserInfo获取用户信息
 
 
-        }
-        else (res.data.status == 1)
-        {
-          console.log('后台返回' + res.data);
-          console.log('错误message' + res.data.message);
-          console.log('错误状态' + res.data.status);
-          console.log('sessionId:' + res.data.sessionId);
-          console.log('status:' + res.data.msg.status);
-          console.log('uid:' + res.data.u.id);
-          console.log('phone:' + res.data.u.phone);
-          console.log('username:' + res.data.u.username);
-          app.globalData.sessionId = res.data.sessionId;
-          app.globalData.name = +res.data.u.name;
-          app.globalData.username = res.data.u.username;
-          app.globalData.phone = +res.data.u.phone;
-          console.log('全局变量sessionId:' + app.globalData.sessionId)
-          wx.showToast({
-            title: '授权成功',
-            icon: 'success',
-            duration: 2000,
-            success: function () {
-              wx.switchTab({
-                url: '../index/index',
-              })
             }
-          })
+            else {
+              console.log('获取用户登录态失败！' + res.errMsg)
+            }
+          },
+          fail: function () {
+            console.log("启用wx.login函数，失败！");
+          },
+          complete: function () {
+            console.log("已启用wx.login函数");
+          }
+        });
 
-        }
+
       },
 
       fail: function () {
-        console.log('上传用户信息失败')
-        wx.showToast({
-          title: '服务器请求失败',
-          icon: 'none',
-          duration: 2000,
 
-        })
 
       }
-    })*/
+    })
+
   },
 
 shouquan:function(){
@@ -128,28 +179,101 @@ var that=this;
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
+    var that = this;   
    wx.getSetting({
      withCredentials: true,
             success: function (res) {
                 if (res.authSetting['scope.userInfo']) {
                     wx.getUserInfo({
                         success: function (res) {
+              
                           app.globalData.avatarUrl = res.userInfo.avatarUrl,
                             app.globalData.nickName = res.userInfo.nickName,
                             console.log('头像url:' + app.globalData.avatarUrl)
                           console.log('昵称：' + app.globalData.nickName)
-                          wx.showLoading({
-                            title: '跳转中,请稍等',
-                          })
+                          wx.login({
+                            success: function (res) {
+
+                              console.log(res);
+                              if (res.code) {
+                                wx.request({
+                                  url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx950aeac16a5192d6&secret=1e1e2fb3b4b19325f9f7179a57322d92&js_code=' + res.code + '&grant_type=authorization_code',
+                                  data: {
+                                    code: res.code
+                                  },
+                                  method: 'POST',
+                                  header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8;', },
+                                  success: function (res) {
+                                    that.data.openid = res.data.openid,
+                                      app.globalData.openid = res.data.openid,
+                                      console.log('服务器返回key:' + res.data.session_key)
+                                    console.log('openid' + app.globalData.openid)
+
+
+
+                                    
+                                    wx.switchTab({
+                                      url: '../index/index',
+                                    })
+
+                                    //服务器配好后删掉
+
+                                    /*
+                                    wx.request({
+                                      url: app.globalData.Url + 'wLoginServlet', //服务器接口地址
+                                      data: {
+
+                                        openid: that.data.openid,
+
+                                      },
+                                      method: 'POST',
+                                      header: {
+                                        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+
+                                      },
+                                      success: function (res) {
+                                        console.log('后台返回' + res.data);
+                                        console.log('错误message' + res.data.message);
+                                        console.log('错误状态' + res.data.status);
+                                        console.log('sessionId:' + res.data.sessionId);
+                                        console.log('status:' + res.data.msg.status);
+                                        console.log('uid:' + res.data.u.id);
+                                        console.log('phone:' + res.data.u.phone);
+                                        console.log('username:' + res.data.u.username);
+                                        app.globalData.sessionId = res.data.sessionId;
+                                        app.globalData.name = +res.data.u.name;
+                                        app.globalData.username = res.data.u.username;
+                                        app.globalData.phone = +res.data.u.phone;
+                                        console.log('全局变量sessionId:' + app.globalData.sessionId)
+                                        wx.switchTab({
+                                          url: '../index/index',
+                                        })
+
+                                      }
+                                    })
+*/
+                                  }
+                                })
+                                // 使用wx.getUserInfo获取用户信息
+
+
+                              }
+                              else {
+                                console.log('获取用户登录态失败！' + res.errMsg)
+                              }
+                            },
+                            fail: function () {
+                              console.log("启用wx.login函数，失败！");
+                            },
+                            complete: function () {
+                              console.log("已启用wx.login函数");
+                            }
+                          });
+
+                     
 
                           //服务器好后把跳转删掉
-                          wx.switchTab({
-                            url: '../index/index',
-                          })
-                          setTimeout(function () {
-                            wx.hideLoading()
-                          }, 10000)
+                        
                          
                             //用户已经授权过
                         },
@@ -172,40 +296,7 @@ var that=this;
                 }
             }
         }) 
-    wx.login({
-      success: function (res) {
-      
-        console.log(res);
-        if (res.code) {
-          wx.request({
-            url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx950aeac16a5192d6&secret=1e1e2fb3b4b19325f9f7179a57322d92&js_code=' + res.code + '&grant_type=authorization_code',
-            data: {
-              code: res.code
-            },
-            method: 'POST',
-            header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8;', },
-            success: function (res) {
-              that.data.openid = res.data.openid,
-              app.globalData.openid=res.data.openid,
-              console.log('服务器返回key:' + res.data.session_key)
-              console.log('openid' + app.globalData.openid)
-            }
-          })
-          // 使用wx.getUserInfo获取用户信息
-        
-
-        } 
-        else {
-          console.log('获取用户登录态失败！' + res.errMsg)
-        }
-      },
-      fail: function () {
-        console.log("启用wx.login函数，失败！");
-      },
-      complete: function () {
-        console.log("已启用wx.login函数");
-      }
-    });
+ 
 
 
 

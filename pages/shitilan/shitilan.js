@@ -99,7 +99,7 @@ Page({
   onPullDownRefresh: function () {
   
     var that=this;
-    wx.request({
+   /* wx.request({
       url: app.globalData.Url +'wGetBasketServlet',
       data: {
         sessionId: that.data.sessionId
@@ -140,7 +140,7 @@ Page({
         console.log('服务器请求失败')
       }
     })
-    
+    */
   },
 
   onShow: function () {
@@ -149,7 +149,7 @@ Page({
 
     setTimeout(function () {
       this.app.slideupshow(this, 'slide_up2', -0, 1)
-    }.bind(this), 200);
+    }.bind(this),80);
   },
 
 
@@ -159,11 +159,11 @@ Page({
   onHide: function () {
     this.app = getApp()
     //你可以看到，动画参数的200,0与渐入时的-200,1刚好是相反的，其实也就做到了页面还原的作用，使页面重新打开时重新展示动画
-    this.app.slideupshow(this, 'slide_up1', 200, 0)
+    this.app.slideupshow(this, 'slide_up1', 80, 0)
     //延时展现容器2，做到瀑布流的效果，见上面预览图
     setTimeout(function () {
-      this.app.slideupshow(this, 'slide_up2', 200, 0)
-    }.bind(this), 200);
+      this.app.slideupshow(this, 'slide_up2', 80, 0)
+    }.bind(this), 80);
   },
 
   /**

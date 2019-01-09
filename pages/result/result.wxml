@@ -1,12 +1,12 @@
 
-
+<view class='whole' animation="{{slide_up1}}">
 
 <view class="ripple" style="{{rippleStyle}}"></view>
 <view class="container" bindtouchstart="containerTap"></view>
 
 
 
- <view class='image'><image bindtap='index' src="{{image}}" mode="widthFix"  style="width:93%;height:130px;border: 3px  #dcdcdc solid;"/> </view>
+ <view class='image'><image bindtap='camera' src="{{image}}" mode='aspectFill' style="width:93%;height:130px;border: 3px  #dcdcdc solid;"/> </view>
  
 <view class='sign'><image mode='widthFix' src='../image/tip.png'></image></view>
 <view class='tj'> <image mode='widthFix' src='../image/tuijian.png'></image></view>
@@ -41,4 +41,5 @@
       </view>
     </checkbox-group>  
   </view>
+</view>
 </view>

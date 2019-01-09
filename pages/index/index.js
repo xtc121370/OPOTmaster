@@ -38,19 +38,8 @@ Page({
     })
     // console.log(usertype)  
   },
-  goguanyu: function () {
-
-
-    wx.navigateTo({
-      url: '../guanyu/guanyu',
-    })
-  },
-  chooseimage: function () {
-    var that = this;
-
-
-  },
-  chooseWxImage: function (type) {
+ 
+ /* chooseWxImage: function (type) {
     var that = this;
     wx.chooseImage({
       count: 1,
@@ -118,6 +107,7 @@ Page({
                     console.log('全局搜索结果' + app.globalData.result)
                     console.log('问题URL' + app.globalData.queUrl)
                   },
+
                   fail: function (res) {
                     console.log(res)
                     wx.showLoading({
@@ -131,7 +121,9 @@ Page({
 
 
                   },
+
                 })
+                
                 that.hideCropper()
                 
               }
@@ -145,10 +137,14 @@ Page({
       }
     })
   },
+  */
 
-  selectTap:function(e) {
+  selectTap:function() {
     let that = this
-   that.data.mode = e.currentTarget.dataset.mode
+    wx.navigateTo({
+      url: '../camera/camera',
+    })
+   /*that.data.mode = e.currentTarget.dataset.mode
     console.log('打印测试'+that.data.mode)
     wx.showActionSheet({
       itemList: ['拍照', '从相册选择'],
@@ -163,35 +159,13 @@ Page({
         }
       }
     })
- 
+ */
   },
 
 
   //上传图片
 
-goindex:function(){
 
-wx.navigateTo({
-  url: '../index/index',
-})
-},
-goshitilan:function(){
-
-wx.navigateTo({
-  url: '../shitilan/shitilan',
-})
-},
-gomine:function(){
-
-  wx.navigateTo({
-    url: '../mine/mine',
-  })
-},
-
-  uploadimage: function (e) {
-
-
-  },
 
   onShow: function () {
     this.app = getApp()
@@ -209,11 +183,11 @@ gomine:function(){
   onHide: function () {
     this.app = getApp()
     //你可以看到，动画参数的200,0与渐入时的-200,1刚好是相反的，其实也就做到了页面还原的作用，使页面重新打开时重新展示动画
-    this.app.slideupshow(this, 'slide_up1', 200, 0)
+    this.app.slideupshow(this, 'slide_up1', 80, 0)
     //延时展现容器2，做到瀑布流的效果，见上面预览图
     setTimeout(function () {
-      this.app.slideupshow(this, 'slide_up2', 200, 0)
-    }.bind(this), 200);
+      this.app.slideupshow(this, 'slide_up2', 80, 0)
+    }.bind(this), 80);
   },
 
   onShareAppMessage: function () {

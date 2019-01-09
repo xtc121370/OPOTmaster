@@ -22,9 +22,7 @@
 <text bindtap='goshitilan'>试题篮</text> 
 </view>
 
-<view class='about'>
-<text bindtap='goguanyu'>关于我们</text>
-</view>
+
 
 <view class='more'>
 <text class='more' decode="{{true}}" style='left:250rpx;'> www.opot.net.cn </text>
