@@ -12,14 +12,23 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
+  data: {StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
   sessionId:null,
   title:null,
   shitilan:null,
+    modalName: null,
+  status:'0'
 
   },
  
- 
+gobangding:function(){
+
+  wx.navigateTo({
+    url: '../denglu/denglu',
+  })
+},
+
 
 
 
@@ -46,17 +55,31 @@ Page({
     var that = this;
 
   that.setData({
-
-
     sessionId: app.globalData.sessionId,
 
     shitilan: app.globalData.shitilan,
 
-
-
   })
-    
+    if(that.data.status==0)
+    {
+      var that = this;
+      var flag='ture';
+that.setData({
+  modalName:flag
 
+})
+
+    }
+    else{
+      var that = this;
+      var flag=null;
+that.setData({
+  modalName: flag
+
+  
+})
+    }
+console.log(that.data.modalName)
     console.log('全局试题篮图片'+that.data.shitilan)
  
   

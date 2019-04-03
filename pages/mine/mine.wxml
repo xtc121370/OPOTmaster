@@ -1,10 +1,12 @@
 
 <view class="init" animation="{{slide_up1}}">
-<image class='background' src='../image/minebg.png'></image>
+<view class="margin radius gradual-blue shadow-blur">
+  <image mode='bottom'  src='https://image.weilanwl.com/gif/wave.gif'  class='gif-black response' style='width:100%;height:300rpx'></image>
+</view>
 
  <view class='tx'>
 
-<image mode='widthFix' src='{{avatarUrl}}'></image>
+<image class='cu-avatar lg round margin-left'  src='{{avatarUrl}}'></image>
 </view>
 
 
@@ -16,17 +18,19 @@
 <view class='username'><text>{{nickName}}</text></view>
 <view></view>
 <view class='phone'><text>手机号:</text><text>{{phone}}</text></view>
-
-<view class='shitilan'>
-
-<text bindtap='goshitilan'>试题篮</text> 
+<view class='padding  text-left'>
+ <view class='padding radius shadow-warp bg-white margin-bottom' bindtap='login'>绑定OPOT账号
+ <view class='cu-tag bg-red'>未绑定</view>
+ </view>
+  <view class='padding radius shadow-warp bg-white margin-bottom' bindtap='about'>关于我们</view>
+    <view class='padding radius shadow-warp bg-white margin-bottom'bindtap='fankui'>反馈评分</view>
+     <view class='padding radius shadow-warp bg-white margin-bottom' bindtap='time'>OPOT日志</view>
 </view>
-
-
-
 <view class='more'>
+<view class="padding text-center">
 <text class='more' decode="{{true}}" style='left:250rpx;'> www.opot.net.cn </text>
 <text class='more' decode="{{true}}"> \n (更多功能请复制链接使用电脑浏览器查看）</text>
+</view>
 </view>
 
 </view>

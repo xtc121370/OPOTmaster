@@ -1,0 +1,14 @@
+
+<view class="padding-xl radius shadow-lg bg-white margin-top text-center">
+<text>您的意见是对我们的最大帮助</text>
+<image mode='aspectFit' src='../image/qrc.jpg'></image>
+</view>
+<view  class="padding radius shadow-warp bg-white margin-top text-center">
+
+    <i-cell title="自定义星星大小">
+        <i-rate bind:change="onChange2" value="{{starIndex2}}" 
+            size="32"> {{starIndex2}}星
+        </i-rate>
+    </i-cell>
+   <button class='margin-xs cu-btn round  bg-blue' style='right:0rpx;' bindtap='upload'>提交</button>
+</view>

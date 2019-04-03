@@ -11,6 +11,8 @@ Page({
     userInfo: '',
     status: '',
     openid:null,
+    avatarUrl:null,
+    
   },
   gozhuce: function (options) {
     wx.navigateTo({
@@ -23,9 +25,15 @@ Page({
   onLoad: function (options) {
 
     var that = this;
-   that.data.openid=app.globalData.openid,
-   console.log('openid:'+that.data.openid)
+    this.app = getApp()
+    that.setData({
+      avatarUrl:app.globalData.avatarUrl,
+      openid:app.globalData.openid,
+    })
    
+  
+   console.log('openid:'+that.data.openid)
+    console.log('avatatUrl:' + that.data.openid)
     
   },
   PhoneInput: function (e) {

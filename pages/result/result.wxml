@@ -4,11 +4,106 @@
 <view class="ripple" style="{{rippleStyle}}"></view>
 <view class="container" bindtouchstart="containerTap"></view>
 
+<view class="cu-bar search" >
+ <view class='search-form round'>
+    <text class="icon-search"></text>
+    <input type="text" placeholder="搜索试卷、知识点、题目" confirm-type="search"></input>
+  </view>
+   <view class='action'>
+    <button class='cu-btn bg-orange shadow-blur round'>搜索</button>
+  </view>
+ </view>
+ 
 
+<view class='action '> 
+<image bindtap="showModal" data-target="DrawerModalR" style='margin-left:89%;width:50rpx;' src='../image/chouti.png' mode='widthFix'></image>
+</view>
 
- <view class='image'><image bindtap='camera' src="{{image}}" mode='aspectFill' style="width:93%;height:130px;border: 3px  #dcdcdc solid;"/> </view>
+<view class="cu-modal drawer-modal justify-end {{modalName=='DrawerModalR'?'show':''}}" bindtap='hideModal'>
+  <view class="cu-dialog  basis-lg"catchtap >
+    <view class='cu-list   menu'>
+      <view class='cu-item '>
+        <view class='content caption-wrap'>
+        
+          <i-collapse-item title="年级" name="name1">
+         
+           <view class="cu-form-group margin-top" 
+            bindtap="serviceSelection" slot="content">
+        
+<checkbox-group bindchange="checkboxChange1">
+  <view class="checkbox text-right" wx:for="{{nianji}}">
+    <checkbox class='round' value="{{item.name}}" style='margin-top:20rpx;' />
+    {{item.value}}
+  </view>
+</checkbox-group>
+               </view>
+
+            
+           </i-collapse-item>
+        </view> 
+        
+      </view>
+    </view>
+
+      <view class='cu-list   menu'>
+      <view class='cu-item '>
+        <view class='content caption-wrap'>
+        
+          <i-collapse-item title="版本" name="name2">
+         
+           <view class="cu-form-group margin-top" 
+            bindtap="serviceSelection" slot="content">
+        
+<checkbox-group bindchange="checkboxChange2">
+  <view class="checkbox text-right" wx:for="{{banbenshuzu}}">
+    <checkbox class='round' value="{{item.name}}" style='margin-top:20rpx;' />
+    {{item.value}}
+  </view>
+</checkbox-group>
+               </view>
+
+            
+           </i-collapse-item>
+        </view> 
+        
+      </view>
+    </view>
+ 
+ 
+   
+ <view class='cu-list   menu'>
+      <view class='cu-item '>
+        <view class='content caption-wrap'>
+        
+          <i-collapse-item title="类型" name="name2">
+    
+           <view class="cu-form-group margin-top" 
+            bindtap="serviceSelection" slot="content">
+        
+<checkbox-group bindchange="checkboxChange3">
+  <view class="checkbox text-right" wx:for="{{leixing}}">
+    <checkbox class='round' value="{{item.name}}" style='margin-top:20rpx;' />
+    {{item.value}}
+  </view>
+</checkbox-group>
+               </view>
+
+            
+           </i-collapse-item>
+        </view> 
+        
+      </view>
+    </view>
+ 
+
+ <button class='cu-btn radius bg-red' style='margin-top:20%;width:200rpx;'>筛选</button>
+  </view>
+</view>
+
+ <view class='image padding'><image bindtap='camera' src="{{image}}" mode='aspectFill' style="width:93%;height:130px;border: 3px  #dcdcdc solid;"/> </view>
  
 <view class='sign'><image mode='widthFix' src='../image/tip.png'></image></view>
+
 <view class='tj'> <image mode='widthFix' src='../image/tuijian.png'></image></view>
 <view class='container'>
   <view class='section section-good'>

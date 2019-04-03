@@ -12,6 +12,25 @@ page {
   line-height: 1.42857;
 
 }
+.is_checked{
+
+border: none;
+
+color: #333;
+
+background: #F0F1EC;
+
+}
+
+.normal{
+
+  border: 1px solid #F0F1EC; 
+
+  color: black;
+
+  background: #fff;
+}
+
 .whole{ 
 
     width : 100%;

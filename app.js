@@ -48,6 +48,12 @@ App({
 
   onLaunch: function () {
     // 展示本地存储能力
+    wx.getSystemInfo({
+      success: e => {
+        this.globalData.StatusBar = e.statusBarHeight;
+        this.globalData.CustomBar = e.platform == 'android' ? e.statusBarHeight + 50 : e.statusBarHeight + 45;
+      }
+    })
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
@@ -76,7 +82,7 @@ App({
 
  
   globalData: {
-    Url:'http://39.105.56.207:8080/OPOT1/servlet/',
+    Url:'47.94.215.104:8088/wxSearch/',
     ceshiUrl:'',
     tempFilePath:null,
     tempFilePaths:'../image/diceng.png',

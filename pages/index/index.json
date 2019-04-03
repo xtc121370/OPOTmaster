@@ -1,4 +1,8 @@
 {
   "navigationBarTitleText": "OPOT",
-  "navigationBarBackgroundColor":"#7595e7"
+  "usingComponents": {
+    "i-collapse": "../../dist/collapse/index",
+    "i-collapse-item": "../../dist/collapse-item/index"
+  }
+
 }

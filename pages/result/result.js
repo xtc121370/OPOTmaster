@@ -6,7 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    name: 'name1',
+    garde:null,
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    isChecked: false,
     md5:null,
     loadingHidden: true,
     'checkAll': false,
@@ -19,12 +23,70 @@ Page({
     sessionId:null,
     result: null ,
     selectedFlag: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-   index:[0,1,2,3,4,5]
+   index:[0,1,2,3,4,5],
+    nianji: [{ name: '七上', value: '七年级上' },
+      { name: '七下', value: '七年级下',  },
+      { name: '八上', value: '八年级上' },
+      { name: '八下', value: '八年级下' },
+      { name: '九上', value: '九年级上' },
+      { name: '九下', value: '九年级下' },
+],
+banbenshuzu:[
+  { name: '人教', value: '人教版' },
+  { name: '苏教', value: '苏教版', },
+  { name: '人教实验', value: '人教实验版' },
+  { name: '北师', value: '北师版' }
+
+],
+    leixing: [{ name: '选择', value: '选择题' },
+      { name: '填空', value: '填空题', },
+      { name: '解答', value: '解答题' }
+     
+]
            
   },
 //页面数据；
+  checkboxChange1(e) {
+    var that=this;
+    var grades = e.detail.value
+    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+that.setData({
+grade:grades
  
+})
+console.log('用户选择年级：'+that.data.grade)
+  },
+  checkboxChange2(e) {
+    var that = this;
+    var banbens = e.detail.value
+    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    that.setData({
+      banben: banbens
 
+    })
+    console.log('用户选择版本：' + that.data.banben)
+  },
+  
+  checkboxChange3(e) {
+    var that = this;
+    var types = e.detail.value
+    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    that.setData({
+     type: types
+
+    })
+    console.log('用户选择版本：' + that.data.type)
+  },
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
 
   containerTap: function (res) {
     console.log(res.touches[0]);

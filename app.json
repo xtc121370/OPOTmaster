@@ -1,15 +1,24 @@
 {
   "pages": [
-
     "pages/wx/wx",
-    "pages/camera/camera",
-    "pages/denglu/denglu",
-    "pages/cropper/cropper",
-    "pages/index/index",
-
     "pages/shitilan/shitilan",
     "pages/result/result",
+  
+    "pages/index/index",
+    "pages/denglu/denglu",
+  
     "pages/mine/mine",
+    "pages/opotlog/opotlog",
+    
+    "pages/pingfen/pingfen",
+    "pages/fankui/fankui",
+ 
+    "pages/camera/camera",
+   
+    "pages/cropper/cropper",
+
+
+  
     "pages/zhuce/zhuce",
     "pages/logs/logs"
   ],
@@ -24,7 +33,7 @@
   "list": [
   {
     "pagePath": "pages/shitilan/shitilan",
-    "text": "试题篮",
+    "text": "我的试卷",
     "iconPath": "pages/image/4.png",
     "selectedIconPath": "pages/image/3.png"
   },

@@ -44,7 +44,7 @@ Page({
                   })
 
                   //服务器好后把跳转删掉
-                  wx.switchTab({
+                wx.switchTab({
                     url: '../index/index',
                   })
                   setTimeout(function () {
@@ -121,9 +121,9 @@ Page({
                       })
 
                     }
-                  })
+                 })
 */
-                }
+         }
               })
               // 使用wx.getUserInfo获取用户信息
 
@@ -212,10 +212,9 @@ var that=this;
 
 
                                     
-                                    wx.switchTab({
+                                   wx.switchTab({
                                       url: '../index/index',
                                     })
-
                                     //服务器配好后删掉
 
                                     /*

@@ -5,13 +5,14 @@ page{
   overflow: hidden; 
 
 } 
+.gif-black{  
+  mix-blend-mode: screen;  
+}
 .tx image{
 
 position: absolute;
-top: 50rpx;
-left: 278rpx;
-width: 200rpx;
-height: 200rpx;
+top: 6%;
+left: 40%;
 
 }
 .init{
@@ -26,37 +27,36 @@ height: 200rpx;
 
 display:block;
 width: 100%;
-   height : 100%;
+   height : 100rpx;
 z-index: -1;
-
+mix-blend-mode: screen;
 
 }
 .usr{
   position: absolute;
-  top: 290rpx;
+  top: 17%;
    width: 500rpx;
-   left:240rpx;
-font-size: 16px;
+   left:38%;
+font-size: 27rpx;
 font-weight: 600;
 font-family: 微软雅黑;
 }
 .username{
   position: absolute;
-  top: 290rpx;
+  top: 17%;
    width: 500rpx;
-   left:390rpx;
-font-size: 16px;
+   left:52%;
+font-size: 27rpx;
 font-weight: 600;
 font-family: 微软雅黑;
 
-
 }
 .phone{
-font-size: 16px;
+font-size: 27rpx;
   position: absolute;
-  top: 370rpx;
+  top:21.5%;
    width:500rpx;
-left: 210rpx;
+left: 32%;
  font-weight: 600;
 font-family: 微软雅黑;
 
@@ -79,7 +79,7 @@ font-family: 微软雅黑;
     position: absolute;
    top: 850rpx;
    left: 295rpx;
-   color: white;
+   color: black;
    font-family: 微软雅黑;
    font-weight: 700;
    font-size: 20px;
@@ -91,7 +91,7 @@ left: 90rpx;
 top: 950rpx;
 font-family: 微软雅黑;
 font-size: 15px;
-color: white;   
+color: black;   
 
 }
   .more text{
@@ -100,5 +100,5 @@ left: 78rpx;
 top: 950rpx;
 font-family: 微软雅黑;
 font-size: 15px;
-color: white;   
+color: black;   
   }

@@ -1,7 +1,6 @@
 // pages/mine/mine.js
 var app=getApp();
 
-
 Page({
   /**
    * 页面的初始数据
@@ -12,7 +11,33 @@ Page({
     username: null, 
     avatarUrl: null,
     nickName: null,
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
 
+  },
+  login: function () {
+wx.navigateTo({
+  url: '../denglu/denglu',
+})
+
+   },
+  time:function(){
+wx.navigateTo({
+  url: '../opotlog/opotlog',
+})
+
+  },
+  fankui:function(){
+
+    wx.navigateTo({
+      url: '../pingfen/pingfen',
+    })
+  },
+  about:function(){
+
+    wx.navigateTo({
+      url: '../fankui/fankui',
+    })
   },
  
 goshitilan:function(){

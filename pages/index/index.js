@@ -1,4 +1,4 @@
-var app = getApp();
+const app = getApp();
 const device = wx.getSystemInfoSync()
 const W = device.windowWidth
 const H = device.windowHeight - 50
@@ -9,12 +9,49 @@ console.log(device)
 
 Page({
   data: {
-   
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
     tempFilePaths: '',
     sessionId: null,
+    isChecked: false,
     mode:null,
+    grade:[{id:'年级'},
+      { id: '教材版本' },],
+    banben: [{ 'name': '教材版本' },] ,
+    tixing: [{ 'name': '题型' },],
+    nandu: [{ 'name': '难度' },]
   }, 
- 
+
+  serviceSelection() {
+    var that=this;
+if(that.data.isChecked==true)
+{
+  that.setData({
+
+    isChecked: false
+
+  })
+}
+else{
+    that.setData({
+
+      isChecked:true
+
+    })
+}
+console.log(that.data.isChecked)
+  },
+
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
   containerTap: function (res) {
     console.log(res.touches[0]);
     var x = res.touches[0].pageX;

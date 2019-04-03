@@ -1,21 +1,14 @@
-<view class='whole'>
-
-</view> 
-<view class='logoimg'>
-<image mode='widthFix' src='../image/logo.png' ></image>
-
+<view class=' padding text-center'style='margin-top:18%;'>
+<view class='cu-avatar  round margin-top text-center'style='height:200rpx;width:200rpx;background-image:url(../image/logo.jpg);'>
+</view>
+</view>
+<view class='padding  text-center'>
+<button class='cu-btn  margin-top bg-green lg round button-hover'style='width:500rpx;margin-top:30%;' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
+点击授权
+</button>
 </view>
 
-<view class='logo'>
-
-<image  mode='widthFix' src='http://r.photo.store.qq.com/psb?/V12EzWWJ3J1Roh/btKqft7N.0iwybJUJOG4latXr4WDcQsq*U9uXWAVosg!/r/dLwAAAAAAAAA'></image>
-</view>
-<view class='in'>
-<image src='../image/wxdl.png' mode='widthFix'></image>
-<button class='bt' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">点击授权</button>>
-
-</view>
-<view class='tip'>  
+<view class='padding text-center'>  
 <text>请授权登陆后使用</text>
 </view>
 

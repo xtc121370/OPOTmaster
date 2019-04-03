@@ -54,7 +54,7 @@ Page({
             })
             */
             wx.uploadFile({
-              url: app.globalData.Url + 'wPictureServlet',
+              url:'https://47.94.215.104:8088/wxSearch/pictureSearch',//app.globalData.Url + 'pictureSearch',
               filePath: that.data.tempFilePaths,
               name: 'image',
               header: {

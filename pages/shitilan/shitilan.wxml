@@ -1,10 +1,33 @@
-<view class='whole' animation="{{slide_up1}}" >
-<view  class='sign'><image  mode='widthFix' src='/pages/image/sign.png' class='background'></image></view>
+
+<view class="cu-bar margin-top"style='display:inline-block;'>
+
+<view class="cu-modal {{modalName=='ture'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar justify-end">
+      <view class='content'>请绑定</view>
+    
+    </view>
+    <view class='padding-xl'>
+      请在个人信息页面绑定账号后使用
+    </view>
+    <view class="cu-bar justify-center">
+      <view class='action padding text-center'>
+        <button class='cu-btn round  bg-red' bindtap='gobangding'>去绑定</button>
+  
+      </view>
+    </view>
+  </view>
+</view>
 
 
 
-  <view class='image' wx:for="{{shitilan}}" wx:for-index="index" wx:for-item='shitilan'>  
-  <image  class='box' mode='widthFix'  src="{{shitilan}}"></image>
+<view  class='padding text-center'>
+<image  mode='widthFix' style='width:300rpx;' src='/pages/image/sign.png' ></image></view>
+
+
+
+  <view class='flex padding text-center' wx:for="{{shitilan}}" wx:for-index="index" wx:for-item='shitilan'>  
+  <image  mode='widthFix'  src="{{shitilan}}"></image>
 
    </view>  
 

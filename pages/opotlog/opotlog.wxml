@@ -1,0 +1,29 @@
+<view class="cu-timeline">
+  <view class="cu-time">现在</view>
+  <view class='cu-item cur text-blue icon-favor'>
+    <view class="content bg-blue shadow-blur">
+      <text>2019-未来</text> 【创新】网站以进入第二版开发中，将用创新颠覆传统
+    </view>
+  </view>
+  <view class='cu-item text-red icon-attentionforbidfill'>
+    <view class="content bg-red shadow-blur">
+     <text>2018-11-06</text> 
+        【推广】值得记住的一天，OPOT推广团队正式成立。
+    </view>
+  </view>
+  <view class='cu-item text-grey icon-evaluate_fill'>
+    <view class="content bg-grey shadow-blur">
+      <text>2018-10-01</text> 
+    【网站】网站第一版测试版正式推出进行测试，第一阶段工作进行收尾。
+    </view>
+  </view>
+  <view class='cu-item text-blue'>
+    <view class="bg-green content">
+      <text>2018-06-18</text> 【加入】小程序加入OPOT团队
+    </view>
+    <view class="bg-cyan content">
+    <view class='cu-tag bg-blue light radius'> 2017-10-15</view>
+      <text>\n【启程】理想开始的日子,团队正式成立</text> 
+    </view>
+  </view>
+</view>
