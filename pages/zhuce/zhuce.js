@@ -8,7 +8,8 @@ Page({
   data: {
   username:null,
   password:null,
-  phone:null
+  phone:null,
+  openid:null
   },
 
   /**
@@ -59,7 +60,8 @@ wx.navigateTo({
       data: {
         username: that.data.username,
         phone:that.data.phone,
-        password:that.data.password
+        password:that.data.password,
+        openid:that.data.openid
 
       },
       method: 'POST',
@@ -96,7 +98,7 @@ wx.navigateTo({
     })
   },
   onLoad: function (options) {
-  
+  var openid=app.globalData.openid
   },
 
   /**

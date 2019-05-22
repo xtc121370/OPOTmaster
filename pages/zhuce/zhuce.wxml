@@ -3,8 +3,6 @@
 </view> 
 <view class="loginBox">
   <view style='width:70%;margin-left:15%;'>
-
-
  <text class='usrt'>用户名</text>
  <view  class='usr'>
 

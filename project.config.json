@@ -16,6 +16,8 @@
 	"appid": "wx950aeac16a5192d6",
 	"projectname": "OPOT%20master",
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

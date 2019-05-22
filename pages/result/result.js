@@ -53,7 +53,7 @@ banbenshuzu:[
 that.setData({
 grade:grades
  
-})
+})  
 console.log('用户选择年级：'+that.data.grade)
   },
   checkboxChange2(e) {

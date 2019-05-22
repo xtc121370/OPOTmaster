@@ -1,25 +1,21 @@
 {
   "pages": [
+    "pages/test/test",
+    "pages/bindin/bindin",
     "pages/wx/wx",
+  
+    "pages/index/index", 
+    "pages/zhuce/zhuce",
+
     "pages/shitilan/shitilan",
     "pages/result/result",
-  
-    "pages/index/index",
     "pages/denglu/denglu",
-  
     "pages/mine/mine",
     "pages/opotlog/opotlog",
-    
     "pages/pingfen/pingfen",
     "pages/fankui/fankui",
- 
     "pages/camera/camera",
-   
     "pages/cropper/cropper",
-
-
-  
-    "pages/zhuce/zhuce",
     "pages/logs/logs"
   ],
   "window": {

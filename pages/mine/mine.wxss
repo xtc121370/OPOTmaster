@@ -51,16 +51,16 @@ font-weight: 600;
 font-family: 微软雅黑;
 
 }
-.phone{
-font-size: 27rpx;
-  position: absolute;
-  top:21.5%;
-   width:500rpx;
-left: 32%;
- font-weight: 600;
-font-family: 微软雅黑;
+  .phone{
+  font-size: 27rpx;
+    position: absolute;
+    top:21.5%;
+    width:500rpx;
+  left: 32%;
+  font-weight: 600;
+  font-family: 微软雅黑;
 
-}
+  }
 .shitilan text{
 
    position: absolute;
