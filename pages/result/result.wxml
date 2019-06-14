@@ -1,54 +1,72 @@
 
-<view class='whole' animation="{{slide_up1}}">
+<!--
+<view class='action '> 
+<image bindtap="showModal" data-target="DrawerModalR" style='margin-left:92%;width:50rpx;position:fixed;top:80rpx;z-index:10;' src='../image/chouti.png' mode='widthFix' ></image>
+</view>
+-->
 
-<view class="ripple" style="{{rippleStyle}}"></view>
-<view class="container" bindtouchstart="containerTap"></view>
 
-<view class="cu-bar search" >
+<view class='fixed'>
+<view class="cu-bar search shadow-lg" >
  <view class='search-form round'>
     <text class="icon-search"></text>
-    <input type="text" placeholder="搜索试卷、知识点、题目" confirm-type="search"></input>
+    <input type="text" placeholder="搜索试卷、知识点、题目" bindinput='search' confirm-type="search" ></input>
   </view>
    <view class='action'>
-    <button class='cu-btn bg-orange shadow-blur round'>搜索</button>
+    <button class='cu-btn bg-orange shadow-blur round' bindtap='goworld' >搜索</button>
   </view>
  </view>
  
 
-<view class='action '> 
-<image bindtap="showModal" data-target="DrawerModalR" style='margin-left:89%;width:50rpx;' src='../image/chouti.png' mode='widthFix'></image>
 </view>
 
-<view class="cu-modal drawer-modal justify-end {{modalName=='DrawerModalR'?'show':''}}" bindtap='hideModal'>
-  <view class="cu-dialog  basis-lg"catchtap >
+
+
+ <view class='image padding margin-top'><image bindtap='camera' src="{{image}}" mode='aspectFill' style="width:93%;height:130px;border: 3px  #dcdcdc solid;margin-top:80rpx;"/> </view>
+<view class='sign'><image mode='widthFix' src='../image/tip.png'></image></view>
+<view class='tj'> <image mode='widthFix' src='../image/tuijian.png'></image></view>
+
+
+
+
+
+<view class='test padding 'style='font-size:16px;line-height:20px;' >
+<import src="../../wxParse/wxParse.wxml"/>
+ <view class='shadow-lg align-center  padding margin-top '  wx:for="{{replyTemArray}}" wx:key=""   >
+    <template is="wxParse" data="{{wxParseData:item}}"/>
+    <view class='flex justify-center padding'>
+    <button class="cu-btn  padding bg-green"style='border-radius:12px;width:210rpx; '  bindtap="showModal1" data-target="Modal" data-number='{{index}}'>查看解析</button>
+     <button class='cu-btn padding bg-red'style='margin-left:100rpx;border-radius:12px;width:210rpx;' bindtap='getmd5' data-md5='{{index}}' data-target='bottomModal' >添加试卷</button>
+</view>
+
+   </view>
+</view>
+
+
+<view class="cu-modal drawer-modal justify-end {{modalName=='DrawerModalR'?'show':''}}"bindtap='hideModal'  >
+  <scroll-view  class="cu-dialog  basis-lg"catchtap   scroll-y='ture' style='height:100%;' >
+
     <view class='cu-list   menu'>
       <view class='cu-item '>
-        <view class='content caption-wrap'>
-        
+        <view class='content caption-wrap'>        
           <i-collapse-item title="年级" name="name1">
-         
            <view class="cu-form-group margin-top" 
             bindtap="serviceSelection" slot="content">
-        
+       
 <checkbox-group bindchange="checkboxChange1">
   <view class="checkbox text-right" wx:for="{{nianji}}">
-    <checkbox class='round' value="{{item.name}}" style='margin-top:20rpx;' />
+    <checkbox class='round' value="{{item.value}}" style='margin-top:20rpx;' />
     {{item.value}}
   </view>
 </checkbox-group>
                </view>
-
-            
            </i-collapse-item>
         </view> 
-        
       </view>
     </view>
-
       <view class='cu-list   menu'>
       <view class='cu-item '>
         <view class='content caption-wrap'>
-        
           <i-collapse-item title="版本" name="name2">
          
            <view class="cu-form-group margin-top" 
@@ -56,85 +74,73 @@
         
 <checkbox-group bindchange="checkboxChange2">
   <view class="checkbox text-right" wx:for="{{banbenshuzu}}">
-    <checkbox class='round' value="{{item.name}}" style='margin-top:20rpx;' />
+    <checkbox class='round' value="{{item.value}}" style='margin-top:20rpx;' />
     {{item.value}}
   </view>
 </checkbox-group>
                </view>
-
-            
            </i-collapse-item>
         </view> 
-        
       </view>
-    </view>
- 
- 
-   
+    </view>  
  <view class='cu-list   menu'>
       <view class='cu-item '>
         <view class='content caption-wrap'>
-        
           <i-collapse-item title="类型" name="name2">
-    
            <view class="cu-form-group margin-top" 
             bindtap="serviceSelection" slot="content">
         
 <checkbox-group bindchange="checkboxChange3">
   <view class="checkbox text-right" wx:for="{{leixing}}">
-    <checkbox class='round' value="{{item.name}}" style='margin-top:20rpx;' />
+    <checkbox class='round' value="{{item.value}}" style='margin-top:20rpx;' />
     {{item.value}}
   </view>
 </checkbox-group>
                </view>
-
-            
            </i-collapse-item>
-        </view> 
-        
+        </view>        
       </view>
     </view>
- 
+ <button class='cu-btn radius bg-red' style='margin-top:20%;width:200rpx;'bindtap='gotuijian'>推荐</button>
+  </scroll-view>
+</view>
 
- <button class='cu-btn radius bg-red' style='margin-top:20%;width:200rpx;'>筛选</button>
+
+
+
+<view class="cu-modal bottom-modal {{modalName2=='bottomModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar" >
+      <view class='action text-green'>请选择试卷名称</view>
+      <view class='action text-blue' bindtap='hideModal'>取消</view>
+    </view>
+    <view  class='padding-sm '>
+     <view class=' justify-between  align-center  text-xl flex padding-xl radius shadow bg-white margin-top' wx:for='{{paperlist}}' >
+     
+     {{item.title}} <button  class='cu-btn round bg-red' bindtap='addQue'data-addque='{{index}}'> 添加到此试卷</button>
+     
+     </view>
+    </view>
   </view>
 </view>
 
- <view class='image padding'><image bindtap='camera' src="{{image}}" mode='aspectFill' style="width:93%;height:130px;border: 3px  #dcdcdc solid;"/> </view>
- 
-<view class='sign'><image mode='widthFix' src='../image/tip.png'></image></view>
 
-<view class='tj'> <image mode='widthFix' src='../image/tuijian.png'></image></view>
-<view class='container'>
-  <view class='section section-good'>
-    <checkbox-group bindchange="checkboxChange" value='result.unique' >
-  
-      <view class='good' wx:for='{{result}}' wx:for-item="result" wx:key="{{result.unique}}">
-     
-   
-<view class='content'>
-<view  class='same' >相似题目：</view>
-<view class='que1'><image class='que' mode="widthFix"  src='{{result.queUrl}}' ></image></view>
-     <label class="checkbox">
-     
-          <checkbox value="{{result.unique}}" checked="{{result.checked}}" hidden='hidden' />
-        <view >
 
-<image class='li' wx:if="{{!result.checked}}" mode='widthFix' src='../image/chakan.png'></image>
-  </view>
-          <view class='jx'wx:if="{{result.checked}}">
-          <text>解答如下：</text>
-          <image  mode='widthFix'   src='{{result.answerUrl}}'></image>
-          </view>
-        </label>
 
-  <view   class='tjst'>
-  <image data-lockerid="{{result.unique}}" bindtap='upload' mode='widthFix' src='../image/tjst.png'></image>
-  </view>
-</view>
-        
+<view class="cu-modal {{modalName=='Modal'?'show':''}}" catchtouchmove="true">
+  <view class="cu-dialog">
+    <view class="cu-bar justify-end">
+      <view class='content'>试题解析</view>
+      <view class='action' bindtap='hideModal'>
+        <text class='icon-close text-red'></text>
       </view>
-    </checkbox-group>  
+    </view>
+    <view class='padding text-left '>
+<import src="../../wxParse/wxParse.wxml"/>
+ <view class='shadow-lg align-center bg-white  padding margin-top ' wx:for="{{jxTemArray}}" wx:key=""  >
+    <template is="wxParse" data="{{wxParseData:item}}"/>
+   </view>
+<!-- 引入富文本显示  -->
+    </view>
   </view>
-</view>
 </view>

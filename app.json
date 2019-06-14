@@ -1,20 +1,27 @@
 {
-  "pages": [
-    "pages/test/test",
-    "pages/bindin/bindin",
-    "pages/wx/wx",
-  
-    "pages/index/index", 
-    "pages/zhuce/zhuce",
+  "pages": ["pages/wx/wx",
+"pages/result/result",
 
+    "pages/index/index",
+    "pages/camera/camera",
+   
     "pages/shitilan/shitilan",
-    "pages/result/result",
-    "pages/denglu/denglu",
-    "pages/mine/mine",
+  
+    "pages/test/test",
     "pages/opotlog/opotlog",
+    "pages/mine/mine",
+
+    "pages/text2/text2",
+    "pages/bindin/bindin",
+  
+    "pages/zhuce/zhuce",
+  
+ 
+    "pages/denglu/denglu",
+    
     "pages/pingfen/pingfen",
     "pages/fankui/fankui",
-    "pages/camera/camera",
+
     "pages/cropper/cropper",
     "pages/logs/logs"
   ],
@@ -23,40 +30,40 @@
     "navigationBarBackgroundColor": "white",
     "navigationBarTextStyle": "black"
   },
-"tabBar": {
-  "color": "black",
-      "borderStyle": "white",
-  "list": [
-  {
-    "pagePath": "pages/shitilan/shitilan",
-    "text": "我的试卷",
-    "iconPath": "pages/image/4.png",
-    "selectedIconPath": "pages/image/3.png"
+  "tabBar": {
+    "color": "black",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/shitilan/shitilan",
+        "text": "我的试卷",
+        "iconPath": "pages/image/shijuan1.png",
+        "selectedIconPath": "pages/image/shijuan.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "搜索",
+        "iconPath": "pages/image/index1.png",
+        "selectedIconPath": "pages/image/index.png"
+      },
+      {
+        "pagePath": "pages/result/result",
+        "text": "解析",
+        "iconPath": "pages/image/jx1.png",
+        "selectedIconPath": "pages/image/jx.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "pages/image/mine1.png",
+        "selectedIconPath": "pages/image/mine.png"
+      }
+    ]
   },
-  {
-    "pagePath": "pages/index/index",
-    "text": "搜索",
-    "iconPath": "pages/image/2.png",
-    "selectedIconPath": "pages/image/1.png"
-  },
-    {
-      "pagePath": "pages/result/result",
-      "text": "解析",
-      "iconPath": "pages/image/answer2.png",
-      "selectedIconPath": "pages/image/answer1.png"
-    },
-  {
-    "pagePath": "pages/mine/mine",
-    "text": "我的",
-    "iconPath": "pages/image/6.png",
-    "selectedIconPath": "pages/image/5.png"
-  }]
-  
-},
- 
   "networkTimeout": {
     "request": 10000,
     "downloadFile": 10000
   },
-  "debug": true
+  "debug": true,
+  "sitemapLocation": "sitemap97.json"
 }

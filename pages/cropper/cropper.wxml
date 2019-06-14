@@ -1,4 +1,4 @@
 <import src="/welCropper/welCropper.wxml" />
-<view class='whole'>
+<view class='whole' catchtouchmove='true'>
 <template is="welCropper" data="{{cropperData:cropperData, cropperMovableItems:cropperMovableItems, cropperChangableData:cropperChangableData}}"></template>
 </view>

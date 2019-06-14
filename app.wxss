@@ -8,7 +8,7 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
-@import"wxParse/wxParse.wxss";
+@import"/wxParse/wxParse.wxss";
 @import "icon.wxss";
 @import "colorui.wxss";
 @import"main.wxss";

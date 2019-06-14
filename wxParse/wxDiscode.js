@@ -103,13 +103,39 @@ function strGreeceDiscode(str){
 
 function strcharacterDiscode(str){
     // 加入常用解析
-  str = str.replace(/<u>/g, '___');//下划线
+  str = str.replace(/&#960;/g, 'π');
+  str = str.replace(/&#9312;/g, '①');
+  str = str.replace(/&#9313;/g, '②');
+  str = str.replace(/&#177;/g, '± ');
+  str = str.replace(/&#9314;/g, '③ ');
+  str = str.replace(/&#9315;/g, '④ ');
+  str = str.replace(/&#9316;/g, '⑤ ');
+  str = str.replace(/&#9317;/g, '⑥ ');
+  str = str.replace(/&#8804;/g, '≤');
+  str = str.replace(/<\/br>/g, '<br>');
+  str = str.replace(/&#8869;/g, '⊥');
+  str = str.replace(/&#8800;/g, '≠');
+  str = str.replace(/&#9;/g, '  ');
+  str = str.replace(/&#8765;/g, '∽');
+  str = str.replace(/&#8736;/g, '∠ ');
+  str = str.replace(/&#247;/g, '÷ ');
+
+  str = str.replace(/&#176;/g, '° ');
+  str = str.replace(/&#8741;/g, '∥ ');
+  str = str.replace(/&#215;/g, '×');
+  str = str.replace(/&#8780;/g, '≌  ');
+  str = str.replace(/&#8857;/g, '⊙ ');
+
+  str = str.replace(/&#9651;/g, '△');
+  str = str.replace(/&#8756;/g, '∴');
+  str = str.replace(/&#8757;/g, '∵');
+
   
   str = str.replace(/&nbsp;/g, '\xa0');
     str = str.replace(/&quot;/g, "'");
     str = str.replace(/&amp;/g, '&');
-    // str = str.replace(/&lt;/g, '‹');
-    // str = str.replace(/&gt;/g, '›');
+ str = str.replace(/&lt;/g, '‹');
+ str = str.replace(/&gt;/g, '›');
 
     str = str.replace(/&lt;/g, '<');
     str = str.replace(/&gt;/g, '>');

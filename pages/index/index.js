@@ -15,13 +15,63 @@ Page({
     sessionId: null,
     isChecked: false,
     mode:null,
-    grade:[{id:'年级'},
-      { id: '教材版本' },],
-    banben: [{ 'name': '教材版本' },] ,
-    tixing: [{ 'name': '题型' },],
-    nandu: [{ 'name': '难度' },]
+    search:null
   }, 
+  search: function (e) {
+    var that = this;
+    that.data.search = e.detail.value;
+    console.log(that.data.search)
 
+  },
+  goworld: function () {
+    var that = this;
+    
+    //文字搜索
+
+    wx.showLoading({
+      title: '',
+      success:function(){
+
+        wx.request({
+          url: app.globalData.Url + '/wxSearch/wordSearch',
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+            'Cookie': 'JSESSIONID=' + that.data.sessionId,
+          },
+          data: {
+            page: '1',
+            question: that.data.search
+
+          },
+
+          success: function (res) {
+            console.log(res)
+
+            app.globalData.result = res.data.data;
+            console.log('全局变量结果' + app.globalData.result)
+
+            wx.switchTab({
+              url: '../result/result',
+            })
+          },
+          fail: function () {
+            wx.showLoading({
+              title: '推荐失败请重新搜索',
+            })
+
+          }
+        })
+
+      },
+
+     
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 1000)
+   
+  },
   serviceSelection() {
     var that=this;
 if(that.data.isChecked==true)

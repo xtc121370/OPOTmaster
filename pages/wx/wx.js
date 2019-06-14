@@ -43,17 +43,8 @@ Page({
                     title: '授权中,请稍等',
                   })
 
-                  //服务器好后把跳转删掉
-                wx.switchTab({
-                    url: '../index/index',
-                  })
-                  setTimeout(function () {
-                    wx.hideLoading()
-                  }, 10000)
-
-                  /*
                   wx.request({
-                    url: app.globalData.Url + 'wLoginServlet', //服务器接口地址
+                    url: app.globalData.Url + '/wxUser/checkBinding', //服务器接口地址
                     data: {
 
                       openid: that.data.openid,
@@ -62,67 +53,37 @@ Page({
                     method: 'POST',
                     header: {
                       'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
-  
+
                     },
                     success: function (res) {
-                      console.log(res.data)
-                      console.log(res.data.status)
-                      if (res.data.status == 0) {
-                        wx.showToast({
-                          title: '请绑定账号',
-                          icon: 'none',
-                          duration: 2000,
-                          success: function () {
-
-                            wx.navigateTo({
-                              url: '../denglu/denglu',
-                            })
-                          },
-                        })
-
-
-                      }
-                      else (res.data.status == 1)
-                      {
-                        console.log('后台返回' + res.data);
-                        console.log('错误message' + res.data.message);
-                        console.log('错误状态' + res.data.status);
-                        console.log('sessionId:' + res.data.sessionId);
-                        console.log('status:' + res.data.msg.status);
-                        console.log('uid:' + res.data.u.id);
-                        console.log('phone:' + res.data.u.phone);
-                        console.log('username:' + res.data.u.username);
-                        app.globalData.sessionId = res.data.sessionId;
-                        app.globalData.name = +res.data.u.name;
-                        app.globalData.username = res.data.u.username;
-                        app.globalData.phone = +res.data.u.phone;
-                        console.log('全局变量sessionId:' + app.globalData.sessionId)
-                        wx.showToast({
-                          title: '授权成功',
-                          icon: 'success',
-                          duration: 2000,
-                          success: function () {
-                            wx.switchTab({
-                              url: '../index/index',
-                            })
-                          }
-                        })
-
-                      }
-                    },
-
-                    fail: function () {
-                      console.log('上传用户信息失败')
-                      wx.showToast({
-                        title: '服务器请求失败',
-                        icon: 'none',
-                        duration: 2000,
-
+                      if(res.data.code==1){
+                      console.log('后台返回' + res);
+      
+                      app.globalData.sessionId = res.data.data.sessionId;
+                        app.globalData.status = res.data.code;
+                      app.globalData.phone = +res.data.data.phone;
+                        console.log('全局变量status:' + app.globalData.status)
+                      console.log('全局变量sessionId:' + app.globalData.sessionId)
+                      console.log('全局变量phone:' + app.globalData.phone)
+                      wx.switchTab({
+                        url: '../index/index',
                       })
 
+                      }
+                      else {
+                        console.log('未绑定微信返回：' + res.data.code);
+                        app.globalData.status = res.data.code
+                        console.log('全局变量status:' + app.globalData.status)
+                        wx.switchTab({
+                          url: '../index/index',
+                        })
+
+                      }
                     }
-                 })
-*/
+                  })
+
+              
+           
          }
               })
               // 使用wx.getUserInfo获取用户信息
@@ -208,21 +169,12 @@ var that=this;
                                       app.globalData.openid = res.data.openid,
                                       console.log('服务器返回key:' + res.data.session_key)
                                     console.log('openid' + app.globalData.openid)
-
-
-
-                                    
-                                   wx.switchTab({
-                                      url: '../index/index',
-                                    })
-                                    //服务器配好后删掉
-
-                                    /*
+                              
                                     wx.request({
-                                      url: app.globalData.Url + 'wLoginServlet', //服务器接口地址
+                                      url: app.globalData.Url+'/wxUser/checkBinding', //服务器接口地址
                                       data: {
 
-                                        openid: that.data.openid,
+                                        openid: that.data.openid, //绑定好后更改这里
 
                                       },
                                       method: 'POST',
@@ -230,27 +182,33 @@ var that=this;
                                         'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
 
                                       },
-                                      success: function (res) {
-                                        console.log('后台返回' + res.data);
-                                        console.log('错误message' + res.data.message);
-                                        console.log('错误状态' + res.data.status);
-                                        console.log('sessionId:' + res.data.sessionId);
-                                        console.log('status:' + res.data.msg.status);
-                                        console.log('uid:' + res.data.u.id);
-                                        console.log('phone:' + res.data.u.phone);
-                                        console.log('username:' + res.data.u.username);
-                                        app.globalData.sessionId = res.data.sessionId;
-                                        app.globalData.name = +res.data.u.name;
-                                        app.globalData.username = res.data.u.username;
-                                        app.globalData.phone = +res.data.u.phone;
-                                        console.log('全局变量sessionId:' + app.globalData.sessionId)
-                                        wx.switchTab({
-                                          url: '../index/index',
+      success: function (res) {
+        if(res.data.code==1){
+                        console.log('绑定微信返回：' + res);
+                  
+                               app.globalData.sessionId = res.data.data.sessionId;
+                                app.globalData.status=res.data.code
+                                app.globalData.phone = +res.data.data.phone;
+          console.log('全局变量status:' + app.globalData.status)
+        console.log('全局变量sessionId:' + app.globalData.sessionId)
+        console.log('全局变量phone:' + app.globalData.phone)
+                             wx.switchTab({
+                             url: '../index/index',
                                         })
+        }
+        else{
+          console.log('未绑定微信返回：' + res.data.code);
+          app.globalData.status = res.data.code
+          console.log('全局变量status:' + app.globalData.status)
+          wx.switchTab({
+            url: '../index/index',
+          })
+
+        }
 
                                       }
                                     })
-*/
+
                                   }
                                 })
                                 // 使用wx.getUserInfo获取用户信息

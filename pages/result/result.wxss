@@ -2,15 +2,23 @@
 
 
 /* pages/shopcart/shopcart.wxss */
+@import"../../wxParse/wxParse.wxss";
 
 page {
-  height: 100%;
-  background:  white;
-  font-family: -apple-system-font, Arial, Helvetica, sans-serif;
-  color: #333;
-  font-size: 32rpx;
-  line-height: 1.42857;
 
+  background:  white;
+
+height: 100%;
+width: 100%;
+}
+
+.fixed{
+
+   width: 100%;
+  position: fixed;
+  top:0px;
+ overflow: hidden;
+ z-index: 99;
 }
 .is_checked{
 
@@ -341,4 +349,5 @@ background-color: #dcdcdc;
   margin-left: 20rpx;
   vertical-align: middle;
 }
+
 

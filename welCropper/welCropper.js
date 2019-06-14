@@ -178,9 +178,9 @@ var init = function (W, H) {
         })
 
         that.clearCanvas(that.data.cropperData.imageInfo)
-        wx.navigateTo({
-          url: '../camera/camera',
-        })
+      wx.switchTab({
+        url: '../index/index',
+      })
     }
 
 

@@ -5,20 +5,26 @@
 * 生命周期函数--监听页面加载
 */
 
-var app=getApp();
+var WxParse = require('../../wxParse/wxParse.js');
+var app = getApp();
 
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {StatusBar: app.globalData.StatusBar,
-    CustomBar: app.globalData.CustomBar,
+  data: {
+    list:null,
+   StatusBar: app.globalData.StatusBar,
+  CustomBar: app.globalData.CustomBar,
   sessionId:null,
   title:null,
   shitilan:null,
     modalName: null,
-  status:'0'
+  status:'1',
+  pid:null,
+  pque:null,
+  title:null
 
   },
  
@@ -32,35 +38,111 @@ gobangding:function(){
 
 
 
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
 
     // 用户点击右上角分享
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
 
     return {
 
-      title: 'title', // 分享标题
+      title: '123456', // 分享标题
 
-      desc: 'desc', // 分享描述
+      desc: '7789', // 分享描
+      path: '/pages/index/index?id=3' ,// 分享路径
+      
+success: function (res) {
+        console.log( '成功');
+        // 转发成功
+      },
+      fail:function(res){
 
-      path: 'path' // 分享路径
+console.log('fail')
 
+
+      }
     }
 
   },
- 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var that = this;
 
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName1: null
+    })
+  },
+//根据id获取试卷
+gopid:function(e){
+var that=this;
+  var o = e.currentTarget.dataset.pid
+  that.setData({
+modalName1: e.currentTarget.dataset.target,
+pid:that.data.list[o].id,
+title :that.data.list[o].title
+  })
+  console.log(that.data.pid)
+  wx.request({
+    url: app.globalData.Url + '/paper/getPaper',
+    data: {
+      sessionId: that.data.sessionId,
+      pid: that.data.pid
+    },
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+      'Cookie': 'JSESSIONID=' + that.data.sessionId,
+    },
+    success: function (res) {
+   that.data.pque = res.data.data.que;
+ 
+      var que = []
+      var b=[]
+      var a=[]
+      for (let i = 0; i < that.data.pque.length; i++) {
+        a='第',
+        a+=i+1
+        a +='题:<br><br>'
+        b=a.concat(that.data.pque[i].question)
+        que.push(b)
+      }
+  
+      console.log('题号：' +a )
+      console.log('显示题目' + que)
+      var replyArr = que;
+      for (let i = 0; i < replyArr.length; i++) {
+        WxParse.wxParse('reply' + i, 'html', replyArr[i], that);
+        if (i === replyArr.length - 1) {
+          WxParse.wxParseTemArray("replyTemArray", 'reply', replyArr.length, that)
+        }
+      }
+
+
+
+
+   
+    }
+  })
+
+},
+
+
+
+  onLoad: function (options) {
+    
+  var that = this;
   that.setData({
     sessionId: app.globalData.sessionId,
-
     shitilan: app.globalData.shitilan,
 
   })
-    if(that.data.status==0)
+  console.log(that.data.sessionId)
+  /*  if(that.data.status==0)
     {
       var that = this;
       var flag='ture';
@@ -79,11 +161,58 @@ that.setData({
   
 })
     }
-console.log(that.data.modalName)
+*/
+  
+
+  //获取试卷列表
+    wx.request({
+      url: app.globalData.Url+'/paper/getList',
+      data: {
+        sessionId: that.data.sessionId
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+         'Cookie': 'JSESSIONID=' + that.data.sessionId,
+      },
+      success: function (res) {
+
+      
+
+     that.setData({
+       list:res.data.data
+     })
+
+        console.log('我的试卷列表:' + that.data.list)
+ 
+      },
+      fail: function (res) {
+
+
+        console.log('服务器请求失败')
+      }
+    })
+
+/*console.log(that.data.modalName)
     console.log('全局试题篮图片'+that.data.shitilan)
  
   
- 
+    var test1 = that.data.result;
+    var a = []
+    for (let i = 0; i < test1.length; i++) {
+      a.push(test1[i].question)
+
+    }
+  console.log('测试测试' + a)
+    var replyArr = a;
+    for (let i = 0; i < replyArr.length; i++) {
+      WxParse.wxParse('reply' + i, 'html', replyArr[i], that);
+      if (i === replyArr.length - 1) {
+        WxParse.wxParseTemArray("replyTemArray", 'reply', replyArr.length, that)
+      }
+    }
+*/
+
 
   },
 
@@ -98,16 +227,12 @@ console.log(that.data.modalName)
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-   
-  },
+
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
-  },
+
 
   /**
    * 生命周期函数--监听页面卸载
@@ -122,48 +247,7 @@ console.log(that.data.modalName)
   onPullDownRefresh: function () {
   
     var that=this;
-   /* wx.request({
-      url: app.globalData.Url +'wGetBasketServlet',
-      data: {
-        sessionId: that.data.sessionId
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;', 'Cookie': 'JSESSIONID=' + that.data.sessionId, },
-      success: function (res) {
-
-        console.log('试题蓝返回题目:' + res.data)
-        app.globalData.shitilan = res.data;
-        console.log('全局变量' + app.globalData.shitilan)
-        wx.stopPullDownRefresh();
-        that.setData({
-
-          sessionId: app.globalData.sessionId,
-
-          shitilan: app.globalData.shitilan,
-
-        })
-
-        console.log('试题蓝返回题目:' + res.data)
-
-        console.log('试题篮内容' + that.data.shitilan)
-
-        console.log('sessionId:' + that.data.sessionId)
-
-     
-       
-        console.log('全局变量' + app.globalData.shitilan)
-
-
-
-      },
-      fail: function (res) {
-
-
-        console.log('服务器请求失败')
-      }
-    })
-    */
+   
   },
 
   onShow: function () {
@@ -200,7 +284,5 @@ console.log(that.data.modalName)
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  }
+
 })

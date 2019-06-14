@@ -147,12 +147,14 @@ function html2json(html, bindName) {
             //对img添加额外数据
             if (node.tag === 'img') {
                 node.imgIndex = results.images.length;
+           console.log(results)
                 var imgUrl = node.attr.src;
                 if (imgUrl[0] == '') {
                     imgUrl.splice(0, 1);
                 }
                 imgUrl = wxDiscode.urlToHttpUrl(imgUrl, __placeImgeUrlHttps);
                 node.attr.src = imgUrl;
+            
                 node.from = bindName;
                 results.images.push(node);
                 results.imageUrls.push(imgUrl);

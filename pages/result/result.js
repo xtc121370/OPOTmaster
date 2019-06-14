@@ -1,19 +1,22 @@
-// pages/shopcart/shopcart.js
-var app=getApp();
+var WxParse = require('../../wxParse/wxParse.js');
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    paperlist:null,
+    search:null,
     name: 'name1',
-    garde:null,
+    answer:null,
+    grade:null,
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     isChecked: false,
     md5:null,
     loadingHidden: true,
-    'checkAll': false,
     'totalCount': 0,
     'totalPrice': 0,
     answerUrl:null,
@@ -22,9 +25,7 @@ Page({
     values:null,
     sessionId:null,
     result: null ,
-    selectedFlag: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-   index:[0,1,2,3,4,5],
-    nianji: [{ name: '七上', value: '七年级上' },
+nianji: [{ name: '七上', value: '七年级上' },
       { name: '七下', value: '七年级下',  },
       { name: '八上', value: '八年级上' },
       { name: '八下', value: '八年级下' },
@@ -42,10 +43,88 @@ banbenshuzu:[
       { name: '填空', value: '填空题', },
       { name: '解答', value: '解答题' }
      
-]
+],
+    analysis:null,
+    md5:null,
            
   },
+  search:function(e){
+var that=this;
+that.data.search=e.detail.value;
+console.log(that.data.search)
+
+  },
+  goworld:function(){
+    var that=this;
+//文字搜索
+wx.showLoading({
+  title: '搜索中',
+})
+    wx.request({
+      url: app.globalData.Url+'/wxSearch/wordSearch',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+        'Cookie': 'JSESSIONID=' + that.data.sessionId,
+      },
+      data:{
+   page:'1',
+   question:that.data.search
+
+      },
+      success:function(res){
+        console.log(res)
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 1500)
+        if(res.data=="")
+        {
+wx.showLoading({
+  title: '推荐失败请重新搜索',
+})
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 1500)
+
+        }
+        
+else{
+that.setData({
+  result:res.data.data,
+})
+      app.globalData.result= res.data.data
+        var test1 = res.data.data;
+        var que= []
+        var a=[]
+        var b=[]
+        for (let i = 0; i < test1.length; i++) {
+          a = '第',
+          a += i + 1
+          a += '题:<br><br>'
+          b = a.concat(that.data.result[i].question)
+          que.push(b)
+        }
+
+        console.log('测试测试' + que)
+        var replyArr = que;
+        for (let i = 0; i < replyArr.length; i++) {
+          WxParse.wxParse('reply' + i, 'html', replyArr[i], that);
+          if (i === replyArr.length - 1) {
+            WxParse.wxParseTemArray("replyTemArray", 'reply', replyArr.length, that)
+          }
+        }
+
+
+        }
+
+
+
+      }
+    })
+  },
 //页面数据；
+
+
   checkboxChange1(e) {
     var that=this;
     var grades = e.detail.value
@@ -53,9 +132,13 @@ banbenshuzu:[
 that.setData({
 grade:grades
  
-})  
+}) 
 console.log('用户选择年级：'+that.data.grade)
   },
+
+  //用户选择年级
+
+
   checkboxChange2(e) {
     var that = this;
     var banbens = e.detail.value
@@ -66,7 +149,9 @@ console.log('用户选择年级：'+that.data.grade)
     })
     console.log('用户选择版本：' + that.data.banben)
   },
-  
+  //用户选择版本
+
+
   checkboxChange3(e) {
     var that = this;
     var types = e.detail.value
@@ -75,18 +160,155 @@ console.log('用户选择年级：'+that.data.grade)
      type: types
 
     })
-    console.log('用户选择版本：' + that.data.type)
+    console.log('用户选择类型：' + that.data.type)
+  },
+
+  //用户选择类型
+
+  //添加组卷MD5
+  getmd5(e) {
+
+    var that = this;
+    if(app.globalData.status==0){
+
+      wx.showToast({
+        title: '请登录绑定账号后操作',
+        icon:'none'
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 1500)
+    }
+    else{
+    this.setData({
+      modalName2: e.currentTarget.dataset.target
+    })
+    var m5= e.currentTarget.dataset.md5;
+    if (that.data.result[m5].md5!=null){
+      that.data.md5 = that.data.result[m5].md5
+      console.log(that.data.md5)
+    }
+    wx.request({
+      url: app.globalData.Url + '/paper/getList',
+      data: {
+        sessionId: that.data.sessionId
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+        'Cookie': 'JSESSIONID=' + that.data.sessionId,
+      },
+      success: function (res) {
+
+        that.setData({
+          paperlist: res.data.data
+        })
+
+        console.log('我的试卷列表:' + that.data.paperlist)
+
+      },
+      fail: function (res) {
+
+
+        console.log('服务器请求失败')
+      }
+    })
+    }
+  
+  
+  },
+  addQue:function(e){
+var that=this
+    var j = e.currentTarget.dataset.addque
+    that.data.pid=that.data.paperlist[j].id
+    console.log(that.data.pid)
+    if(that.data.md5==null){
+      wx.showToast({
+        title: '请搜索后添加',
+        icon:'none'
+
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 1000)
+      
+    }
+    else{
+wx.request({
+  url:app.globalData.Url+'/paper/addQue',
+  data: {
+    sessionId: that.data.sessionId,
+    md5: that.data.md5,
+    pid: that.data.pid
+  },
+  method: 'POST',
+  header: {
+    'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+    'Cookie': 'JSESSIONID=' + that.data.sessionId,
+  },
+  success: function (res) {
+
+    console.log(res)
+    wx.showToast({
+      title: '添加成功',
+
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 500)
+  }
+
+})
+    }
+
   },
   showModal(e) {
     this.setData({
       modalName: e.currentTarget.dataset.target
     })
   },
+
+  showModal1(e) {
+    var that=this;
+    var index=e.currentTarget.dataset.number;
+    console.log(index)
+    var x=[];
+      x.push(that.data.result[index].question)
+      x.push(that.data.result[index].analysis)
+      x.push(that.data.result[index].answer)
+    this.setData({
+      answer:x,
+      modalName: e.currentTarget.dataset.target
+    })
+   
+    var replyArr = x;
+    for (let i = 0; i < replyArr.length; i++) {
+      WxParse.wxParse('jx' + i, 'html', replyArr[i], that);
+      if (i === replyArr.length - 1) {
+        WxParse.wxParseTemArray("jxTemArray", 'jx', replyArr.length, that)
+      }
+    }
+
+  },
   hideModal(e) {
     this.setData({
-      modalName: null
+      modalName: null,
+      modalName1: null,
+      modalName2: null
     })
   },
+
+
+gotuijian:function(){
+  var that=this;
+console.log(that.data.grade)
+console.log(that.data.type)
+console.log(that.data.banben)
+
+
+//写服务器对接的接口就行
+},
+
 
   containerTap: function (res) {
     console.log(res.touches[0]);
@@ -100,21 +322,6 @@ console.log('用户选择年级：'+that.data.grade)
     });
   },
   //x,y轴截图数据
-  
- 
-  changeToggle: function (e) {
-    var index = e.currentTarget.dataset.index;
-    if (this.data.selectedFlag[index]) {
-      this.data.selectedFlag[index] = false;
-    } else {
-      this.data.selectedFlag[index] = true;
-    }
-
-    this.setData({
-      selectedFlag: this.data.selectedFlag
-    })
-  },
-//选中隐藏数据
 
  
  //上传图片
@@ -197,26 +404,36 @@ camera:function(){
 //点击图片跳转返回拍照页面
   onLoad: function (options) {
     var that = this;
-  
     that.setData({
-
-
       image: app.globalData.tempFilePaths,
-
       result: app.globalData.result,
 sessionId:app.globalData.sessionId,
      
   })
-   console.log('图片路径：' + that.data.image)
-   console.log('试题内容'+that.data.result)
-   console.log('sessionId:'+that.data.sessionId)
-console.log('测试'+that.data.answerUrl)
-console.log('que'+that.data.que)
+    var test1 = that.data.result;
+    
+    var que = []
+    var a= []
+    var b =[]
 
+    for (let i = 0; i < test1.length; i++) {
 
+      a = '第',
+      a += i + 1
+      a += '题:<br><br>'
+      b = a.concat(that.data.result[i].question)
+      que.push(b)
 
+    }
 
-
+    console.log('测试测试' + que)
+    var replyArr = que;
+    for (let i = 0; i < replyArr.length; i++) {
+      WxParse.wxParse('reply' + i, 'html', replyArr[i], that);
+      if (i === replyArr.length - 1) {
+        WxParse.wxParseTemArray("replyTemArray", 'reply', replyArr.length, that)
+      }
+    }
 
  },
 
@@ -240,27 +457,42 @@ console.log('que'+that.data.que)
    */
   onShow: function () {
     var that = this;
-    this.app = getApp()
-    this.app.slideupshow(this, 'slide_up1', -0, 1)
-
-    setTimeout(function () {
-      this.app.slideupshow(this, 'slide_up2', -0, 1)
-    }.bind(this), 80);
-
     that.setData({
-
-
       image: app.globalData.tempFilePaths,
-
       result: app.globalData.result,
       sessionId: app.globalData.sessionId,
 
+    }) 
+     
+     wx.pageScrollTo({
+      scrollTop:320,
+      duration:200
     })
-    console.log('图片路径：' + that.data.image)
-    console.log('试题内容' + that.data.result)
-    console.log('sessionId:' + that.data.sessionId)
-    console.log('测试' + that.data.answerUrl)
-    console.log('que' + that.data.que)
+
+var test1=that.data.result
+    var que = []
+    var a = []
+    var b = []
+
+    for (let i = 0; i < test1.length; i++) {
+
+      a = '第',
+        a += i + 1
+      a += '题:<br><br>'
+      b = a.concat(that.data.result[i].question)
+      que.push(b)
+
+    }
+
+    console.log('显示题目' + que)
+    var replyArr = que;
+    for (let i = 0; i < replyArr.length; i++) {
+      WxParse.wxParse('reply' + i, 'html', replyArr[i], that);
+      if (i === replyArr.length - 1) {
+        WxParse.wxParseTemArray("replyTemArray", 'reply', replyArr.length, that)
+      }
+    }
+    
   },
 
   /**
@@ -268,13 +500,13 @@ console.log('que'+that.data.que)
    */
   onHide: function () {
    
-    this.app = getApp()
-    //你可以看到，动画参数的200,0与渐入时的-200,1刚好是相反的，其实也就做到了页面还原的作用，使页面重新打开时重新展示动画
-    this.app.slideupshow(this, 'slide_up1', 80, 0)
-    //延时展现容器2，做到瀑布流的效果，见上面预览图
-    setTimeout(function () {
-      this.app.slideupshow(this, 'slide_up2', 80, 0)
-    }.bind(this), 80);
+   var that=this;
+   that.setData({
+
+     modalName: null,
+     modalName1: null,
+     modalName2: null,
+   })
 
   },
 
@@ -306,66 +538,8 @@ console.log('que'+that.data.que)
 
   },
 
-  /**
-   * 计算商品总数
 
-  onShareAppMessage: function () {
-
-    // 用户点击右上角分享
-
-    return {
-
-      title: 'title', // 分享标题
-
-      desc: 'desc', // 分享描述
-
-      path: 'path' // 分享路径
-
-    }
-
-  },
-  /**
-   * 用户点击商品减1
-   */
-  
-
-  
-  value:function(e){
-
-  },
-  checkboxChange: function (e) {
-    var that = this;
-    var checkboxItems = this.data.result;
-    var values = e.detail.value;
-    that.setData({
-
-      values: e.detail.value,
-    })
-    for (var i = 0; i < checkboxItems.length; ++i) {
-      checkboxItems[i].checked = false;
-      for (var j = 0; j < values.length; ++j) {
-        if (checkboxItems[i].unique == values[j]) {
-          checkboxItems[i].checked = true;
-          break;
-        }
-      }
-    }
-
-    var checkAll = false;
-    if (checkboxItems.length == values.length) {
-      checkAll = true;
-    }
-    this.setData({
-      'result': checkboxItems,
-      'checkAll': checkAll
-    });
  
-  },
-
-  //查看解析隐藏
-  /**
-   * 用户点击全选
-   */
  
 
 

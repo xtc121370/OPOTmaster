@@ -5,10 +5,10 @@
 <view class="cu-bar search" >
  <view class='search-form round'>
     <text class="icon-search"></text>
-    <input type="text" placeholder="搜索试卷、知识点、题目" confirm-type="search"></input>
+    <input type="text" placeholder="搜索试卷、知识点、题目"  bindinput='search' confirm-type="search"></input>
   </view>
    <view class='action'>
-    <button class='cu-btn bg-orange shadow-blur round'>搜索</button>
+    <button class='cu-btn bg-orange shadow-blur round' bindtap='goworld'>搜索</button>
   </view>
  </view>
 
@@ -21,32 +21,12 @@
 <import src="/welCropper/welCropper.wxml" />
 <template is="welCropper" data="{{cropperData:cropperData, cropperMovableItems:cropperMovableItems, cropperChangableData:cropperChangableData}}"></template>
 
-<view class='padding  text-center' style='margin-top:10rpx; '>
-  <image src='../image/index.png' bindtap='selectTap' data-mode='rectangle' mode='widthFix' style='width:200rpx;'></image>
+<view class='padding  text-center' style='margin-top:100rpx; '>
+  <image src='../image/search.png' bindtap='selectTap' data-mode='rectangle' mode='widthFix' style='width:200rpx;'></image>
 </view>
-<view class='padding text-center text-white lg' style='margin-top:20rpx;font-weight:800;'> 拍照试试 </view>
+<view class='padding text-center text-white lg' style='margin-top:80rpx;font-weight:800;'> 拍照试试 </view>
 
-<view class='padding text-left  text-white lg' style='margin-top:50rpx;'>热门搜索
-<image src='../image/fire.png' style='width:30rpx;'mode='widthFix'></image> 
 
-<image src='../image/nishizhen.png' style='width:30rpx;margin-left:61%;' mode='widthFix'> </image>
-<text>换一批</text>
-</view>
-
-<view class='padding justify-around'>
-<view class='cu-tag line-white padding-sm margin-xs radius 'style='margin-left:25rpx;' >2017年河北省中考试卷 </view>
-<view class='cu-tag line-white padding-sm margin-xs radius'>2017年宁夏省数学中考试卷 </view>
-<view class='cu-tag line-white padding-sm margin-xs radius 'style='margin-left:25rpx;'>2019年河北省数学中考试卷 </view>
-<view class='cu-tag line-white padding-sm margin-xs radius'>2017年河北省中考试卷 </view>
-
-</view>
-
-    <view class=' text-gray text-white text-center ' style='margin-top:60rpx;'>
-      <text >冀ICP备18020905号 </text>
-       </view>
-       <view class='text-white text-center text-lg'style='margin-top:20rpx;'>
-        <text > ©opot.net.cn版权所有     </text>   
-       </view>
 
 
 </view> 

@@ -49,12 +49,9 @@ Page({
         wx.showLoading({
           title: '加载中,请稍等',
           success: function () {
-            /*wx.switchTab({
-              url: '../result/result',
-            })
-            */
+           
             wx.uploadFile({
-              url:'https://47.94.215.104:8088/wxSearch/pictureSearch',//app.globalData.Url + 'pictureSearch',
+              url:app.globalData.Url+'/wxSearch/pictureSearch',//app.globalData.Url + 'pictureSearch',
               filePath: that.data.tempFilePaths,
               name: 'image',
               header: {
@@ -67,23 +64,22 @@ Page({
                   wx.hideLoading()
                 }, 0)
 
-                console.log('服务器返回' + res.data);
+                console.log('服务器返回' + res);
                 var jsonStr = res.data;
                 jsonStr = jsonStr.replace(" ", "");
                 if (typeof jsonStr != 'object') {
                   jsonStr = jsonStr.replace(/\ufeff/g, ""); //重点
                   var jj = JSON.parse(jsonStr);
                   res.data = jj;
-                  //app.globalData.result = res.data; //测试先注释掉
-                  app.globalData.queUrl = res.data.queUrl//测试先注释掉
+                  app.globalData.result = res.data.data; //测试先注释掉
+                  console.log('返回搜索结果' + res)
+                  console.log('全局搜索结果' + app.globalData.result)
                 }
 
                 wx.switchTab({
                   url: '../result/result',
                 })
-                console.log('返回搜索结果' + res.data)
-                console.log('全局搜索结果' + app.globalData.result)
-                console.log('问题URL' + app.globalData.queUrl)
+              
                 
               },
 

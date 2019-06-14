@@ -108,10 +108,11 @@ function wxAutoImageCal(originalWidth, originalHeight,that,bindName) {
   var autoWidth = 0, autoHeight = 0;
   var results = {};
   var padding = that.data[bindName].view.imagePadding;
+ 
   windowWidth = realWindowWidth-2*padding;
   windowHeight = realWindowHeight;
   //判断按照那种方式进行缩放
-  // console.log("windowWidth" + windowWidth);
+   console.log("windowWidth" + windowWidth);
   if (originalWidth > windowWidth) {//在图片width大于手机屏幕width时候
     autoWidth = windowWidth;
     // console.log("autoWidth" + autoWidth);
@@ -124,6 +125,7 @@ function wxAutoImageCal(originalWidth, originalHeight,that,bindName) {
     results.imageheight = originalHeight;
   }
   return results;
+  console.log()
 }
 
 function wxParseTemArray(temArrayName,bindNameReg,total,that){

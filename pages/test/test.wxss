@@ -1,1 +1,9 @@
 /* pages/test/test.wxss */
+.test image{
+
+  width: 400rpx;
+}
+page{
+
+  background-color: white;
+}

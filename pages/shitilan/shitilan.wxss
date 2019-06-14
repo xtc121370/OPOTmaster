@@ -1,9 +1,9 @@
 /* pages/shitilan/shitilan.wxss */
+@import"../../wxParse/wxParse.wxss";
 
 page{  
 
     height : 100%;
-
   
 } 
 .sign image{
