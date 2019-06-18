@@ -19,7 +19,7 @@
 <view></view>
 <view class='phone'><text>手机号:</text><text>{{phone}}</text></view>
 <view class='padding  text-left'>
- <view class='padding radius shadow-warp bg-white margin-bottom'>绑定OPOT账号
+ <view class='padding radius shadow-warp bg-white margin-bottom'bindtap='login'>绑定OPOT账号
  <!--
  <view class='cu-tag bg-red'>未绑定</view>
  -->

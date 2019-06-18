@@ -41,8 +41,29 @@
   </view>
 </view>
 
+<!-- 输入试卷名称模态框-->
+<view class="cu-modal {{modalNameAdd=='DialogModal1'?'show':''}}">
+  <view class="cu-dialog bg-white">
+    <view class="cu-bar justify-end">
+      <view class='content'>请输入试卷名称</view>
+      <view class='action' bindtap='hideModal'>
+        <text class='icon-close text-red'></text>
+      </view>
+    </view>
 
+    <view class='bg-white margin-top padding-xl' >
+     <input class='bg-white' placeholder='请输入试卷名称' bindinput='papertitle'></input>
+    </view>
 
+    <view class="cu-bar justify-end">
+      <view class='action'>
+        <button class='cu-btn line-green text-green' bindtap='hideModal'>取消</button>
+        <button class='cu-btn bg-green margin-left' bindtap='create'>确定</button>
+
+      </view>
+    </view>
+  </view>
+</view>
 
 
 
@@ -52,8 +73,16 @@
 
 -->
 <view class='padding text-center'>
-<view class='padding-xl radius shadow-warp bg-white ' data-target="Modal" wx:for='{{list}}' data-pid='{{index}}' bindtap='gopid'>
+<view class="flex  padding justify-between">
+<text class='margin-bottom text-black text-bold' style='font-size:18px;'>我的试卷</text> 
+<button class=" cu-btn sm round bg-green" bindtap='showmode' data-target="DialogModal1"><text class='icon-add' >添加</text></button>
+</view>
+
+<view class='padding radius shadow-warp bg-white  justify-between flex align-center' wx:for='{{list}}' >
+<view class='padding 'style='font-size:16px;' data-pid='{{index}}'data-target="Modal"  bindtap='gopid' >
 {{item.title}}
+</view>
+<button class='cu-btn  round bg-red'data-del='{{index}}' bindtap='delpaper' >删除试卷</button>
 
 </view>
 </view>

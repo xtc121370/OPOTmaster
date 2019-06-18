@@ -1,4 +1,7 @@
 {
-  "enablePullDownRefresh": true,
-  "navigationBarTitleText": "我的试卷"
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "我的试卷",
+  "usingComponents": {
+    "i-input": "../../dist/input/index"
+  }
 }

@@ -24,10 +24,79 @@ Page({
   status:'1',
   pid:null,
   pque:null,
-  title:null
+  title:null,
+    papertitle:null
 
   },
+  papertitle:function(e){
+var that=this;
+that.setData({
+
+  papertitle:e.detail.value
+})
+  },
+  create:function(){
+    var that=this;
+
+wx.request({
+  url: app.globalData.Url + '/paper/create',
+  data: {
+    sessionId: that.data.sessionId,
+    title: that.data.papertitle
+  },
+  method: 'POST',
+  header: {
+    'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+    'Cookie': 'JSESSIONID=' + that.data.sessionId,
+  },
+  success:function(res){
+
+    that.setData({
+      list: res.data.data,
+      modalNameAdd: null
+    })
+    console.log('渲染列表' + that.data.list)
+  }
+})
+  },
+  showmode:function(e){
+
+var that=this;
+that.setData({
+  modalNameAdd: e.currentTarget.dataset.target,
+})
+
+  },
+ delpaper:function(e){
+
+var that=this;
+var p=e.currentTarget.dataset.del
+   that.setData({
+    
+     pid: that.data.list[p].id,
+   })
+console.log('删除'+that.data.pid)
+wx.request({
+  url: app.globalData.Url +'/paper/deletePaper',
+  data: {
+    sessionId: that.data.sessionId,
+    pid: that.data.pid
+  },
+  method: 'POST',
+  header: {
+    'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+    'Cookie': 'JSESSIONID=' + that.data.sessionId,
+  },
+success:function(res){
+
  
+  that.setData({
+    list: res.data.data
+  })
+  console.log('渲染列表' +that.data.list)
+}
+})
+ },
 gobangding:function(){
 
   wx.navigateTo({
@@ -74,7 +143,9 @@ console.log('fail')
   },
   hideModal(e) {
     this.setData({
-      modalName1: null
+      modalName1: null,
+      modalName:null,
+      modalNameAdd:null
     })
   },
 //根据id获取试卷
@@ -99,8 +170,19 @@ title :that.data.list[o].title
       'Cookie': 'JSESSIONID=' + that.data.sessionId,
     },
     success: function (res) {
-   that.data.pque = res.data.data.que;
- 
+      that.setData({
+        pque : res.data.data.que
+
+      })
+  
+ if(that.data.pque.length==0){
+
+that.setData({
+  replyTemArray:null
+})
+
+ }
+ else{
       var que = []
       var b=[]
       var a=[]
@@ -114,6 +196,7 @@ title :that.data.list[o].title
   
       console.log('题号：' +a )
       console.log('显示题目' + que)
+    
       var replyArr = que;
       for (let i = 0; i < replyArr.length; i++) {
         WxParse.wxParse('reply' + i, 'html', replyArr[i], that);
@@ -122,7 +205,7 @@ title :that.data.list[o].title
         }
       }
 
-
+ }
 
 
    
@@ -193,25 +276,6 @@ that.setData({
       }
     })
 
-/*console.log(that.data.modalName)
-    console.log('全局试题篮图片'+that.data.shitilan)
- 
-  
-    var test1 = that.data.result;
-    var a = []
-    for (let i = 0; i < test1.length; i++) {
-      a.push(test1[i].question)
-
-    }
-  console.log('测试测试' + a)
-    var replyArr = a;
-    for (let i = 0; i < replyArr.length; i++) {
-      WxParse.wxParse('reply' + i, 'html', replyArr[i], that);
-      if (i === replyArr.length - 1) {
-        WxParse.wxParseTemArray("replyTemArray", 'reply', replyArr.length, that)
-      }
-    }
-*/
 
 
   },
@@ -251,12 +315,36 @@ that.setData({
   },
 
   onShow: function () {
-    this.app = getApp()
-    this.app.slideupshow(this, 'slide_up1', -0, 1)
+    var that=this;
+    that.setData({
+sessionId:app.globalData.sessionId
 
-    setTimeout(function () {
-      this.app.slideupshow(this, 'slide_up2', -0, 1)
-    }.bind(this),80);
+    })
+    wx.request({
+      url: app.globalData.Url + '/paper/getList',
+      data: {
+        sessionId: that.data.sessionId
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+        'Cookie': 'JSESSIONID=' + that.data.sessionId,
+      },
+      success: function (res) {
+
+        that.setData({
+          list: res.data.data
+        })
+
+        console.log('我的试卷列表:' + that.data.list)
+
+      },
+      fail: function (res) {
+
+
+        console.log('服务器请求失败')
+      }
+    })
   },
 
 
@@ -264,13 +352,12 @@ that.setData({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    this.app = getApp()
-    //你可以看到，动画参数的200,0与渐入时的-200,1刚好是相反的，其实也就做到了页面还原的作用，使页面重新打开时重新展示动画
-    this.app.slideupshow(this, 'slide_up1', 80, 0)
-    //延时展现容器2，做到瀑布流的效果，见上面预览图
-    setTimeout(function () {
-      this.app.slideupshow(this, 'slide_up2', 80, 0)
-    }.bind(this), 80);
+    var that = this;
+    that.setData({
+      modalName1: null,
+      modalName: null,
+      modalNameAdd: null
+    })
   },
 
   /**

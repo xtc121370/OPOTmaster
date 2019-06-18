@@ -1,24 +1,17 @@
 {
-  "pages": ["pages/wx/wx",
-"pages/result/result",
-
+  "pages": [
+        "pages/wx/wx",
+        
+      "pages/denglu/denglu",
     "pages/index/index",
+
+"pages/result/result",
     "pages/camera/camera",
-   
     "pages/shitilan/shitilan",
-  
     "pages/test/test",
     "pages/opotlog/opotlog",
     "pages/mine/mine",
-
     "pages/text2/text2",
-    "pages/bindin/bindin",
-  
-    "pages/zhuce/zhuce",
-  
- 
-    "pages/denglu/denglu",
-    
     "pages/pingfen/pingfen",
     "pages/fankui/fankui",
 

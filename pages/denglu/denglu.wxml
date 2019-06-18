@@ -19,10 +19,65 @@
 </view>
 
 <view class='padding text-center'>
-  <button class='cu-btn round lg bg- button-hover' style='border:2px #2d8cf0 solid;' bindtap='login'>绑定账号</button>
+  <button class='cu-btn round lg bg- button-hover' style='border:2px #2d8cf0 solid;' bindtap='binding'>绑定账号</button>
 </view>
 
 <view class='padding text-center'>
-  <text>绑定账号可使用更多个性化功能哦</text>
+  <text>没有账号？</text>
+  <text style='text-decoration:underline;' bindtap="showModal" data-target="DialogModal1" >注册试试</text>
 
+</view>
+
+
+<view class="cu-modal {{modalName=='DialogModal1'?'show':''}}">
+  <view class="cu-dialog bg-white">
+    <view class="cu-bar justify-end">
+      <view class='content'>注册</view>
+      <view class='action' bindtap='hideModal'>
+        <text class='icon-close text-red'></text>
+      </view>
+    </view>
+    <view class='padding-xl'>
+    
+    <view class="flex solid-bottom padding justify-start align-center">
+     <text>姓 名：</text> <input bindinput='name'  placeholder='例如：李雷'></input>
+</view>
+
+  <view class="flex solid-bottom padding  justify-start align-center">
+     <text>手机号：</text> <input bindinput='phone' placeholder='请输入手机号'></input>
+</view>
+
+
+
+  <view class="flex solid-bottom padding justify-start align-center">
+     <text>密 码：</text> <input bindinput='password' placeholder='请输入密码'></input>
+</view>
+
+<view class='flex solid-bottom padding justify-between'>
+ <picker bindchange="nianji"  mode='selector' value='{{index1}}' range='{{nianji}}'>
+  <view class="cu-tag bg-blue xl  radius">
+     <text>年 级：</text> {{nianji[index1]}}
+</view>
+</picker>
+
+<picker bindchange='jiaocai'mode='selector' value='{{index2}}' range='{{jiaocai}}'>
+<view class="cu-tag bg-blue xl  radius">
+     <text>教 材：</text>  {{jiaocai[index2]}}
+</view>
+</picker>
+
+</view>
+
+  
+
+
+    </view>
+    <view class="cu-bar justify-end">
+      <view class='action'>
+        <button class='cu-btn line-green text-green' bindtap='hideModal'>取消</button>
+        <button class='cu-btn bg-green margin-left' bindtap='gozhuce'>确定</button>
+
+      </view>
+    </view>
+  </view>
 </view>

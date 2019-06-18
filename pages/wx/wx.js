@@ -23,7 +23,6 @@ Page({
 
         wx.login({
           success: function (res) {
-
             console.log(res);
             if (res.code) {
               wx.request({
@@ -68,7 +67,6 @@ Page({
                       wx.switchTab({
                         url: '../index/index',
                       })
-
                       }
                       else {
                         console.log('未绑定微信返回：' + res.data.code);

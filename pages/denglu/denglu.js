@@ -5,19 +5,100 @@ Page({
    * 页面的初始数据
    */
   data: {
-    code:null,
+    name:null,
+    tel:null,
+    zcpass:null,
     phone: '',
     password: '',
     userInfo: '',
+    jc:null,
+    nj:null,
     status: '',
     openid:null,
+
     avatarUrl:null,
+    nianji:[ '七年级上','七年级下','八年级上','八年级下','九年级上','九年级下' ],
+    jiaocai: ['人教版', '北师大版', '华师大版', '苏科版', '湘教版', '青鸟版', '浙教版', '冀教版', '沪科版', '人教五四版', '鲁教五四版', '北京课改版', '泸科版', 
+    '人教新版', '北师大新版', '华师大新版', '苏科新版', '湘教新版', '青鸟新版', '浙教新版', '冀教新版', '沪科新版', '人教五四新版', '鲁教五四新版', '北京课改新版', '泸科新版']
     
   },
-  gozhuce: function (options) {
-    wx.navigateTo({
-      url: '../zhuce/zhuce',
+  name:function(e){
+    var that = this;
+    that.data.name = e.detail.value;
+    console.log(that.data.name)
+  },
+  phone:function(e){
+
+    var that = this;
+    that.data.tel = e.detail.value;
+    console.log(that.data.tel)
+  },
+  password:function(e){
+    var that = this;
+    that.data.zcpass= e.detail.value;
+    console.log(that.data.zcpass)
+
+  },
+  nianji: function (e) {
+var that=this;
+var a=e.detail.value
+    that.setData({
+      index1: e.detail.value,
+      nj:that.data.nianji[a]
     })
+    console.log(that.data.nj)
+  },
+  jiaocai: function (e) {
+    var that=this;
+    var b = e.detail.value
+    
+    that.setData({
+      index2: e.detail.value,
+      jc:that.data.jiaocai[b]
+    
+    })
+    console.log(that.data.jc)
+  },
+
+
+  
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+    },
+  gozhuce: function (options) {
+  var that=this;
+  wx.request({
+    url: app.globalData.Url+'/user/register',
+    data: {
+      username: that.data.name,
+      phone : that.data.tel,
+      password: that.data.zcpass,
+      nianji:that.data.nianji,
+      jiaocai:that.data.jiaocai
+    },
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+      'Cookie': 'JSESSIONID=' + that.data.sessionId,
+    },
+    success:function(res){
+
+console.log(res)
+that.setData({
+  modalName: null
+
+})
+
+    }
+
+  })
   }, //注册BUTTON跳转
   /**
    * 生命周期函数--监听页面加载
@@ -37,117 +118,68 @@ Page({
     
   },
   PhoneInput: function (e) {
-    this.data.phone = e.detail.value;
+    var that = this;
+    that.data.phone = e.detail.value;
 
   }, //获取输入账号
   PasswordInput: function (e) {
-    this.data.password = e.detail.value;
+    var that = this;
+    that.data.password = e.detail.value;
   }, //获取输入密码
 
+binding:function(){
+var that=this;
+wx.request({
+  url: app.globalData.Url +'/wxUser/Binding',
+  data: {
+    openid:that.data.openid,
+    username: that.data.phone,
+    password:that.data.password
+  },
+  method: 'POST',
+  header: {
+    'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+    'Cookie': 'JSESSIONID=' + that.data.sessionId,
+  },
+  success:function(res){
+if(res.data.status==500){
+  console.log('失败')
+  wx.showToast({
+    title: '请检查用户名密码是否正确',
+    icon: 'none'
 
-  login: function () {
-    var that = this;
+  })
+  setTimeout(function () {
+    wx.hideLoading()
+  }, 500)
+  
+}
+else{
+  wx.showToast({
+    title: '添加成功',
+    success:function(){
 
-    //打印收入账号和密码
-    console.log('账户: ', this.data.phone);
-    console.log('密码: ', this.data.password);
-    if (this.data.phone.length == 0 || this.data.password.length == 0) {
-      wx.showToast({
-        title: '用户名和密码不能为空',
-        icon: 'none',
-        duration: 2000
+      wx.navigateTo({
+        url: '../wx/wx',
       })
     }
+
+  })
+  setTimeout(function () {
+    wx.hideLoading()
+  }, 500)
+ 
+  console.log(res)
+}
    
-    wx.request({
-      url: app.globalData.Url+'wBindingServlet', //服务器接口地址
-      data: {
-        
-         phone:that.data.phone,
-         password:that.data.password,
-         openid:that.data.openid,
-
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
-
-      },
-      success: function (res) {
-        console.log('后台返回' + res.data);
-        console.log('错误message' + res.data.message);
-        console.log('错误状态' + res.data.status);
-        console.log('sessionId:' + res.data.sessionId);
-        console.log('status:' + res.data.msg.status);
-        console.log('rightmessage:' + res.data.msg.message);
-        console.log('uid:' + res.data.u.id);
-        console.log('phone:' + res.data.u.phone);
-        console.log('password:' + res.data.u.password);
-        console.log('username:' + res.data.u.username);
-        console.log('name' + res.data.u.name);
-        app.globalData.sessionId = res.data.sessionId;
-        app.globalData.name = +res.data.u.name;
-        app.globalData.username = res.data.u.username;
-        app.globalData.phone = +res.data.u.phone;
-        console.log('全局变量sessionId:' + app.globalData.sessionId)
-        if (res.data.status==2) {
-          wx.showToast({
-            title: '手机号密码错误',
-            icon: 'none',
-            duration: 2000
-          })
-        }
-
-        
-      else if(res.data.status==0){
-           
-          wx.showToast({
-            title: '用户不存在，请注册',
-            icon: 'none',
-            duration: 2000000,
-            success: function () {
-              wx.navigateTo({
-                url: '../zhuce/zhuce',
-              })
-            }
-          })
-        }
-        else {
-          wx.showToast({
-            title: '登录成功',
-            icon: 'success',
-            duration: 2000000,
-            success: function () {
-           wx.switchTab({
-             url: '../index/index',
-             
-           })
-              
-            }
-          })
-        }
-
-      },
-      fail: function () {
-
-
-        console.log('服务器请求失败!')
-        wx.showToast({
-          title: '服务器请求失败，请联系管理员',
-          icon: 'none',
-          duration: 2000
-        })
-      },
-      
-
-
-    })
-
-
-    //上传数据
 
   },
+  fail:function(res){
 
+    console.log('失败')
+  }
+})
+},
 
 
   /**

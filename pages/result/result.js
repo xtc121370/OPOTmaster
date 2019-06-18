@@ -54,6 +54,8 @@ that.data.search=e.detail.value;
 console.log(that.data.search)
 
   },
+
+  
   goworld:function(){
     var that=this;
 //文字搜索
@@ -247,7 +249,9 @@ wx.request({
     'Cookie': 'JSESSIONID=' + that.data.sessionId,
   },
   success: function (res) {
-
+that.setData({
+  modalName2: null
+})
     console.log(res)
     wx.showToast({
       title: '添加成功',

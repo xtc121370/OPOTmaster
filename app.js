@@ -83,7 +83,7 @@ App({
  
   globalData: {
     status:null,
-    Url:'http://47.94.215.104:8888',
+    Url:'http://10.14.4.133:8080',
     ceshiUrl:'',
     tempFilePath:null,
     tempFilePaths:'../image/diceng.png',
