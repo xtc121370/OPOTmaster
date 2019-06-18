@@ -25,7 +25,95 @@ Page({
   pid:null,
   pque:null,
   title:null,
-    papertitle:null
+    papertitle:null,
+    md5:null
+
+  },
+  deleteQue:function(e){
+var that=this;
+console.log(that.data.pid)
+var c=e.currentTarget.dataset.del
+console.log(c)
+console.log(that.data.pque)
+that.setData({
+md5:that.data.pque[c].md5
+
+})
+console.log(that.data.md5)
+wx.request({
+  url: app.globalData.Url + '/paper/deleteQue',
+  data: {
+    sessionId: that.data.sessionId,
+    pid:that.data.pid,
+    md5:that.data.md5
+  },
+  method: 'POST',
+  header: {
+    'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+    'Cookie': 'JSESSIONID=' + that.data.sessionId,
+  },
+  success:function(res){
+
+
+    wx.request({
+      url: app.globalData.Url + '/paper/getPaper',
+      data: {
+        sessionId: that.data.sessionId,
+        pid: that.data.pid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+        'Cookie': 'JSESSIONID=' + that.data.sessionId,
+      },
+      success: function (res) {
+        that.setData({
+          pque: res.data.data.que
+
+        })
+
+        if (that.data.pque.length == 0) {
+
+          that.setData({
+            replyTemArray: null
+          })
+
+        }
+        else {
+          var que = []
+          var b = []
+          var a = []
+          for (let i = 0; i < that.data.pque.length; i++) {
+            a = '第',
+              a += i + 1
+            a += '题:<br><br>'
+            b = a.concat(that.data.pque[i].question)
+            que.push(b)
+          }
+
+          console.log('题号：' + a)
+          console.log('显示题目' + que)
+
+          var replyArr = que;
+          for (let i = 0; i < replyArr.length; i++) {
+            WxParse.wxParse('reply' + i, 'html', replyArr[i], that);
+            if (i === replyArr.length - 1) {
+              WxParse.wxParseTemArray("replyTemArray", 'reply', replyArr.length, that)
+            }
+          }
+
+        }
+
+
+
+      }
+    })
+
+  }
+
+})
+
+
 
   },
   papertitle:function(e){
@@ -225,7 +313,7 @@ that.setData({
 
   })
   console.log(that.data.sessionId)
-  /*  if(that.data.status==0)
+ if(app.globalData.status==0)
     {
       var that = this;
       var flag='ture';
@@ -233,10 +321,8 @@ that.setData({
   modalName:flag
 
 })
-
     }
     else{
-      var that = this;
       var flag=null;
 that.setData({
   modalName: flag
@@ -244,7 +330,7 @@ that.setData({
   
 })
     }
-*/
+
   
 
   //获取试卷列表
@@ -355,7 +441,6 @@ sessionId:app.globalData.sessionId
     var that = this;
     that.setData({
       modalName1: null,
-      modalName: null,
       modalNameAdd: null
     })
   },

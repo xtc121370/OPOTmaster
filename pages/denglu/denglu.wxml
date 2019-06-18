@@ -5,18 +5,18 @@
 <image class='cu-avatar xl round margin-top text-center'style='width:150rpx;height:150rpx;' 
  src='{{avatarUrl}}'></image>
 </view>
-<view class='flex padding align-center justify-center'style='width:100%;' >
-   <text decode="{{true}}" class='padding-sm margin-xs radius text-lg    padding' style='display:inline-block;'> 账 &nbsp;   户</text>
+<view class='flex padding-sm align-center justify-center 'style='width:100%;' >
+   <text decode="{{true}}" class='margin-xs text-lg ' style='display:inline-block;font-weight:800;'> 姓 &nbsp;   名</text>
 
-     <input class='padding-sm margin-xs round'            type='number'style='border:1px black solid;display:inline-block;background-color: white;   width:300rpx;'adjust-position='true' placeholder-style='white' bindinput='PhoneInput'  name='phone'></input>
+     <input class=' margin-xs round '  placeholder='请输入姓名' style='display:inline-block;background-color: white;width:200rpx;'adjust-position='true' placeholder-style='white' bindinput='PhoneInput'  name='phone'></input>
 
 </view>
 
-<view class='flex padding align-center justify-center'style='margin-top:-10%;width:100%;' >
-   <text decode="{{true}}"class='padding-sm margin-xs radius text-lg    padding' style='display:inline-block;' >密 &nbsp;   码</text>
-
-   <input class='padding-sm margin-xs round' style='border:1px black solid;display:inline-block;background-color: white;width:300rpx;' password='true' placeholder-class='stylePl' placeholder='  ' placeholder-style='color:black' bindinput='PasswordInput' name='password'> </input>
+<view class='flex padding-sm align-center justify-center'style='width:100%;' >
+   <text decode="{{true}}"class='margin-xs radius text-lg' style='display:inline-block;font-weight:800;' >密 &nbsp;   码</text>
+   <input class=' margin-xs round' style='display:inline-block;background-color: white;width:200rpx;' placeholder-class='stylePl' placeholder='请输入密码'  placeholder-style='white'  bindinput='PasswordInput' name='password'> </input>
 </view>
+
 
 <view class='padding text-center'>
   <button class='cu-btn round lg bg- button-hover' style='border:2px #2d8cf0 solid;' bindtap='binding'>绑定账号</button>

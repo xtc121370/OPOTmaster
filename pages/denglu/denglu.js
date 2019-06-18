@@ -74,14 +74,15 @@ var a=e.detail.value
     },
   gozhuce: function (options) {
   var that=this;
+  
   wx.request({
     url: app.globalData.Url+'/user/register',
     data: {
       username: that.data.name,
       phone : that.data.tel,
       password: that.data.zcpass,
-      nianji:that.data.nianji,
-      jiaocai:that.data.jiaocai
+      nianji:that.data.nj,
+      jiaocai:that.data.jc
     },
     method: 'POST',
     header: {
@@ -95,6 +96,15 @@ that.setData({
   modalName: null
 
 })
+      wx.showToast({
+        title: '注册成功',
+        icon: 'success'
+
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 1000)
+
 
     }
 

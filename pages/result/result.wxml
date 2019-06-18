@@ -110,10 +110,16 @@
 
 <view class="cu-modal bottom-modal {{modalName2=='bottomModal'?'show':''}}">
   <view class="cu-dialog">
-    <view class="cu-bar" >
+    <view class="cu-bar  p-xs  mb-sm " >
       <view class='action text-green'>请选择试卷名称</view>
+      <button class=" cu-btn sm round bg-green" bindtap='showmode' data-target="DialogModal1"><text class='icon-add' >添加</text></button>
       <view class='action text-blue' bindtap='hideModal'>取消</view>
     </view>
+
+
+
+
+
     <view  class='padding-sm '>
      <view class=' justify-between  align-center  text-xl flex padding-xl radius shadow bg-white margin-top' wx:for='{{paperlist}}' >
      
@@ -124,7 +130,28 @@
   </view>
 </view>
 
+<view class="cu-modal {{modalNameAdd=='DialogModal1'?'show':''}}">
+  <view class="cu-dialog bg-white">
+    <view class="cu-bar justify-end">
+      <view class='content'>请输入试卷名称</view>
+      <view class='action' bindtap='hidemodeAdd'>
+        <text class='icon-close text-red'></text>
+      </view>
+    </view>
 
+    <view class='bg-white margin-top padding-xl' >
+     <input class='bg-white' placeholder='请输入试卷名称' bindinput='papertitle'></input>
+    </view>
+
+    <view class="cu-bar justify-end">
+      <view class='action'>
+        <button class='cu-btn line-green text-green' bindtap='hidemodeAdd'>取消</button>
+        <button class='cu-btn bg-green margin-left' bindtap='create'>确定</button>
+
+      </view>
+    </view>
+  </view>
+</view>
 
 
 <view class="cu-modal {{modalName=='Modal'?'show':''}}" catchtouchmove="true">

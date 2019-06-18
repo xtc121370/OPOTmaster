@@ -29,7 +29,7 @@ Page({
     //文字搜索
 
     wx.showLoading({
-      title: '',
+      title: '搜索中',
       success:function(){
 
         wx.request({
@@ -50,7 +50,9 @@ Page({
 
             app.globalData.result = res.data.data;
             console.log('全局变量结果' + app.globalData.result)
-
+            setTimeout(function () {
+              wx.hideLoading()
+            }, 1000)
             wx.switchTab({
               url: '../result/result',
             })
@@ -67,9 +69,7 @@ Page({
 
      
     })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 1000)
+   
    
   },
   serviceSelection() {

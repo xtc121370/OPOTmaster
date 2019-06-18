@@ -83,7 +83,7 @@ App({
  
   globalData: {
     status:null,
-    Url:'http://10.14.4.133:8080',
+    Url:'http://47.94.215.104:8888',
     ceshiUrl:'',
     tempFilePath:null,
     tempFilePaths:'../image/diceng.png',
@@ -93,7 +93,7 @@ App({
     queUrl:null,
     sessionId:null,
     header:null,
-    shitilan: ['../image/testshitilan.png', '../image/testshitilan.png', '../image/testshitilan.png', '../image/testshitilan.png', '../image/testshitilan.png', '../image/testshitilan.png', '../image/testshitilan.png', '../image/testshitilan.png',],
+    shitilan: [],
     shijuanjia:null,
     name:'未找到，请下拉刷新重试',
     username: 'OPOT',

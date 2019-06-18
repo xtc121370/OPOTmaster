@@ -46,7 +46,48 @@ banbenshuzu:[
 ],
     analysis:null,
     md5:null,
+    papertitle:null
            
+  },
+  papertitle: function (e) {
+    var that = this;
+    that.setData({
+
+      papertitle: e.detail.value
+    })
+  },
+  create: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.Url + '/paper/create',
+      data: {
+        sessionId: that.data.sessionId,
+        title: that.data.papertitle
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+        'Cookie': 'JSESSIONID=' + that.data.sessionId,
+      },
+      success: function (res) {
+       
+        that.setData({
+          paperlist: res.data.data,
+          modalNameAdd: null
+        })
+        console.log('渲染列表' + that.data.paperlist)
+      }
+    })
+  },
+
+  showmode:function(e){
+var that=this;
+that.setData({
+
+  modalNameAdd: e.currentTarget.dataset.target,
+})
+
+
   },
   search:function(e){
 var that=this;
@@ -294,11 +335,19 @@ that.setData({
     }
 
   },
+  hidemodeAdd(e){
+var that=this;
+that.setData({
+  modalNameAdd: null
+})
+
+  },
   hideModal(e) {
     this.setData({
       modalName: null,
       modalName1: null,
-      modalName2: null
+      modalName2: null,
+    
     })
   },
 
@@ -328,74 +377,7 @@ console.log(that.data.banben)
   //x,y轴截图数据
 
  
- //上传图片
-  upload: function (e) {
-    var that = this;
-    that.data.md5 = e.currentTarget.dataset.lockerid;
-    console.log('md5=' + that.data.md5)
-    wx.showLoading({
-      title: '添加中,请稍等',
-    })
-
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 7000)
-    console.log('sessionId:'+that.data.sessionId)
-wx.request({
-  url: app.globalData.Url+'wAddQueServlet',//服务器
-       
-       data: {
-        md5: that.data.md5,
-          sessionId:that.data.sessionId,
-       },
-     method: 'POST',
-        header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
-'Cookie': 'JSESSIONID=' +that.data.sessionId,
-   },
-       success: function (res) {
-         console.log('返回题目' + res.data)
-   },
-    
-        fail: function (res) {
-
-         console.log('服务器请求失败'+res.data)
-         
-        }
-
-     })
-    wx.request({
-      url: app.globalData.Url+'wGetBasketServlet',
-      data: {
-
-        sessionId: that.data.sessionId
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;', 'Cookie': 'JSESSIONID=' + that.data.sessionId,
-      },
-      success: function (res) {
-
-
-        wx.showToast({
-          title: '添加成功，请返回主页试题篮查看',
-          icon: 'none',
-          duration: 1500,
-        })
-
-        console.log('试题蓝返回题目:' + res.data)
-        app.globalData.shitilan = res.data;
-        console.log('全局变量' + app.globalData.shitilan)
-
-
-
-      },
-      fail:function(res){
-        console.log('服务器请求失败')
-      }
-    })
  
- },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -510,6 +492,7 @@ var test1=that.data.result
      modalName: null,
      modalName1: null,
      modalName2: null,
+     modalNameAdd: null,
    })
 
   },

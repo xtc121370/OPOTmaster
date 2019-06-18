@@ -20,9 +20,9 @@
 <view class='phone'><text>手机号:</text><text>{{phone}}</text></view>
 <view class='padding  text-left'>
  <view class='padding radius shadow-warp bg-white margin-bottom'bindtap='login'>绑定OPOT账号
- <!--
- <view class='cu-tag bg-red'>未绑定</view>
- -->
+ 
+ <view class='cu-tag {{color}}'>{{flag}}</view>
+ 
  </view>
   <view class='padding radius shadow-warp bg-white margin-bottom' bindtap='about'>关于我们</view>
     <view class='padding radius shadow-warp bg-white margin-bottom'bindtap='fankui'>反馈评分</view>

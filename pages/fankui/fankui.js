@@ -6,10 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrl: [{id:'http://r.photo.store.qq.com/psb?/V12EzWWJ3J1Roh/CBVa2RTbEQZlE2YEHchYWWT49SXiDIYgMCD6i8iHRWo!/r/dL8AAAAAAAAA'},
+    imgUrl: [{ id:'http://r.photo.store.qq.com/psb?/V12EzWWJ3J1Roh/ML47JhJpAiYDdDsHRcVVFTpID448h*QDT8rQlHdALWQ!/r/dLYAAAAAAAAA'},
     
-   {id: 'http://r.photo.store.qq.com/psb?/V12EzWWJ3J1Roh/.A*2tnxmlTgq*zBBNqJCvlDjPX5YVK7jNz0jA.Umg*Y!/r/dLkAAAAAAAAA'},
-   {id:'http://r.photo.store.qq.com/psb?/V12EzWWJ3J1Roh/RGIXpuDQHpCNZLLmhQv7ncmzEmp9pVxQ*L9Jhg1MGOA!/r/dL4AAAAAAAAA'}
+      { id: 'http://r.photo.store.qq.com/psb?/V12EzWWJ3J1Roh/as7OOa739CD7HSBUU5MDfJg4Eyh9oBRzMMvaT9WsKv4!/r/dL4AAAAAAAAA'},
+      { id:'http://r.photo.store.qq.com/psb?/V12EzWWJ3J1Roh/i3X1Ln*Kn5fMA6g7ngf2pSnN47.50OOAMpaftGc5UTs!/r/dAcBAAAAAAAA'}
              ],
 
     StatusBar: app.globalData.StatusBar,

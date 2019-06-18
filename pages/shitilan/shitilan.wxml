@@ -5,10 +5,10 @@
   <view class="cu-dialog">
     <view class="cu-bar justify-end">
 
-      <view class='content'>请绑定</view>
+      <view class='content'>请绑定OPOT账户</view>
     </view>
     <view class='padding-xl'>
-      请在个人信息页面绑定账号后使用
+      请在个人信息页面绑定账号后使用试卷功能
     </view>
     <view class="cu-bar justify-center">
       <view class='action padding text-center'>
@@ -34,6 +34,8 @@
  <view class='shadow-lg align-center  text-left padding margin-top ' data-cishu='{{index}}'  wx:for="{{replyTemArray}}" wx:key=""   >
 
     <template is="wxParse" data="{{wxParseData:item}}"/>
+  
+    <button class=' round bg-red margin-top xl' style='display:block;font-size:15px;' data-del='{{index}}' bindtap='deleteQue'><text class="icon-close"></text> 删除试题</button>
 
 </view>
 </view>
