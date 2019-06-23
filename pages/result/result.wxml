@@ -23,7 +23,7 @@
 
 
  <view class='image padding margin-top'><image bindtap='camera' src="{{image}}" mode='aspectFill' style="width:93%;height:130px;border: 3px  #dcdcdc solid;margin-top:80rpx;"/> </view>
-<view class='sign'><image mode='widthFix' src='../image/tip.png'></image></view>
+
 <view class='tj'> <image mode='widthFix' src='../image/tuijian.png'></image></view>
 
 
@@ -112,7 +112,7 @@
   <view class="cu-dialog">
     <view class="cu-bar  p-xs  mb-sm " >
       <view class='action text-green'>请选择试卷名称</view>
-      <button class=" cu-btn sm round bg-green" bindtap='showmode' data-target="DialogModal1"><text class='icon-add' >添加</text></button>
+      <button class=" cu-btn sm round bg-green" bindtap='showmode' data-target="DialogModal1"><text class='icon-add' >新建</text></button>
       <view class='action text-blue' bindtap='hideModal'>取消</view>
     </view>
 
@@ -135,7 +135,7 @@
     <view class="cu-bar justify-end">
       <view class='content'>请输入试卷名称</view>
       <view class='action' bindtap='hidemodeAdd'>
-        <text class='icon-close text-red'></text>
+        <text class='icon-close text-red'style='font-size:28px;'></text>
       </view>
     </view>
 
@@ -154,15 +154,15 @@
 </view>
 
 
-<view class="cu-modal {{modalName=='Modal'?'show':''}}" catchtouchmove="true">
+<view class="cu-modal {{modalName=='Modal'?'show':''}}" >
   <view class="cu-dialog">
     <view class="cu-bar justify-end">
       <view class='content'>试题解析</view>
       <view class='action' bindtap='hideModal'>
-        <text class='icon-close text-red'></text>
+        <text class='icon-close text-red' style='font-size:28px;'></text>
       </view>
     </view>
-    <view class='padding text-left '>
+    <view class='padding text-left text-lg  ' style='line-height:20px;'>
 <import src="../../wxParse/wxParse.wxml"/>
  <view class='shadow-lg align-center bg-white  padding margin-top ' wx:for="{{jxTemArray}}" wx:key=""  >
     <template is="wxParse" data="{{wxParseData:item}}"/>

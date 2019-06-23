@@ -12,9 +12,6 @@ Page({
     name: 'name1',
     answer:null,
     grade:null,
-    StatusBar: app.globalData.StatusBar,
-    CustomBar: app.globalData.CustomBar,
-    isChecked: false,
     md5:null,
     loadingHidden: true,
     'totalCount': 0,
@@ -52,7 +49,6 @@ banbenshuzu:[
   papertitle: function (e) {
     var that = this;
     that.setData({
-
       papertitle: e.detail.value
     })
   },
@@ -80,24 +76,23 @@ banbenshuzu:[
     })
   },
 
-  showmode:function(e){
+showmode:function(e){
 var that=this;
 that.setData({
-
   modalNameAdd: e.currentTarget.dataset.target,
 })
 
 
   },
-  search:function(e){
+search:function(e){
 var that=this;
 that.data.search=e.detail.value;
 console.log(that.data.search)
 
   },
 
-  
-  goworld:function(){
+ 
+goworld:function(){
     var that=this;
 //文字搜索
 wx.showLoading({
@@ -117,14 +112,14 @@ wx.showLoading({
       },
       success:function(res){
         console.log(res)
-        setTimeout(function () {
-          wx.hideLoading()
-        }, 1500)
+          wx.hideLoading() 
         if(res.data=="")
         {
-wx.showLoading({
-  title: '推荐失败请重新搜索',
-})
+          wx.showToast({
+            title: '推荐失败请重新搜索',
+            icon: 'none'
+
+          })
           setTimeout(function () {
             wx.hideLoading()
           }, 1500)
@@ -167,8 +162,8 @@ that.setData({
   },
 //页面数据；
 
-
-  checkboxChange1(e) {
+/* 筛选用js
+ checkboxChange1(e) {
     var that=this;
     var grades = e.detail.value
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
@@ -205,7 +200,7 @@ console.log('用户选择年级：'+that.data.grade)
     })
     console.log('用户选择类型：' + that.data.type)
   },
-
+*/
   //用户选择类型
 
   //添加组卷MD5
@@ -215,7 +210,7 @@ console.log('用户选择年级：'+that.data.grade)
     if(app.globalData.status==0){
 
       wx.showToast({
-        title: '请登录绑定账号后操作',
+        title: '请去我的页面绑定账号后操作',
         icon:'none'
       })
       setTimeout(function () {
@@ -260,7 +255,7 @@ console.log('用户选择年级：'+that.data.grade)
   
   
   },
-  addQue:function(e){
+addQue:function(e){
 var that=this
     var j = e.currentTarget.dataset.addque
     that.data.pid=that.data.paperlist[j].id
@@ -391,7 +386,7 @@ camera:function(){
   onLoad: function (options) {
     var that = this;
     that.setData({
-      image: app.globalData.tempFilePaths,
+      image: app.globalData.tempFilePath,
       result: app.globalData.result,
 sessionId:app.globalData.sessionId,
      
@@ -431,8 +426,8 @@ sessionId:app.globalData.sessionId,
     that.setData({
 
 
-      image: app.globalData.tempFilePaths,
-     
+      image: app.globalData.tempFilePath,
+      result: app.globalData.result,
       sessionId: app.globalData.sessionId,
 
     })//页面数据初始化
@@ -444,15 +439,15 @@ sessionId:app.globalData.sessionId,
   onShow: function () {
     var that = this;
     that.setData({
-      image: app.globalData.tempFilePaths,
+      image: app.globalData.tempFilePath,
       result: app.globalData.result,
       sessionId: app.globalData.sessionId,
 
     }) 
      
      wx.pageScrollTo({
-      scrollTop:320,
-      duration:200
+      scrollTop:230,
+      duration:150
     })
 
 var test1=that.data.result

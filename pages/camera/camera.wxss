@@ -1,5 +1,4 @@
 /* pages/camera/camera.wxss */
-@import "/welCropper/welCropper.wxss";
 page{  
 
 

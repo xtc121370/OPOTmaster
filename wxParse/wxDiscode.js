@@ -103,6 +103,8 @@ function strGreeceDiscode(str){
 
 function strcharacterDiscode(str){
     // 加入常用解析
+  str = str.replace(/&#8242;/g, '′');
+  str = str.replace(/&#8243;/g, '″');
   str = str.replace(/&#960;/g, 'π');
   str = str.replace(/&#9312;/g, '①');
   str = str.replace(/&#9313;/g, '②');

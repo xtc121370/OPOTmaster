@@ -82,11 +82,12 @@ App({
 
  
   globalData: {
+    test:null,
     status:null,
-    Url:'http://47.94.215.104:8888',
+    Url:'https://wx.opot.net.cn',
     ceshiUrl:'',
     tempFilePath:null,
-    tempFilePaths:'../image/diceng.png',
+    tempFilePaths:null,
     userInfo: null,
     result: [{ "question":"请搜索后查看解析题目","md5":null}],
     answerUrl:null,

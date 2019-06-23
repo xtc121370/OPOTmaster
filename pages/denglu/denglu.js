@@ -15,7 +15,6 @@ Page({
     nj:null,
     status: '',
     openid:null,
-
     avatarUrl:null,
     nianji:[ '七年级上','七年级下','八年级上','八年级下','九年级上','九年级下' ],
     jiaocai: ['人教版', '北师大版', '华师大版', '苏科版', '湘教版', '青鸟版', '浙教版', '冀教版', '沪科版', '人教五四版', '鲁教五四版', '北京课改版', '泸科版', 
@@ -51,17 +50,12 @@ var a=e.detail.value
   jiaocai: function (e) {
     var that=this;
     var b = e.detail.value
-    
     that.setData({
       index2: e.detail.value,
       jc:that.data.jiaocai[b]
-    
     })
     console.log(that.data.jc)
   },
-
-
-  
   showModal(e) {
     this.setData({
       modalName: e.currentTarget.dataset.target
@@ -74,7 +68,6 @@ var a=e.detail.value
     },
   gozhuce: function (options) {
   var that=this;
-  
   wx.request({
     url: app.globalData.Url+'/user/register',
     data: {

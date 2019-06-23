@@ -5,10 +5,6 @@
 </view>
 <view  class="padding radius shadow-warp bg-white margin-top text-center">
 
-    <i-cell title="自定义星星大小">
-        <i-rate bind:change="onChange2" value="{{starIndex2}}" 
-            size="32"> {{starIndex2}}星
-        </i-rate>
-    </i-cell>
+  <i-input value="{{ value5 }}" title="意见：" type='textarea' placeholder="请输入您的意见与建议" />
    <button class='margin-xs cu-btn round  bg-blue' style='right:0rpx;' bindtap='upload'>提交</button>
 </view>

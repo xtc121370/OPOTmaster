@@ -3,11 +3,7 @@ var app = getApp();
 const device = wx.getSystemInfoSync()
 const W = device.windowWidth
 const H = device.windowHeight - 50
-
-let cropper = require('../../welCropper/welCropper.js');
-
 console.log(device)
-
 Page({
 
   /**
@@ -16,7 +12,6 @@ Page({
   data: {
     tempFilePaths: '',
     mode: null,
-
   },
   takePhoto(e) {
     var that= this;
@@ -70,20 +65,15 @@ Page({
 
   },
   close:function(){
-
 wx.switchTab({
   url: '../index/index',
 })
-
-
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that=this;
-    cropper.init.apply(that, [W, H]);
-
   },
 
   /**

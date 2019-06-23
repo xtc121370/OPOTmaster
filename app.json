@@ -1,16 +1,20 @@
 {
   "pages": [
-    "pages/wx/wx",
-    "pages/denglu/denglu", 
+
+  "pages/wx/wx",
+    "pages/fankui/fankui",
+ 
+    "pages/pingfen/pingfen",
     "pages/index/index",
+    "pages/cropper/cropper",              
+    "pages/denglu/denglu", 
     "pages/result/result",
     "pages/camera/camera",
     "pages/shitilan/shitilan",
     "pages/opotlog/opotlog",
     "pages/mine/mine",
-    "pages/pingfen/pingfen",
-    "pages/fankui/fankui",
-    "pages/cropper/cropper",
+
+   
     "pages/logs/logs"
   ],
   "window": {
@@ -36,7 +40,7 @@
       },
       {
         "pagePath": "pages/result/result",
-        "text": "解析",
+        "text": "题目",
         "iconPath": "pages/image/jx1.png",
         "selectedIconPath": "pages/image/jx.png"
       },

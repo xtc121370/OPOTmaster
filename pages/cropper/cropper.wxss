@@ -1,16 +1,2 @@
-/* pages/cropper/cropper.wxss */
-@import "/welCropper/welCropper.wxss";
-page{  
-
-
-    width : 100%;
-  overflow: hidden; 
-} 
-.whole{ 
-
-    width : 100%;
-  overflow: hidden; 
-  
-   height : 100%;
-    box-sizing: border-box;
-}
+/* pages/test/test.wxss */
+@import '../../image-cropper/image-cropper.wxss' ;

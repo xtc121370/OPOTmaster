@@ -6,15 +6,15 @@
  src='{{avatarUrl}}'></image>
 </view>
 <view class='flex padding-sm align-center justify-center 'style='width:100%;' >
-   <text decode="{{true}}" class='margin-xs text-lg ' style='display:inline-block;font-weight:800;'> 姓 &nbsp;   名</text>
+   <text decode="{{true}}" class='margin-xs text-lg ' style='display:inline-block;font-weight:800;'> 账 &nbsp;   号</text>
 
-     <input class=' margin-xs round '  placeholder='请输入姓名' style='display:inline-block;background-color: white;width:200rpx;'adjust-position='true' placeholder-style='white' bindinput='PhoneInput'  name='phone'></input>
+     <input class=' margin-xs round '  placeholder='请输入姓名或手机号' style='display:inline-block;background-color: white;width:250rpx;'adjust-position='true' placeholder-style='white' bindinput='PhoneInput'  name='phone'></input>
 
 </view>
 
 <view class='flex padding-sm align-center justify-center'style='width:100%;' >
    <text decode="{{true}}"class='margin-xs radius text-lg' style='display:inline-block;font-weight:800;' >密 &nbsp;   码</text>
-   <input class=' margin-xs round' style='display:inline-block;background-color: white;width:200rpx;' placeholder-class='stylePl' placeholder='请输入密码'  placeholder-style='white'  bindinput='PasswordInput' name='password'> </input>
+   <input class=' margin-xs round' style='display:inline-block;background-color: white;width:250rpx;' placeholder-class='stylePl' placeholder='请输入密码'  placeholder-style='white'  bindinput='PasswordInput' name='password'> </input>
 </view>
 
 
@@ -34,7 +34,7 @@
     <view class="cu-bar justify-end">
       <view class='content'>注册</view>
       <view class='action' bindtap='hideModal'>
-        <text class='icon-close text-red'></text>
+        <text class='icon-close text-red'style='font-size:28px;'></text>
       </view>
     </view>
     <view class='padding-xl'>

@@ -7,7 +7,6 @@
 
 var WxParse = require('../../wxParse/wxParse.js');
 var app = getApp();
-
 Page({
 
   /**
@@ -309,8 +308,6 @@ that.setData({
   var that = this;
   that.setData({
     sessionId: app.globalData.sessionId,
-    shitilan: app.globalData.shitilan,
-
   })
   console.log(that.data.sessionId)
  if(app.globalData.status==0)
@@ -326,41 +323,37 @@ that.setData({
       var flag=null;
 that.setData({
   modalName: flag
-
-  
 })
+   wx.request({
+     url: app.globalData.Url + '/paper/getList',
+     data: {
+       sessionId: that.data.sessionId
+     },
+     method: 'POST',
+     header: {
+       'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+       'Cookie': 'JSESSIONID=' + that.data.sessionId,
+     },
+     success: function (res) {
+
+
+
+       that.setData({
+         list: res.data.data
+       })
+
+       console.log('我的试卷列表:' + that.data.list)
+
+     },
+     fail: function (res) {
+
+
+       console.log('服务器请求失败')
+     }
+   })
     }
-
-  
-
   //获取试卷列表
-    wx.request({
-      url: app.globalData.Url+'/paper/getList',
-      data: {
-        sessionId: that.data.sessionId
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
-         'Cookie': 'JSESSIONID=' + that.data.sessionId,
-      },
-      success: function (res) {
-
-      
-
-     that.setData({
-       list:res.data.data
-     })
-
-        console.log('我的试卷列表:' + that.data.list)
- 
-      },
-      fail: function (res) {
-
-
-        console.log('服务器请求失败')
-      }
-    })
+   
 
 
 
@@ -401,36 +394,48 @@ that.setData({
   },
 
   onShow: function () {
-    var that=this;
+    var that = this;
     that.setData({
-sessionId:app.globalData.sessionId
-
+      sessionId: app.globalData.sessionId,
     })
-    wx.request({
-      url: app.globalData.Url + '/paper/getList',
-      data: {
-        sessionId: that.data.sessionId
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
-        'Cookie': 'JSESSIONID=' + that.data.sessionId,
-      },
-      success: function (res) {
+    console.log(that.data.sessionId)
+    if (app.globalData.status == 0) {
+      var that = this;
+      var flag = 'ture';
+      that.setData({
+        modalName: flag
 
-        that.setData({
-          list: res.data.data
-        })
+      })
+    }
+    else {
+      var flag = null;
+      that.setData({
+        modalName: flag
+      })
+      wx.request({
+        url: app.globalData.Url + '/paper/getList',
+        data: {
+          sessionId: that.data.sessionId
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+          'Cookie': 'JSESSIONID=' + that.data.sessionId,
+        },
+        success: function (res) {
+          that.setData({
+            list: res.data.data
+          })
 
-        console.log('我的试卷列表:' + that.data.list)
+          console.log('我的试卷列表:' + that.data.list)
 
-      },
-      fail: function (res) {
-
-
-        console.log('服务器请求失败')
-      }
-    })
+        },
+        fail: function (res) {
+          console.log('服务器请求失败')
+        }
+      })
+    }
+  //获取试卷列表
   },
 
 

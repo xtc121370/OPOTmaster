@@ -24,9 +24,10 @@
  <view class='cu-tag {{color}}'>{{flag}}</view>
  
  </view>
-  <view class='padding radius shadow-warp bg-white margin-bottom' bindtap='about'>关于我们</view>
+  <view class='padding radius shadow-warp bg-white margin-bottom' bindtap='time'>关于我们</view>
+  
     <view class='padding radius shadow-warp bg-white margin-bottom'bindtap='fankui'>反馈评分</view>
-     <view class='padding radius shadow-warp bg-white margin-bottom' bindtap='time'>OPOT日志</view>
+    <view class='padding radius shadow-warp bg-white margin-bottom' bindtap='about'>了解网站</view>
 </view>
 <view class='more'>
 <view class="padding text-center">

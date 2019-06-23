@@ -1,164 +1,126 @@
-// pages/cropper/cropper.js
-var app=getApp()
 var app = getApp();
-const device = wx.getSystemInfoSync()
-const W = device.windowWidth
-const H = device.windowHeight - 50
-
-let cropper = require('../../welCropper/welCropper.js');
-
-console.log(device)
-
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  tempFilePath:null,
-    mode:'rectangle',
-    tempFilePaths:null
+    src: '',
+    width: 300,//宽度
+    height: 150,//高度,
+    test: null,
+    tempFilePaths: null
   },
+  no: function () {
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+    wx.navigateTo({
+      url: '../camera/camera',
+    })
+  },
   onLoad: function (options) {
-    var that=this;
-    cropper.init.apply(that, [W, H]);
-    that.data.tempFilePath=app.globalData.tempFilePath,
-    console.log('测试：'+that.data.mode)
-    console.log(that.data.tempFilePath)
-    that.showCropper({
-      src: that.data.tempFilePath,
-      mode: that.data.mode,
-      sizeType: ['original'], //'original'(default) | 'compressed'
-      callback: (res) => {
-        if (that.data.mode == 'rectangle') {
-          console.log("crop callback:" + res)
-          app.globalData.tempFilePaths=res;
-          that.setData({
+    var that = this;
+    console.log(app.globalData.tempFilePath)
+    //获取到image-cropper对象
+    this.cropper = this.selectComponent("#image-cropper");
+    //开始裁剪
+    that.setData({
+      src: app.globalData.tempFilePath,
+    });
+    console.log(that.data.src)
+    wx.showLoading({
+      title: '加载中'
+    })
+  },
+  cropperload(e) {
+    console.log("cropper初始化完成");
+  },
+  loadimage(e) {
+    console.log("图片加载完成", e.detail);
+    wx.hideLoading();
+    //重置图片角度、缩放、位置
+    this.cropper.imgReset();
+  },
+  getImg() {
+    var that = this;
+    this.cropper.getImg((obj) => {
+      that.data.tempFilePaths = obj.url;
+      console.log(that.data.tempFilePaths)
+      wx.showLoading({
+        title: '推荐中',
+      })
+      wx.uploadFile({
+        url: app.globalData.Url + '/wxSearch/pictureSearch',//app.globalData.Url + 'pictureSearch',
+        filePath: that.data.tempFilePaths,
+        name: 'image',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
+          'Cookie': 'JSESSIONID=' + that.data.sessionId,
+        },
 
-            tempFilePaths: res,
-
-          })
-          console.log('本地返回' + that.data.tempFilePaths)
-          console.log('全局' + app.globalData.tempFilePaths)
-          console.log(res)
-        }
-        wx.showLoading({
-          title: '加载中,请稍等',
-          success: function () {
-           
-            wx.uploadFile({
-              url:app.globalData.Url+'/wxSearch/pictureSearch',//app.globalData.Url + 'pictureSearch',
-              filePath: that.data.tempFilePaths,
-              name: 'image',
-              header: {
-                'content-type': 'application/x-www-form-urlencoded;charset=utf-8;',
-                'Cookie': 'JSESSIONID=' + that.data.sessionId,
-              },
-
-              success: function (res) {
-                setTimeout(function () {
-                  wx.hideLoading()
-                }, 0)
-
-                console.log('服务器返回' + res);
-                var jsonStr = res.data;
-                jsonStr = jsonStr.replace(" ", "");
-                if (typeof jsonStr != 'object') {
-                  jsonStr = jsonStr.replace(/\ufeff/g, ""); //重点
-                  var jj = JSON.parse(jsonStr);
-                  res.data = jj;
-                  app.globalData.result = res.data.data; //测试先注释掉
-                  console.log('返回搜索结果' + res)
-                  console.log('全局搜索结果' + app.globalData.result)
-                }
-
-                wx.switchTab({
-                  url: '../result/result',
-                })
-              
-                
-              },
-
-              fail: function (res) {
-                console.log(res)
-                wx.showLoading({
-                  title: '推荐失败，请联系管理员',
-                })
-
-                setTimeout(function () {
-                  wx.hideLoading()
-                }, 3000)
-
-
-
-              },
-
-            })
-            
-
+        success: function (res) {
          
+            wx.hideLoading()
+         
+          if (res.statusCode==500){
+            wx.showLoading({
+              title: '推荐失败请重新选择图片搜索',
+              icon:'none'
+            })
+            setTimeout(function () {
+              wx.hideLoading()
+            }, 1000)
 
           }
-        })
-        setTimeout(function () {
+          else{
+          console.log('服务器返回' + res);
+          var jsonStr = res.data;
+          jsonStr = jsonStr.replace(" ", "");
+          if (typeof jsonStr != 'object') {
+            jsonStr = jsonStr.replace(/\ufeff/g, ""); //重点
+            var jj = JSON.parse(jsonStr);
+            res.data = jj;
+            app.globalData.result = res.data.data; //测试先注释掉
+            console.log('返回搜索结果' + res)
+            console.log('全局搜索结果' + app.globalData.result)
+          }
           wx.hideLoading()
-        }, 3000)
-        //隐藏，我在项目里是点击完成就上传，所以如果回调是上传，那么隐藏掉就行了，不用previewImage
-      }
+          wx.switchTab({
+            url: '../result/result',
+          })
+          }
+
+        },
+
+        fail: function (res) {
+          console.log(res)
+          wx.showToast({
+            title: '推荐失败请重新搜索',
+            icon: 'none'
+
+          })
+
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 1500)
+
+
+
+        },
+
+      })
+
+
+    });
+
+
+  },
+  clickcut(e) {
+    var that = this
+    console.log(e.detail);
+
+    //点击裁剪框阅览图片
+    wx.previewImage({
+      current: e.detail.url, // 当前显示图片的http链接
+      urls: [e.detail.url] // 需要预览的图片http链接列表
     })
-
+    wx.navigateTo({
+      url: '../test1/test1',
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

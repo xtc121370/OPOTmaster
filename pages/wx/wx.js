@@ -41,7 +41,9 @@ Page({
                   wx.showLoading({
                     title: '授权中,请稍等',
                   })
-
+                  setTimeout(function () {
+                    wx.hideLoading()
+                  }, 1500)
                   wx.request({
                     url: app.globalData.Url + '/wxUser/checkBinding', //服务器接口地址
                     data: {
@@ -55,6 +57,7 @@ Page({
 
                     },
                     success: function (res) {
+                      
                       if(res.data.code==1){
                       console.log('后台返回' + res);
       
@@ -172,7 +175,7 @@ var that=this;
                                       url: app.globalData.Url+'/wxUser/checkBinding', //服务器接口地址
                                       data: {
 
-                                        openid: that.data.openid, //绑定好后更改这里
+                                        openid:that.data.openid, //绑定好后更改这里
 
                                       },
                                       method: 'POST',

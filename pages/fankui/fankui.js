@@ -7,7 +7,6 @@ Page({
    */
   data: {
     imgUrl: [{ id:'http://r.photo.store.qq.com/psb?/V12EzWWJ3J1Roh/ML47JhJpAiYDdDsHRcVVFTpID448h*QDT8rQlHdALWQ!/r/dLYAAAAAAAAA'},
-    
       { id: 'http://r.photo.store.qq.com/psb?/V12EzWWJ3J1Roh/as7OOa739CD7HSBUU5MDfJg4Eyh9oBRzMMvaT9WsKv4!/r/dL4AAAAAAAAA'},
       { id:'http://r.photo.store.qq.com/psb?/V12EzWWJ3J1Roh/i3X1Ln*Kn5fMA6g7ngf2pSnN47.50OOAMpaftGc5UTs!/r/dAcBAAAAAAAA'}
              ],

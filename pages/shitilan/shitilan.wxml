@@ -8,7 +8,7 @@
       <view class='content'>请绑定OPOT账户</view>
     </view>
     <view class='padding-xl'>
-      请在个人信息页面绑定账号后使用试卷功能
+      请绑定后使用试卷功能
     </view>
     <view class="cu-bar justify-center">
       <view class='action padding text-center'>
@@ -25,7 +25,7 @@
     <view class="cu-bar justify-end">
       <view class='content'>试卷：{{title}}</view>
       <view class='action' bindtap='hideModal'>
-        <text class='icon-close text-red'></text>
+        <text class='icon-close text-red'style='font-size:28px;'></text>
       </view>
     </view>
     
@@ -49,7 +49,7 @@
     <view class="cu-bar justify-end">
       <view class='content'>请输入试卷名称</view>
       <view class='action' bindtap='hideModal'>
-        <text class='icon-close text-red'></text>
+        <text class='icon-close text-red'style='font-size:28px;'></text>
       </view>
     </view>
 
@@ -77,7 +77,7 @@
 <view class='padding text-center'>
 <view class="flex  padding justify-between">
 <text class='margin-bottom text-black text-bold' style='font-size:18px;'>我的试卷</text> 
-<button class=" cu-btn sm round bg-green" bindtap='showmode' data-target="DialogModal1"><text class='icon-add' >添加</text></button>
+<button class=" cu-btn sm round bg-green" bindtap='showmode' data-target="DialogModal1"><text class='icon-add' >新建</text></button>
 </view>
 
 <view class='padding radius shadow-warp bg-white  justify-between flex align-center' wx:for='{{list}}' >

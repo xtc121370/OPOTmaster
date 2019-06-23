@@ -2,7 +2,7 @@
   <view class="cu-time">现在</view>
   <view class='cu-item cur text-blue icon-favor'>
     <view class="content bg-blue shadow-blur">
-      <text>2019-未来</text> 【创新】网站以进入第二版开发中，将用创新颠覆传统
+      <text>2019-未来</text> 【创新】网站已发布第二版，将用创新颠覆传统
     </view>
   </view>
   <view class='cu-item text-red icon-attentionforbidfill'>
