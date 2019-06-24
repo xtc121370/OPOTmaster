@@ -143,7 +143,7 @@ that.setData({
           que.push(b)
         }
 
-        console.log('测试测试' + que)
+    
         var replyArr = que;
         for (let i = 0; i < replyArr.length; i++) {
           WxParse.wxParse('reply' + i, 'html', replyArr[i], that);
@@ -288,6 +288,18 @@ wx.request({
 that.setData({
   modalName2: null
 })
+if(res.data.code==0){
+  wx.showToast({
+    title: '题目已存在此试卷中',
+    icon:'none'
+
+  })
+  setTimeout(function () {
+    wx.hideLoading()
+  }, 500)
+
+}
+else{
     console.log(res)
     wx.showToast({
       title: '添加成功',
@@ -296,7 +308,9 @@ that.setData({
     setTimeout(function () {
       wx.hideLoading()
     }, 500)
+}
   }
+
 
 })
     }
@@ -407,7 +421,7 @@ sessionId:app.globalData.sessionId,
 
     }
 
-    console.log('测试测试' + que)
+
     var replyArr = que;
     for (let i = 0; i < replyArr.length; i++) {
       WxParse.wxParse('reply' + i, 'html', replyArr[i], that);

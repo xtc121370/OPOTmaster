@@ -78,46 +78,54 @@
   top:-2.5px;
   height:2.5px;
   width:33rpx;
+  border: 3px solid #2d8cf0;
 }
 .border-top-right{
   right:-2.5px;
   top:-2.5px;
   height:2.5px;
   width:33rpx;
+    border: 3px solid #2d8cf0;
 }
 .border-right-top{
   top:-1px;
   width:2.5px;
   height:30rpx;
   right:-2.5px;
+    border: 3px solid #2d8cf0;
 }
 .border-right-bottom{
   width:2.5px;
   height:30rpx;
   right:-2.5px;
   bottom:-1px;
+    border: 3px solid #2d8cf0;
 }
 .border-bottom-left{
   height:2.5px;
   width:33rpx;
   bottom:-2.5px;
   left:-2.5px;
+    border: 3px solid #2d8cf0;
 }
 .border-bottom-right{
   height:2.5px;
   width:33rpx;
   bottom:-2.5px;
   right:-2.5px;
+    border: 3px solid #2d8cf0;
 }
 .border-left-top{
   top:-1px;
   width:2.5px;
   height:30rpx;
   left:-2.5px;
+    border: 3px solid #2d8cf0;
 }
 .border-left-bottom{
   width:2.5px;
   height:30rpx;
   left:-2.5px;
   bottom:-1px;
+    border: 3px solid #2d8cf0;
 }

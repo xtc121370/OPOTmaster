@@ -8,7 +8,8 @@ Page({
     tempFilePaths: null
   },
   no: function () {
-
+var that=this;
+    app.globalData.tempFilePath=null;
     wx.navigateTo({
       url: '../camera/camera',
     })

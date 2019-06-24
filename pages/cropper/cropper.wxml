@@ -1,7 +1,7 @@
 <!--pages/test/test.wxml-->
 
 <image-cropper id="image-cropper" limit_move="{{true}}"limit_move="true" 
-disable_rotate="{{true}}"min_width="10"
+disable_rotate="{{true}}"min_width="10" max_width="300" max_height="600"
 min_height="10" width="{{width}}" height="{{height}}" imgSrc="{{src}}" bindload="cropperload" bindimageload="loadimage" >
 
 </image-cropper>

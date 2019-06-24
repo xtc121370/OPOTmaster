@@ -68,6 +68,19 @@ var a=e.detail.value
     },
   gozhuce: function (options) {
   var that=this;
+    var reg = /^0?1[3|4|5|6|7|8][0-9]\d{8}$/;
+    if (reg.test(that.data.tel) == false) {
+      wx.showToast({
+        title: '请输入正确的手机号格式',
+        icon: 'none'
+
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 500)
+
+    } 
+    else{
   wx.request({
     url: app.globalData.Url+'/user/register',
     data: {
@@ -102,6 +115,7 @@ that.setData({
     }
 
   })
+    }
   }, //注册BUTTON跳转
   /**
    * 生命周期函数--监听页面加载
@@ -132,6 +146,19 @@ that.setData({
 
 binding:function(){
 var that=this;
+  var reg = /^0?1[3|4|5|6|7|8][0-9]\d{8}$/;
+  if (reg.test(that.data.phone)==false){
+    wx.showToast({
+      title: '请输入正确的手机号格式',
+      icon: 'none'
+
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 500)
+
+  } 
+  else{
 wx.request({
   url: app.globalData.Url +'/wxUser/Binding',
   data: {
@@ -182,6 +209,7 @@ else{
     console.log('失败')
   }
 })
+  }
 },
 
 

@@ -66,7 +66,6 @@ function strGreeceDiscode(str){
     str = str.replace(/&Chi;/g, 'Χ');
     str = str.replace(/&Psi;/g, 'Ψ');
     str = str.replace(/&Omega;/g, 'Ω');
-
     str = str.replace(/&alpha;/g, 'α');
     str = str.replace(/&beta;/g, 'β');
     str = str.replace(/&gamma;/g, 'γ');
@@ -103,6 +102,13 @@ function strGreeceDiscode(str){
 
 function strcharacterDiscode(str){
     // 加入常用解析
+
+  str = str.replace(/&#947;/g, 'γ');  
+  str = str.replace(/&#946;/g, 'β');
+  str = str.replace(/&#945;/g, 'α');
+  str = str.replace(/&#8725;/g, '∕');
+  str = str.replace(/&#8221;/g, '”');
+  str = str.replace(/&#8220;/g, '“');
   str = str.replace(/&#8242;/g, '′');
   str = str.replace(/&#8243;/g, '″');
   str = str.replace(/&#960;/g, 'π');
